@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  apache:
+    ports:
+      - 8000:80
+  phpmyadmin:
+    ports:
+      - 8001:80
+  elasticsearch:
+    ports:
+      - "9200:9200"
+  mysql:
+    ports:
+      - "3306:3306"
+  kibana:
+    ports:
+      - "5601:5601"

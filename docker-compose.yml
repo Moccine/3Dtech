@@ -1,0 +1,67 @@
+version: '3'
+
+services:
+  apache:
+    build: ./docker/build/apache
+    depends_on:
+      - mysql
+      - elasticsearch
+    volumes:
+      - ./docker/etc/apache/virtualhost.conf:/etc/apache2/sites-enabled/000-default.conf:ro
+      - ./docker/etc/php/php.ini:/usr/local/etc/php/php.ini:ro
+      - ./docker/etc/php/php-cli.ini:/usr/local/etc/php/php-cli.ini:ro
+      - ./app/symfony:/var/www/symfony:cached
+      - /var/www/symfony/var/cache/
+      - app-vendor:/var/www/symfony/vendor:delegated
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - ./docker/etc/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - mysql-data:/var/lib/mysql/:delegated
+    environment:
+      MYSQL_ROOT_PASSWORD: 3dtech
+      MYSQL_DATABASE: 3dtech
+      MYSQL_USER: 3dtech
+      MYSQL_PASSWORD: 3dtech
+  phpmyadmin:
+    image: nazarpc/phpmyadmin
+    depends_on:
+      - mysql
+  # @see https://www.elastic.co/guide/en/elasticsearch/reference/7.9/docker.html
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.8.9
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+  kibana:
+    container_name: kibana
+    image: docker.elastic.co/kibana/kibana:6.3.1
+    environment:
+      - ELASTICSEARCH_HOSTS=http://localhost:9200
+    depends_on:
+      - elasticsearch
+  node:
+    image: node:12-alpine
+    command: ["yarn", "start"]
+    volumes:
+      - ./app/integration:/var/www/integration
+      - ./app/symfony:/var/www/symfony
+    working_dir: /var/www/integration
+
+volumes:
+  app-vendor:
+  mysql-data:
+  elasticsearch-data:

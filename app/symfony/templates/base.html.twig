@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+<head>
+  <meta charset="UTF-8">
+      <!--====== Required meta tags ======-->
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+      <!--====== Title ======-->
+      <title>{{ 'app.name'|trans }}</title>
+
+      <!--====== Favicon Icon ======-->
+      <link rel="shortcut icon" href=" {{ asset('assets/images/favicon.ico') }}" type="image/png">
+
+      <!--====== Bootstrap css ======-->
+      <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+
+      <!--====== Fontawesome css ======-->
+      <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}">
+
+      <!--====== flaticon css ======-->
+      <link rel="stylesheet" href="{{ asset('assets/css/flaticon.css') }}">
+
+      <!--====== nice select css ======-->
+      <link rel="stylesheet" href="{{ asset('assets/css/nice-select.css') }}">
+
+      <!--====== animate css ======-->
+      <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}">
+
+      <!--====== Magnific Popup css ======-->
+      <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}">
+
+      <!--====== Slick css ======-->
+      <link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}">
+
+      <!--====== Default css ======-->
+      <link rel="stylesheet" href="{{ asset('assets/css/default.css') }}">
+
+      <!--====== Style css ======-->
+      <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+
+
+      <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+    <!--====== PRELOADER PART START ======-->
+    <!--====== PRELOADER PART START ======-->
+    {% include 'common/loading.html.twig' %}
+    <!--====== PRELOADER PART ENDS ======-->
+
+    <!--====== HEADER-AREA PART START ======-->
+    {% include 'common/header_area_part_start.html.twig' %}
+    <!--====== HEADER-AREA PART ENDS ======-->
+    {% block body %}{% endblock %}
+
+
+    <!--====== FOOTER PART START ======-->
+    {% include 'common/footer_part.html.twig' %}
+    <!--====== FOOTER PART ENDS ======-->
+
+    <!--====== GO TO TOP PART START ======-->
+    {% include 'common/go_top_part.html.twig' %}
+    <!--====== GO TO TOP PART ENDS ======-->
+
+        <!--====== jquery js ======-->
+        <script src="{{ asset('assets/js/vendor/modernizr-3.6.0.min.js') }}"></script>
+        <script src="{{ asset('assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
+
+        <!--====== Bootstrap js ======-->
+        <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('assets/js/popper.min.js') }}"></script>
+
+        <!--====== Slick js ======-->
+        <script src="{{ asset('assets/js/slick.min.js') }}"></script>
+
+        <!--====== Isotope js ======-->
+        <script src="{{ asset('assets/js/isotope.pkgd.min.js') }}"></script>
+
+        <!--====== nice select js ======-->
+        <script src="{{ asset('assets/js/jquery.nice-select.min.js') }}"></script>
+
+        <!--====== counterup js ======-->
+        <script src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
+
+        <!--====== circle progress js ======-->
+        <script src="{{ asset('assets/js/circle-progress.min.js') }}"></script>
+
+        <!--====== waypoints js ======-->
+        <script src="{{ asset('assets/js/waypoints.min.js') }}"></script>
+
+        <!--====== wow js ======-->
+        <script src="{{ asset('assets/js/wow.min.js') }}"></script>
+
+        <!--====== Images Loaded js ======-->
+        <script src="{{ asset('assets/js/imagesloaded.pkgd.min.js') }}"></script>
+
+        <!--====== Magnific Popup js ======-->
+        <script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
+
+        <!--====== Main js ======-->
+        <script src="{{ asset('assets/js/main.js') }}"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
