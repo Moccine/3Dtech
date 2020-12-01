@@ -53,9 +53,16 @@ services:
       - ELASTICSEARCH_HOSTS=http://localhost:9200
     depends_on:
       - elasticsearch
+
+  # Mailhog
+  mailhog:
+    image: mailhog/mailhog:latest
+    ports:
+      - 1025:1025
+      - 1080:1080
   node:
     image: node:12-alpine
-    command: ["yarn", "start"]
+    command: [ "yarn", "start" ]
     volumes:
       - ./app/integration:/var/www/integration
       - ./app/symfony:/var/www/symfony

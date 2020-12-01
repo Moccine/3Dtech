@@ -10,3 +10,7 @@
 .php_cs.cache
 ###< friendsofphp/php-cs-fixer ###
 /public/assets/css/style.css
+
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/*.pem
+###< lexik/jwt-authentication-bundle ###
