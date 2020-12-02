@@ -16,6 +16,10 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
+use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 
 class UserSubscriber implements EventSubscriberInterface
 {
@@ -28,6 +32,7 @@ class UserSubscriber implements EventSubscriberInterface
     private EntityManagerInterface $em;
 
     private SessionInterface $session;
+    private Environment $twig;
 
     use LetterTrait;
 
@@ -37,13 +42,16 @@ class UserSubscriber implements EventSubscriberInterface
         RouterInterface $router,
         UrlGeneratorInterface $urlGenerator,
         EntityManagerInterface $entityManager,
-        SessionInterface $session
-    ) {
+        SessionInterface $session,
+        Environment $twig
+    )
+    {
         $this->sender = $sender;
         $this->userManager = $userManager;
         $this->urlGenerator = $urlGenerator;
         $this->em = $entityManager;
         $this->session = $session;
+        $this->twig = $twig;
     }
 
     public static function getSubscribedEvents(): array
@@ -56,45 +64,55 @@ class UserSubscriber implements EventSubscriberInterface
         ];
     }
 
+    /**
+     * @param UserEvent $event
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
+     */
     public function onRegistered(UserEvent $event): void
     {
         $token = $this->em->getRepository(Token::class)->findOneBy([
-           'user' => $event->getUser(),
-           'type' => Token::TYPE_CONFIRM,
+            'user' => $event->getUser(),
+            'type' => Token::TYPE_CONFIRM,
         ]);
 
-        $letter = $this->getLetterInfo(UserEvent::REGISTERED);
-
-        if ($letter) {
-            $url = $this->urlGenerator->generate('registration_confirm', ['value' => $token->getValue()]);
-            $this->sender->deliver(
-                $event->getUser()->getEmail(),
-                $letter->getSubject(),
-                $letter->getContent().$url,
-                ['url' => $this->urlGenerator
-                    ->generate('registration_confirm', ['value' => $token->getValue()], UrlGeneratorInterface::ABSOLUTE_URL)],
-                []
-            );
-        }
-    }
-
-    public function onRegisteredConfirmed(UserEvent $event): void
-    {
-        $event->getUser()->setEnabled(true);
-
-        $this->em->flush();
-
-        $letter = $this->getLetterInfo(UserEvent::REGISTERED_CONFIRMED);
-
+        $url = $this->urlGenerator->generate('registration_confirm', ['value' => $token->getValue()], UrlGeneratorInterface::ABSOLUTE_URL);
+        $template = $this->twig->render('security/comfirm_mail.html.twig', ['url' => $url]);
         $this->sender->deliver(
             $event->getUser()->getEmail(),
-            $letter->getSubject(),
-            $letter->getContent(),
+            'mail confirmation',
+            $template,
             [],
             []
         );
     }
 
+    /**
+     * @param UserEvent $event
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
+     */
+    public function onRegisteredConfirmed(UserEvent $event): void
+    {
+        $event->getUser()->setEnabled(true);
+
+        $this->em->flush();
+        $template = $this->twig->render('security/enabled_mail.html.twig');
+
+        $this->sender->deliver(
+            $event->getUser()->getEmail(),
+            'enabled email',
+            $template,
+            [],
+            []
+        );
+    }
+
+    /**
+     * @param UserEvent $event
+     */
     public function onLogged(UserEvent $event): void
     {
         $user = $event->getUser();
@@ -107,6 +125,9 @@ class UserSubscriber implements EventSubscriberInterface
         }
     }
 
+    /**
+     * @param UserEvent $event
+     */
     public function onReseted(UserEvent $event): void
     {
         $user = $event->getUser();
@@ -121,4 +142,5 @@ class UserSubscriber implements EventSubscriberInterface
             []
         );
     }
+
 }

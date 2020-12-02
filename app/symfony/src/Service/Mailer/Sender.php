@@ -6,14 +6,17 @@ namespace App\Service\Mailer;
 
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
+use Twig\Environment;
 
 class Sender implements SenderInterface
 {
     private MailerInterface $mailer;
-
+     private string $companyEmail;
+     private Environment $twig;
     public function __construct(MailerInterface $mailer)
     {
         $this->mailer = $mailer;
+        $this->companyEmail = $_ENV['AGENCY_EMAIL'];
     }
 
     public function deliver(
@@ -25,11 +28,16 @@ class Sender implements SenderInterface
     ): void {
         $email = new Email();
 
-        $email->from('email@kernix.com');
+        $email->from($this->companyEmail);
         $email->to($to);
         $email->subject($subject);
         $email->html(SenderHelper::bind($content, $bindings));
-
         $this->mailer->send($email);
+    }
+
+
+    public function doTemplate($template, array $options)
+    {
+        return $this->twig->render($template, $options);
     }
 }

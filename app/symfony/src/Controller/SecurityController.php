@@ -76,7 +76,7 @@ class SecurityController extends AbstractController
 
         $userManager->registrationConfirm($token);
 
-        return $this->render('security/registrationConfirm.html..html.twig');
+        return $this->render('security/registrationConfirm.html.twig');
     }
 
     /**

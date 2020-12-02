@@ -8,8 +8,9 @@ final class SenderHelper
 {
     public static function bind(string $content, array $bindings): string
     {
+        //dd($content, $bindings);
         return str_replace(
-            array_map(function ($binding) { return '%%'.$binding.'%%'; }, array_keys($bindings)),
+            array_map(function ($binding) { return '(('.$binding.'))'; }, array_keys($bindings)),
             array_values($bindings),
             $content
         );
