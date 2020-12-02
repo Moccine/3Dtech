@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+  {% if app.user %}
+    <div class="mb-3">
+      You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+    </div>
+    {% else %}
   <section class="faq-area faq-about bg_cover pt-115 pb-120">
     <div class="container">
       <div class="row justify-content-center">
@@ -87,7 +92,11 @@
                     <h4 class="title">Se connecter</h4>
                   </div>
                   {{ form_start(form) }}
-
+                  {% if error %}
+                  <div class="input-box mt-20">
+                  <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                  </div>
+                  {% endif %}
                   <div class="input-box mt-20">
                     {{ form_row(form.email) }}
                   </div>
@@ -104,6 +113,7 @@
 
                   </div>
                 </div>
+                {% endif %}
               </div>
             </div>
           </div>

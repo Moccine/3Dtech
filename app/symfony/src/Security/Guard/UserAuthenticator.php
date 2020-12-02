@@ -101,18 +101,13 @@ class UserAuthenticator extends AbstractGuardAuthenticator
             UserEvent::LOGGED
         );
 
-        return new RedirectResponse($this->urlGenerator->generate('account_home'));
+        return new RedirectResponse($this->urlGenerator->generate('3dtech_index'));
     }
 
-    public function onAuthenticationFailure(Request $request, AuthenticationException $exception): JsonResponse
+    public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
-        $errors = [
-            'errors' => [
-                'global' => $this->translator->trans('form.login.error'),
-            ],
-        ];
 
-        return new JsonResponse($errors, JsonResponse::HTTP_UNAUTHORIZED);
+      //  return new JsonResponse($errors, JsonResponse::HTTP_UNAUTHORIZED);
     }
 
     public function supportsRememberMe(): bool
