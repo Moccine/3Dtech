@@ -25,7 +25,10 @@ class RequestType extends AbstractType
         $builder
             ->add('email', EmailType::class, [
                 'required' => true,
-                'label' => 'app.form.reset.username',
+                'label' =>false,
+                'attr' => [
+                    'placeholder' =>  'app.form.reset.email',
+                ]
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'app.form.reset.submit',
