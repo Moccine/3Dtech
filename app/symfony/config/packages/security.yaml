@@ -65,6 +65,7 @@ security:
                     - App\Security\Guard\UserAuthenticator
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/profile, roles: ROLE_USER }
         - { path: ^/_easyadmin/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/_easyadmin, role: ROLE_ADMIN }
         - { path: ^/admin, role: ROLE_USER }
