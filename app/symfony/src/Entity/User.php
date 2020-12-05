@@ -146,9 +146,11 @@ class User implements UserInterface
         return $this->enabled;
     }
 
-    public function setEnabled(bool $enabled): void
+    public function setEnabled(bool $enabled): self
     {
         $this->enabled = $enabled;
+
+        return $this;
     }
 
     public function getIncidents(): ?Collection

@@ -87,9 +87,15 @@ class Client
      */
     private $quotation;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Quotation::class, mappedBy="client")
+     */
+    private $quotations;
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
+        $this->quotations = new ArrayCollection();
     }
 
     public function getAddress(): Address
@@ -274,6 +280,36 @@ class Client
     public function __toString(): string
     {
         return $this->company;
+    }
+
+    /**
+     * @return Collection|Quotation[]
+     */
+    public function getQuotations(): Collection
+    {
+        return $this->quotations;
+    }
+
+    public function addQuotation(Quotation $quotation): self
+    {
+        if (!$this->quotations->contains($quotation)) {
+            $this->quotations[] = $quotation;
+            $quotation->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQuotation(Quotation $quotation): self
+    {
+        if ($this->quotations->removeElement($quotation)) {
+            // set the owning side to null (unless already changed)
+            if ($quotation->getClient() === $this) {
+                $quotation->setClient(null);
+            }
+        }
+
+        return $this;
     }
 
 }

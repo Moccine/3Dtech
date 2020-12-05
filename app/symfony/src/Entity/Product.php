@@ -37,7 +37,6 @@ class Product
 
     /**
      * @ORM\ManyToOne(targetEntity=Quotation::class, inversedBy="products")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $quotation;
 
