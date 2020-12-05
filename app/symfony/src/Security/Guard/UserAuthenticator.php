@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Security\Guard;
 
-use App\Entity\User;
 use App\Event\UserEvent;
 use App\Service\Security\PasswordService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
@@ -31,19 +31,23 @@ class UserAuthenticator extends AbstractGuardAuthenticator
     private EventDispatcherInterface $eventDispatcher;
 
     private EntityManagerInterface $entityManager;
+    private SessionInterface $session;
 
     public function __construct(
         PasswordService $passwordService,
         UrlGeneratorInterface $urlGenerator,
         TranslatorInterface $translator,
         EventDispatcherInterface $eventDispatcher,
-        EntityManagerInterface $entityManager
-    ) {
+        EntityManagerInterface $entityManager,
+        SessionInterface $session
+    )
+    {
         $this->passwordService = $passwordService;
         $this->urlGenerator = $urlGenerator;
         $this->translator = $translator;
         $this->eventDispatcher = $eventDispatcher;
         $this->entityManager = $entityManager;
+        $this->session = $session;
     }
 
     public function supports(Request $request): bool
@@ -65,7 +69,7 @@ class UserAuthenticator extends AbstractGuardAuthenticator
 
     public function start(Request $request, AuthenticationException $exception = null): RedirectResponse
     {
-        return new RedirectResponse($this->urlGenerator->generate('homepage'));
+        return new RedirectResponse($this->urlGenerator->generate('user_login'));
     }
 
     public function getCredentials(Request $request): array
@@ -76,7 +80,12 @@ class UserAuthenticator extends AbstractGuardAuthenticator
         ];
     }
 
-    public function getUser($credentials, UserProviderInterface $userProvider): User
+    /**
+     * @param mixed $credentials
+     * @param UserProviderInterface $userProvider
+     * @return UserInterface|null
+     */
+    public function getUser($credentials, UserProviderInterface $userProvider): UserInterface
     {
         return $userProvider->loadUserByUsername($credentials['email']);
     }
@@ -107,7 +116,8 @@ class UserAuthenticator extends AbstractGuardAuthenticator
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
 
-      //  return new JsonResponse($errors, JsonResponse::HTTP_UNAUTHORIZED);
+    $this->session->getFlashBag()->set('login-error', 'Vos identifiants sont incorrect');
+        //  return new JsonResponse($errors, JsonResponse::HTTP_UNAUTHORIZED);
     }
 
     public function supportsRememberMe(): bool

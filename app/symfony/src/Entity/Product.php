@@ -6,14 +6,13 @@ namespace App\Entity;
 
 use App\Entity\Traits\CodifiableTrait;
 use App\Entity\Traits\IdentifiableTrait;
-use App\Repository\MachineRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use App\Repository\ProductRepository;
 /**
- * @ORM\Entity(repositoryClass=MachineRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\ProductRepository", repositoryClass=ProductRepository::class)
  */
 class Product
 {
@@ -26,8 +25,21 @@ class Product
      * @Assert\Valid()
      */
     private Category $category;
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private ?string $name;
 
-    private string $name;
+    /**
+     * @ORM\Column(type="float", nullable=true, scale=2)
+     */
+    private float $price;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Quotation::class, inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $quotation;
 
     /**
      * @return string
@@ -39,10 +51,13 @@ class Product
 
     /**
      * @param string $name
+     * @return Product
      */
-    public function setName(string $name): void
+    public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
     }
 
     public function getCategory(): Category
@@ -57,4 +72,37 @@ class Product
         return $this;
     }
 
+    /**
+     * @return int|string
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @return Product
+     */
+    public function setPrice(float $price): self
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+    public function __toString(): string
+    {
+        return $this->name;
+    }
+
+    public function getQuotation(): ?Quotation
+    {
+        return $this->quotation;
+    }
+
+    public function setQuotation(?Quotation $quotation): self
+    {
+        $this->quotation = $quotation;
+
+        return $this;
+    }
 }

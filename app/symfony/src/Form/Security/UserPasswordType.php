@@ -28,14 +28,20 @@ class UserPasswordType extends AbstractType
                 'label' => 'app.form.edit.oldPassword',
             ])
             ->add('newPassword', RepeatedType::class, [
-                'label' => 'app.form.edit.plainPassword',
+                'label' => false,
                 'type' => PasswordType::class,
-                'invalid_message' => 'app.form.registration.passwordNotIdentical',
+                'invalid_message' => 'app.form.registration.password_not_identical',
                 'first_options' => [
-                    'label' => 'app.form.edit.plainPassword',
+                    'label' => false,
+                    'attr' => [
+                        'placeholder' => 'app.form.edit.plainPassword',
+                    ]
                 ],
                 'second_options' => [
-                    'label' => 'app.form.edit.secondPassword',
+                    'label' => false,
+                    'attr' => [
+                        'placeholder' => 'app.form.edit.secondPassword',
+                    ]
                 ],
             ])
             ->add('submit', SubmitType::class, [

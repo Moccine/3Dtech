@@ -7,6 +7,7 @@ namespace App\Entity;
 use App\Entity\Traits\IdentifiableTrait;
 use App\Repository\AddressRepository;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
@@ -158,4 +159,10 @@ class Address
                 ->addViolation();
         }
     }
+
+     public function __toString(): string
+    {
+        return sprintf('%s %s %s', $this->address, $this->postalCode, $this->city);
+    }
+
 }

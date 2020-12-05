@@ -5,14 +5,14 @@
         <div class="header-top d-flex justify-content-between">
           <div class="header-top-info d-none d-md-block">
             <ul>
-              <li><a href="#"><i class="fa fa-map-marker"></i> Tanta AlGharbia, Egypt.</a></li>
-              <li><a href="#"><i class="fa fa-envelope"></i> brorex@mail.com</a></li>
+              <li><a href="#"><i class="fa fa-map-marker"></i>Ile de france</a></li>
+              <li><a href="#"><i class="fa fa-envelope"></i>contact@3dtech.com</a></li>
             </ul>
           </div>
           <div class="header-top-social">
             <select>
-              <option value="1">English</option>
               <option value="2">Francais</option>
+              <option value="1">English</option>
             </select>
             <ul>
               <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
@@ -24,10 +24,12 @@
         <div class="navigation">
           <nav class="navbar navbar-expand-lg">
             <a class="navbar-brand" href="{{ path('3dtech_index') }}">
-              <img src="{{asset('assets/images/logo.png') }}" alt="Logo">
+              <img src="{{asset('assets/images/Logo3D.png') }}" alt="Logo">
             </a> <!-- logo -->
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarFive" aria-controls="navbarFive" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarFive" aria-controls="navbarFive"
+                    aria-expanded="false" aria-label="Toggle navigation">
               <span class="toggler-icon"></span>
               <span class="toggler-icon"></span>
               <span class="toggler-icon"></span>
@@ -38,10 +40,22 @@
                   <a class="page-scroll" href="{{ path('3dtech_index') }}">3Dtech</a>
                 </li>
                 <li class="nav-item">
-                  <a class="page-scroll" href="{{ path('3dtech_partners') }}">Partenaires</a>
+                  <a class="page-scroll" href="{{ path('3dtech_partners') }}">Pack maintenance</a>
                 </li>
                 <li class="nav-item">
-                  <a class="page-scroll" href="{{  path('3dtech_engagements') }}">Nos engagements</a>
+                  <a class="page-scroll" href="#">Solution <span>+</span></a>
+                  <ul class="sub-menu">
+                    <li><a href="#">Securité informatique et reseau</a></li>
+                    <li><a href="#">Messagerie personnelle</a></li>
+                    <li><a href="#"> Cloud entreprise</a></li>
+                    <li><a href="#">Sauvegarde externalisée</a></li>
+                    <li><a href="#">Accès internet pro</a></li>
+                    <li><a href="#">Accès internet pro</a></li>
+                    <li><a href="#">Reseau wifi entreprise</a></li>
+                    <li><a href="#">Logiciel bureautique</a></li>
+                    <li><a href="#">Equipement informaytique</a></li>
+                    <li><a href="#">Decouvrir tout</a></li>
+                  </ul>
                 </li>
                 <li class="nav-item">
                   <a class="page-scroll" href="{{  path('3dtech_jobs') }}">Nos métiers</a>
@@ -59,7 +73,8 @@
             </div>
             <div class="navbar-btn d-none d-sm-inline-block">
               {% if app.user %}
-              <a class="main-btn ml-20" href="{{ path('logout') }}">Deconnexion<i class="flaticon-right-arrow"></i></a>
+                <a href="{{ path('logout') }}">Quitter</a>
+              <a class="main-btn ml-20" href="{{ path('profile') }}">Profile<i class="flaticon-right-arrow"></i></a>
               {% else %}
               <a class="main-btn ml-20" href="{{ path('user_login') }}">Login<i class="flaticon-right-arrow"></i></a>
               {% endif %}

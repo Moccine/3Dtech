@@ -82,6 +82,11 @@ class Client
      */
     private Collection $orders;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Quotation::class, mappedBy="client", cascade={"persist", "remove"})
+     */
+    private $quotation;
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
@@ -247,4 +252,28 @@ class Client
             }
         }
     }
+
+    public function getQuotation(): ?Quotation
+    {
+        return $this->quotation;
+    }
+
+    public function setQuotation(?Quotation $quotation): self
+    {
+        $this->quotation = $quotation;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newClient = null === $quotation ? null : $this;
+        if ($quotation->getClient() !== $newClient) {
+            $quotation->setClient($newClient);
+        }
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->company;
+    }
+
 }
