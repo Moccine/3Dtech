@@ -36,6 +36,12 @@ class Product
     private float $price;
 
     /**
+     * @ORM\ManyToOne(targetEntity=Quotation::class, inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $quotation;
+
+    /**
      * @return string
      */
     public function getName(): string
@@ -83,5 +89,20 @@ class Product
 
         return $this;
     }
+    public function __toString(): string
+    {
+        return $this->name;
+    }
 
+    public function getQuotation(): ?Quotation
+    {
+        return $this->quotation;
+    }
+
+    public function setQuotation(?Quotation $quotation): self
+    {
+        $this->quotation = $quotation;
+
+        return $this;
+    }
 }
