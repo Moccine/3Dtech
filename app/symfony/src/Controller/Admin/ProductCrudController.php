@@ -24,4 +24,14 @@ class ProductCrudController extends AbstractCrudController
             ->setEntityLabelInPlural('Products')
             ;
     }
+
+    public function configureFields(string $pageName): iterable
+    {
+        return [
+            TextField::new('name', 'Name'),
+            TextField::new('code', 'Code'),
+            TextField::new('category', 'Catégorie'),
+            MoneyField::new('price', 'Coût')->setCurrency('EUR'),
+        ];
+    }
 }

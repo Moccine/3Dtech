@@ -239,8 +239,7 @@ class Client
     }
     public function __toString(): string
     {
-        $name = $this->company??$this->firstName;
-        return substr($name, 10);
+        return $this->company;
     }
 
     /**
