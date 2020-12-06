@@ -15,7 +15,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Quotation
 {
     use IdentifiableTrait;
-    use AddressTrait;
+    //use AddressTrait;
+
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -24,7 +25,7 @@ class Quotation
     /**
      * @ORM\Column(type="text", nullable=true, length=255)
      */
-    private   $description;
+    private $description;
 
     /**
      * @ORM\Column(type="date")
@@ -40,7 +41,10 @@ class Quotation
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private ?string $payment;
-
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private ?string $address;
     /**
      * @ORM\Column(type="float", nullable=true)
      */
@@ -77,14 +81,9 @@ class Quotation
     private $deadline;
 
     /**
-     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="quotation")
-     */
-    private  $products;
-
-    /**
      * @ORM\Column(type="date", nullable=true)
      */
-    private  \DateTime $startDate;
+    private \DateTime $startDate;
 
     /**
      * @ORM\Column(type="date", nullable=true)
@@ -95,6 +94,11 @@ class Quotation
      * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="quotation")
      */
     private $client;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Product::class)
+     */
+    private $products;
 
 
     public function __construct()
@@ -253,36 +257,6 @@ class Quotation
         return $this;
     }
 
-    /**
-     * @return Collection|Product[]
-     */
-    public function getProducts(): Collection
-    {
-        return $this->products;
-    }
-
-    public function addProduct(Product $product): self
-    {
-        if (!$this->products->contains($product)) {
-            $this->products[] = $product;
-            $product->setQuotation($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProduct(Product $product): self
-    {
-        if ($this->products->removeElement($product)) {
-            // set the owning side to null (unless already changed)
-            if ($product->getQuotation() === $this) {
-                $product->setQuotation(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getStartDate(): ?\DateTimeInterface
     {
         return $this->startDate;
@@ -315,6 +289,48 @@ class Quotation
     public function setClient(?Client $client): self
     {
         $this->client = $client;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param string|null $address
+     * @return Quotation
+     */
+    public function setAddress(?string $address): self
+    {
+        $this->address = $address;
+        return $this;
+    }
+
+    /**
+     * @return Collection|Product[]
+     */
+    public function getProducts(): Collection
+    {
+        return $this->products;
+    }
+
+    public function addProduct(Product $product): self
+    {
+        if (!$this->products->contains($product)) {
+            $this->products[] = $product;
+        }
+
+        return $this;
+    }
+
+    public function removeProduct(Product $product): self
+    {
+        $this->products->removeElement($product);
 
         return $this;
     }

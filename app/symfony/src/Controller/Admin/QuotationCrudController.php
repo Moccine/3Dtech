@@ -3,13 +3,18 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Quotation;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 
 class QuotationCrudController extends AbstractCrudController
 {
@@ -22,24 +27,17 @@ class QuotationCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('name', 'nom'),
-            TextField::new('reference'),
-            TextField::new('payment'),
-            TextField::new('designation'),
+            TextField::new('name', 'Nom'),
+            TextField::new('reference', 'Reference'),
+            TextField::new('payment', 'Mode de payement'),
+            //TextField::new('designation'),
+            TextField::new('address', 'Adresse'),
             NumberField::new('quantity', 'Quantité'),
             AssociationField::new('deadline', 'Délai'),
-            // ADDRESSE DE FACTURATION
-            // AssociationField::new('billingAddress'),
-            AssociationField::new('products'),
-            // AssociationField::new('billingAddress'),
-            AssociationField::new('client'),
-            MoneyField::new('Amount', 'Prix de vente')->hideOnForm()->setCurrency('EUR'),
-          /*  TextField::new('address', 'Rue')->onlyOnForms(),
-            TextField::new('city', 'Ville')->onlyOnForms(),
-            NumberField::new('postalCode', 'Code postal')->onlyOnForms(),
-            TextField::new('Country', 'Pays')->onlyOnForms(),*/
-
-            TextEditorField::new('description'),
+            AssociationField::new('client', 'Client'),
+            AssociationField::new('products', 'Produits'),
+            MoneyField::new('totalHT', 'HT')->hideOnForm()->setCurrency('EUR'),
+            MoneyField::new('Amount', 'TTC')->hideOnForm()->setCurrency('EUR'),
         ];
     }
 
