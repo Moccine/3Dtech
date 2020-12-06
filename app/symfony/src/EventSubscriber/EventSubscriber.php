@@ -2,6 +2,7 @@
 
 
 namespace App\EventSubscriber;
+
 use App\Entity\Quotation;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityPersistedEvent;
@@ -20,16 +21,18 @@ class EventSubscriber implements EventSubscriberInterface
     {
         $entity = $event->getEntityInstance();
 
-        if (!($entity instanceof Quotation)) {
-            return;
+        if (($entity instanceof Quotation)) {
+            dd($entity);
+            /** @var Quotation $entity */
+            $products = $entity->getProducts();
+            $price = 0;
+            foreach ($products as $product) {
+                $price += $product->getPrice();
+            }
+            $amount = $price * $entity->getQuantity();
+            $entity->setAmount($amount);
         }
-        /** @var Quotation $entity */
-       $products = $entity->getProducts();
-       $price  = 0;
-       foreach ($products as $product){
-           $price+=$product->getPrice();
-       }
-       $amount = $price* $entity->getQuantity();
-       $entity->setAmount($amount);
-    }
+
+
+        }
 }

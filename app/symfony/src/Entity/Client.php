@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Entity\Traits\AddressTrait;
 use App\Entity\Traits\IdentifiableTrait;
 use App\Repository\ClientRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -26,12 +27,7 @@ class Client
     ];
 
     use IdentifiableTrait;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Address::class, inversedBy="clients", cascade={"persist"})
-     * @Assert\Valid()
-     */
-    private Address $address;
+   use AddressTrait;
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -83,31 +79,14 @@ class Client
     private Collection $orders;
 
     /**
-     * @ORM\OneToOne(targetEntity=Quotation::class, mappedBy="client", cascade={"persist", "remove"})
-     */
-    private $quotation;
-
-    /**
      * @ORM\OneToMany(targetEntity=Quotation::class, mappedBy="client")
      */
-    private $quotations;
+    private $quotation;
 
     public function __construct()
     {
         $this->orders = new ArrayCollection();
-        $this->quotations = new ArrayCollection();
-    }
-
-    public function getAddress(): Address
-    {
-        return $this->address;
-    }
-
-    public function setAddress(Address $address): self
-    {
-        $this->address = $address;
-
-        return $this;
+        $this->quotation = new ArrayCollection();
     }
 
     public function getCompany(): ?string
@@ -258,25 +237,6 @@ class Client
             }
         }
     }
-
-    public function getQuotation(): ?Quotation
-    {
-        return $this->quotation;
-    }
-
-    public function setQuotation(?Quotation $quotation): self
-    {
-        $this->quotation = $quotation;
-
-        // set (or unset) the owning side of the relation if necessary
-        $newClient = null === $quotation ? null : $this;
-        if ($quotation->getClient() !== $newClient) {
-            $quotation->setClient($newClient);
-        }
-
-        return $this;
-    }
-
     public function __toString(): string
     {
         return $this->company;
@@ -285,15 +245,15 @@ class Client
     /**
      * @return Collection|Quotation[]
      */
-    public function getQuotations(): Collection
+    public function getQuotation(): Collection
     {
-        return $this->quotations;
+        return $this->quotation;
     }
 
     public function addQuotation(Quotation $quotation): self
     {
-        if (!$this->quotations->contains($quotation)) {
-            $this->quotations[] = $quotation;
+        if (!$this->quotation->contains($quotation)) {
+            $this->quotation[] = $quotation;
             $quotation->setClient($this);
         }
 
@@ -302,7 +262,7 @@ class Client
 
     public function removeQuotation(Quotation $quotation): self
     {
-        if ($this->quotations->removeElement($quotation)) {
+        if ($this->quotation->removeElement($quotation)) {
             // set the owning side to null (unless already changed)
             if ($quotation->getClient() === $this) {
                 $quotation->setClient(null);

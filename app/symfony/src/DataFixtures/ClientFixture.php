@@ -14,6 +14,7 @@ use Faker\Factory;
 
 class ClientFixture extends Fixture
 {
+    const DEFAULT_COUNTRY = 'France';
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create('fr_FR');
@@ -25,8 +26,11 @@ class ClientFixture extends Fixture
                 ->setHomePhone($faker->phoneNumber)
                 ->setMobilePhone($faker->phoneNumber)
                 ->setSiret($faker->siret)
-                ->setAddress($this->getReference(AddressFixtures::ADDRESS_REFERENCE . $i))
-                ->setUser($this->getReference(BuserFixture::USER_REFERENCE . $i));
+                ->setAddress($faker->buildingNumber . ', ' . $faker->streetName)
+                ->setPostalCode($faker->postcode)
+                ->setCity($faker->city)->setCountry(self::DEFAULT_COUNTRY)
+                ->setLatitude($faker->latitude(43, 49))->setLongitude($faker->longitude(1.1, 1.5));
+            $client->setUser($this->getReference(BuserFixture::USER_REFERENCE . $i));
             $manager->persist($client);
         }
         $manager->flush();
@@ -39,6 +43,7 @@ class ClientFixture extends Fixture
             BuserFixture::class,
         ];
     }
+
     public function getOrder()
     {
         return 5; // the order in which fixtures will be loaded
