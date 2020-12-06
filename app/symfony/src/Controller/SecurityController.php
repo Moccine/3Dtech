@@ -71,7 +71,7 @@ class SecurityController extends AbstractController
             throw $this->createNotFoundException();
         }
         if (!$tokenService->isValid($token, Token::TTL_RESET)) {
-            throw $this->createNotFoundException();
+            throw $this->createNotFoundException('Token non valide');
         }
 
         $userManager->registrationConfirm($token);

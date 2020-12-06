@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Security\Voter;
 
@@ -41,9 +42,11 @@ class IncidentVoter extends Voter
 
     /**
      * @param string $attribute
-     * @param mixed  $subject
+     * @param mixed $subject
+     * @param TokenInterface $token
+     * @return bool
      */
-    protected function voteOnAttribute($attribute, $subject, TokenInterface $token): bool
+    protected function voteOnAttribute(string $attribute, $subject, TokenInterface $token): bool
     {
         $user = $token->getUser();
 
