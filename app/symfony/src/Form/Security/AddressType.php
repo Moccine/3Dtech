@@ -43,14 +43,14 @@ class AddressType extends AbstractType
                     'placeholder' => 'app.form.registration.city',
                 ],
             ])
-            ->add('country', ChoiceType::class, [
+         /*   ->add('country', ChoiceType::class, [
                 'choices' => array_flip(Address::$countries),
                 'required' => true,
                 'label' => false,
                 'attr' => [
                     'placeholder' => 'app.form.registration.country',
                 ],
-            ])
+            ])*/
         ;
     }
 }

@@ -18,7 +18,7 @@ class Address
 {
     public const FRANCE = 'France';
     public static array $countries = [
-        self::FRANCE => 'France',
+        self::FRANCE => self::FRANCE
     ];
     use IdentifiableTrait;
     use AddressTrait;

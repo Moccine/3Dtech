@@ -18,12 +18,12 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
  */
 class Client
 {
-    public const TYPE_INDIVIDUAL = 'Individual';
-    public const TYPE_PROFESSIONAL = 'Professional';
+    public const TYPE_INDIVIDUAL = 'Personnel';
+    public const TYPE_PROFESSIONAL = 'Entreprise';
 
     public static array $types = [
-        self::TYPE_INDIVIDUAL => 'Individual',
-        self::TYPE_PROFESSIONAL => 'Professional',
+        self::TYPE_INDIVIDUAL  => self::TYPE_INDIVIDUAL,
+        self::TYPE_PROFESSIONAL =>  self::TYPE_PROFESSIONAL
     ];
 
     use IdentifiableTrait;
@@ -166,7 +166,7 @@ class Client
         return $this->type;
     }
 
-    public function setType($type): self
+    public function setType(string $type): self
     {
         $this->type = $type;
 

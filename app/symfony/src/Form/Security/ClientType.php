@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Form\Security;
 
+use App\Entity\Address;
 use App\Entity\Client;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -70,11 +71,9 @@ class ClientType extends AbstractType
                 ],
             ])
             ->add('type', ChoiceType::class, [
-                'label' => false,
-                'choices' => Client::$types,
-                'expanded' => true,
-                'multiple' => false,
-            ])
+                'choices' => array_flip(Client::$types),
+                'required' => true,
+                'label' => false])
             ->add('address', AddressType::class)
            ;
 
