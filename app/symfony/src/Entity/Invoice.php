@@ -218,7 +218,7 @@ class Invoice
         return $this->totalHT;
     }
 
-    public function setTotalHT(float|int $totalHT): self
+    public function setTotalHT(float $totalHT): self
     {
         $this->totalHT = $totalHT;
 
@@ -230,7 +230,7 @@ class Invoice
         return $this->discount;
     }
 
-    public function setDiscount(float|int $discount): self
+    public function setDiscount(float $discount): self
     {
         $this->discount = $discount;
 
@@ -264,7 +264,7 @@ class Invoice
         return $this->totalTTC;
     }
 
-    public function setTotalTTC(float|int $totalTTC): self
+    public function setTotalTTC(float $totalTTC): self
     {
         $this->totalTTC = $totalTTC;
 
