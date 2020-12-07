@@ -213,7 +213,7 @@ class Invoice
         return $this;
     }
 
-    public function getTotalHT(): float|int
+    public function getTotalHT(): float
     {
         return $this->totalHT;
     }
