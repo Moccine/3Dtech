@@ -33,9 +33,8 @@ class UserType extends AbstractType
             ])
             ->add('plainPassword', RepeatedType::class, [
                 'label' => false,
-
                 'type' => PasswordType::class,
-                'invalid_message' => 'app.form.registration.passwordNotIdentical',
+                'invalid_message' => 'Mot de passe non identique',
                 'first_options' => [
                     'label' => false,
                     'attr' => [

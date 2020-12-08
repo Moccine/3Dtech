@@ -60,7 +60,7 @@ class UserManager
     }
 
     public function create(User $user): void
-    { try{
+    {
         $this->encodePassword($user, $user->getPlainPassword());
         $this->em->persist($user);
         $this->em->flush();
@@ -70,9 +70,7 @@ class UserManager
             new UserEvent($user),
             UserEvent::REGISTERED
         );
-    }catch (\Exception $exception){
-        dd($exception);
-    }
+
     }
 
     private function encodePassword(User $user, string $password): void

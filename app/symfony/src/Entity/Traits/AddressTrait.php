@@ -13,26 +13,22 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 trait AddressTrait
 {
     /**
-     * @ORM\Column(type="string", length=125)
-     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=125, nullable=true)
      */
     private string $address;
 
     /**
-     * @ORM\Column(type="string", length=125)
-     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=12, nullable=true)
      */
     private string $city;
 
     /**
-     * @ORM\Column(type="string", length=125)
-     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=125, nullable=true)
      */
     private string $country;
 
     /**
-     * @ORM\Column(type="string", length=16)
-     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=16, nullable=true)
      */
     private string $postalCode;
 

@@ -33,11 +33,10 @@ class DashboardController extends AbstractDashboardController
 
     }
 
-
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('ACME Corp.')
+            ->setTitle('3DTECH')
             ->setTitle('Tableau de bord')
             ->setFaviconPath('favicon.svg')
             ->setTranslationDomain('my-custom-domain')

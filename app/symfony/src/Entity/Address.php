@@ -20,6 +20,8 @@ class Address
     public static array $countries = [
         self::FRANCE => self::FRANCE
     ];
+
     use IdentifiableTrait;
     use AddressTrait;
+
 }

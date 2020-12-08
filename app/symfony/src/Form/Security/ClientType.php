@@ -8,6 +8,7 @@ use App\Entity\Address;
 use App\Entity\Client;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -39,16 +40,6 @@ class ClientType extends AbstractType
                     'placeholder' => 'app.form.registration.firstName',
                 ],
             ])
-            ->add('homePhone', null, [
-                'label' => false,
-                'required' => true,
-                'attr' => [
-                    'type' => 'number',
-                    'placeholder' => 'app.form.registration.phone',
-
-                ],
-
-            ])
             ->add('mobilePhone', null, [
                 'label' => false,
                 'required' => true,
@@ -58,29 +49,22 @@ class ClientType extends AbstractType
 
                 ],
             ])
-            ->add('company', null, [
-                'label' => false,
-                'attr' => [
-                    'placeholder' => 'app.form.registration.company',
-                ],
-            ])
-            ->add('siret', null, [
-                'label' => false,
-                'attr' => [
-                    'placeholder' => 'app.form.registration.siret',
-                ],
-            ])
             ->add('type', ChoiceType::class, [
+                'attr' =>[
+                    'class' => 'wide client-type'
+                ],
                 'choices' => array_flip(Client::$types),
                 'required' => true,
                 'label' => false])
-            ->add('address', AddressType::class)
            ;
 
         $builder->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event) {
+            /** @var Client $data */
             $data = $event->getData();
             $form = $event->getForm();
-
+            $data->setSiret(null)
+                ->setCompany(null)
+            ;
             if ($form->getParent()) {
                 $data->setUser($form->getParent()->getData());
             }

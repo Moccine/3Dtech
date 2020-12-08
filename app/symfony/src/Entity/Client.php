@@ -27,7 +27,7 @@ class Client
     ];
 
     use IdentifiableTrait;
-   use AddressTrait;
+     use AddressTrait;
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -54,7 +54,6 @@ class Client
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
-     * @Assert\NotBlank()
      */
     private string $homePhone;
 
@@ -137,12 +136,12 @@ class Client
         return $this;
     }
 
-    public function getHomePhone(): string
+    public function getHomePhone():?string
     {
         return $this->homePhone;
     }
 
-    public function setHomePhone(string $phone): self
+    public function setHomePhone(?string $phone): self
     {
         $this->homePhone = $phone;
 
@@ -215,31 +214,9 @@ class Client
         return $this;
     }
 
-    /**
-     * @Assert\Callback
-     */
-    public function validate(ExecutionContextInterface $context)
+    public function __toString()
     {
-        $siret = $this->getSiret();
-        $company = $this->getCompany();
-
-        if (self::TYPE_PROFESSIONAL == $this->getType()) {
-            if (true == empty($siret)) {
-                $context->buildViolation('validator.siret.required')
-                    ->atPath('siret')
-                    ->addViolation();
-            }
-
-            if (true == empty($company)) {
-                $context->buildViolation('validator.company.required')
-                    ->atPath('company')
-                    ->addViolation();
-            }
-        }
-    }
-    public function __toString(): string
-    {
-        return $this->company;
+        return $this->company??$this->firstName;
     }
 
     /**

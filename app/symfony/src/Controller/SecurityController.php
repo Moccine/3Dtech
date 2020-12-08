@@ -43,6 +43,7 @@ class SecurityController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $userManager->create($user);
+            return $this->render('security/save_registration.html.twig');
         }
 
         return $this->render('security/registration.html.twig', [

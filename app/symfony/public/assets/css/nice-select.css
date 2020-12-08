@@ -136,3 +136,9 @@
 
 .no-csspointerevents .nice-select.open .list {
   display: block; }
+#plainPassword_first, .nice-select.client-type{
+margin-bottom: 20px;
+}
+.custom-error{
+  color: red;
+}

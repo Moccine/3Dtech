@@ -24,48 +24,56 @@
                     <h4 class="title">Inscription</h4>
                   </div>
                   {{ form_start(form) }}
-                    <div class="input-box mt-1400" style="padding-bottom: 5px">
-                      {{ form_row(form.client.type) }}
+                  <div class="input-box mt-1400" style="padding-bottom: 5px">
+                    {{ form_row(form.client.type) }}
+                  </div>
+                  <div class="input-box mt-20">
+                    <div class="custom-error">
+                      {{ form_errors(form.email) }}
                     </div>
+                    {{ form_widget(form.email) }}
+                  </div>
+                  <div class="input-box mt-20">
+                    <div class="custom-error">
+                      {{ form_errors(form.plainPassword.children['first']) }}
+                    </div>
+                    {{ form_widget(form.plainPassword.children['first']) }}
+                  </div>
 
                   <div class="input-box mt-20">
-                    {{ form_row(form.email) }}
+                    <div class="custom-error">
+                      {{ form_errors(form.plainPassword.children['second']) }}
+                    </div>
+                    {{ form_widget(form.plainPassword.children['second']) }}
                   </div>
                   <div class="input-box mt-20">
-                    {{ form_row(form.plainPassword) }}
+                    <div class="custom-error">
+                      {{ form_errors(form.client.lastName) }}
+                    </div>
+                    {{ form_widget(form.client.lastName) }}
                   </div>
                   <div class="input-box mt-20">
-                    {{ form_row(form.client.lastName) }}
+                    <div class="custom-error">
+                      {{ form_errors(form.client.mobilePhone) }}
+                    </div>
+                    <div>
+                      {{ form_widget(form.client.mobilePhone) }}
+                    </div>
                   </div>
                   <div class="input-box mt-20">
-                    {{ form_row(form.client.mobilePhone) }}
+                    <div class="custom-error">
+                      {{ form_errors(form.client.firstName) }}
+                    </div>
+                    <div>
+                      {{ form_widget(form.client.firstName) }}
+                    </div>
                   </div>
-                  <div class="input-box mt-20">
-                    {{ form_row(form.client.homePhone) }}
-                  </div>
-                  <div class="input-box mt-20">
-                    {{ form_row(form.client.firstName) }}
-                  </div>
-                  <div class="input-box mt-20">
-                    {{ form_row(form.client.company) }}
-                  </div>
-                  <div class="input-box mt-20">
-                    {{ form_row(form.client.siret) }}
-                  </div>
-                  <div class="input-box mt-20">
-                    {{ form_row(form.client.address.address) }}
-                  </div>
-                  <div class="input-box mt-20">
-                    {{ form_row(form.client.address.postalCode) }}
-                  </div>
-                  <div class="input-box mt-20">
-                    {{ form_row(form.client.address.city) }}
+
                   </div>
                   <div class="input-box mt-20">
                     {{ form_row(form.submit, {'attr':{'class': 'main-btn mt-35'}}) }}
                   </div>
                   {{ form_row(form._token) }}
-
                   {{ form_start(form) }}
                 </div>
 
