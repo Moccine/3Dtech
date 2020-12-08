@@ -1,6 +1,80 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-  <section class="faq-area faq-about bg_cover pt-115 pb-120">
+  <!--====== PAGE TITLE PART START ======-->
+
+  <div class="page-title-area d-flex align-items-center bg_cover" style="background-image: url(assets/images/page-title-bg.jpg);">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="page-title-content text-center">
+            <h3 class="title">Contact</h3>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Contact</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--====== PAGE TITLE PART ENDS ======-->
+
+  <!--====== CONTACT PART START ======-->
+
+  <div class="contact-area pt-90 pb-120">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="contact-item text-center mt-30">
+            <i class="flaticon-location"></i>
+            <h4 class="title">Our Address</h4>
+            <ul>
+              <li>PSD Building, 2 AlBahr St, Loskia </li>
+              <li>sripur, jamukara.</li>
+            </ul>
+            <a class="main-btn" href="#">Directions</a>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="contact-item text-center mt-30">
+            <i class="flaticon-dial-pad"></i>
+            <h4 class="title">Our Phone</h4>
+            <ul>
+              <li>Office Telephone : 0029129102320</li>
+              <li>Mobile : 000 2324 39493</li>
+            </ul>
+            <a class="main-btn" href="#">Call Us</a>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="contact-item text-center mt-30">
+            <i class="flaticon-email"></i>
+            <h4 class="title">Our Email</h4>
+            <ul>
+              <li>Main Email : borex@website.com </li>
+              <li>Inquiries : Info@orex.com</li>
+            </ul>
+            <a class="main-btn" href="#">Send a Message</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--====== CONTACT PART ENDS ======-->
+
+  <!--====== CONTACT PART ENDS ======-->
+  <div class="google-map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14612.975409527537!2d90.497437!3d23.7029844!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1586797125892!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+  </div>
+  <!--====== CONTACT PART ENDS ======-->
+
+  <!--====== FAQ PART START ======-->
+
+  <section class="faq-area faq-about bg_cover pt-115 pb-120" style="background-image: url(assets/images/faq-bg.jpg);">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8">
@@ -108,6 +182,40 @@
   <!--====== BRAND PART START ======-->
 
   <div class="brand-area pt-120">
+    <div class="container">
+      <div class="row brand-active">
+        <div class="col-lg-3">
+          <div class="brand-item text-center">
+            <a href="#"><img src="assets/images/brand-11.png" alt="brand"></a>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="brand-item text-center">
+            <a href="#"><img src="assets/images/brand-12.png" alt="brand"></a>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="brand-item text-center">
+            <a href="#"><img src="assets/images/brand-13.png" alt="brand"></a>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="brand-item text-center">
+            <a href="#"><img src="assets/images/brand-14.png" alt="brand"></a>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="brand-item text-center">
+            <a href="#"><img src="assets/images/brand-15.png" alt="brand"></a>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="brand-item text-center">
+            <a href="#"><img src="assets/images/brand-12.png" alt="brand"></a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!--====== BRAND PART ENDS ======-->
@@ -146,4 +254,5 @@
       </div>
     </div>
   </div>
+
 {% endblock %}
