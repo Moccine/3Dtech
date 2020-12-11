@@ -52,8 +52,4 @@ make deploy
 
 ### Authors / Maintainers
 ---
-
-- Sofiane Souidi
-- Jérôme Drzewinski
-- Bruno Teboul
-- Kaba Condé
+- Mouctar sow

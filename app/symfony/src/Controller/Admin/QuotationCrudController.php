@@ -23,12 +23,21 @@ class QuotationCrudController extends AbstractCrudController
     {
         return Quotation::class;
     }
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            // ...
 
+            // don't forget to add EasyAdmin's form theme at the end of the list
+            // (otherwise you'll lose all the styles for the rest of form fields)
+            ->setFormThemes(['admin/form.html.twig', '@EasyAdmin/crud/form_theme.html.twig'])
+            ;
+    }
 
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('name', 'Nom'),
+            //TextField::new('name', 'Nom'),
             TextField::new('reference', 'Reference'),
             TextField::new('payment', 'Mode de payement'),
             //TextField::new('designation'),
@@ -39,6 +48,13 @@ class QuotationCrudController extends AbstractCrudController
             AssociationField::new('products', 'Produits'),
             MoneyField::new('totalHT', 'HT')->hideOnForm()->setCurrency('EUR'),
             MoneyField::new('Amount', 'TTC')->hideOnForm()->setCurrency('EUR'),
+            TextField::new('title', null)
+                // ...
+                ->setFormTypeOptions([
+                    'block_name' => '',
+                ])->onlyOnForms()->setCustomOptions([
+                    'toto' => 4
+                ])
         ];
     }
 

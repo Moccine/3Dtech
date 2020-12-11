@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Entity\Traits\IdentifiableTrait;
+use App\Entity\Traits\TimestampableTrait;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -23,7 +24,7 @@ use App\Entity\Client;
 class Invoice
 {
     use IdentifiableTrait;
-
+    use TimestampableTrait;
     public const STATUS_EDITION = 'EDITION';
     public const STATUS_ARCHIVED = 'ARCHIVED';
     public const INVOICE_STATUS = [
@@ -51,7 +52,7 @@ class Invoice
      * )
      * @Vich\UploadableField(mapping="invoice", fileNameProperty="invoiceName")
      */
-    private $invoiceFile;
+    private  $invoiceFile;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -88,6 +89,7 @@ class Invoice
      * @ORM\Column(type="float", precision=10, scale=2, nullable=true)
      */
     private float $amount = 0;
+
 
     /**
      * @var float

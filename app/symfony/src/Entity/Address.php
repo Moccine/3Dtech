@@ -8,8 +8,6 @@ use App\Entity\Traits\AddressTrait;
 use App\Entity\Traits\IdentifiableTrait;
 use App\Repository\AddressRepository;
 use Doctrine\ORM\Mapping as ORM;
-use JetBrains\PhpStorm\Pure;
-
 
 /**
  * @ORM\Entity(repositoryClass=AddressRepository::class)
@@ -23,5 +21,5 @@ class Address
 
     use IdentifiableTrait;
     use AddressTrait;
-
 }
+

@@ -7,6 +7,7 @@ use App\Entity\Address;
 use App\Entity\Category;
 use App\Entity\Client;
 use App\Entity\Deadlines;
+use App\Entity\Invoice;
 use App\Entity\Product;
 use App\Entity\Quotation;
 use App\Entity\User;
@@ -56,6 +57,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Deadlines', 'fas fa-calendar-week', Deadlines::class);
         yield MenuItem::linkToCrud('Address', 'fas fa-map-marker-alt', Address::class);
         yield MenuItem::linkToCrud('Client', 'fas fa-users', Client::class);
-
+        yield MenuItem::linkToCrud('Invoice', 'fas fa-file-invoice', Invoice::class);
     }
 }

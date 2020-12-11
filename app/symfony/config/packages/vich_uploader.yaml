@@ -1,0 +1,6 @@
+vich_uploader:
+  db_driver: orm
+  mappings:
+    product_images:
+      uri_prefix: '/pdf/invoices'
+      upload_destination: '%kernel.project_dir%/public/pdf/invoices'

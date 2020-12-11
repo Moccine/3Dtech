@@ -1,5 +1,8 @@
 app:
-  name: '3dtech'
+  name: '3dtech idf'
+  address: 'Adresse :717 rue de la chapelle 78955 Carrières sous Poissy – FRANCE'
+  phone: '09 54 53 24 08'
+  email: 'contact@3dtechidf.com'
   caterory:
     code: 'Code'
   command:

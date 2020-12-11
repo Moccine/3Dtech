@@ -38,6 +38,7 @@ class Quotation
      */
     private ?string $reference;
 
+    private ?string $title;
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -335,5 +336,23 @@ class Quotation
 
         return $this;
     }
+
+    /**
+     * @return string|null
+     */
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string|null $title
+     */
+    public function setTitle(?string $title): void
+    {
+        $this->title = $title;
+    }
+
+
 
 }
