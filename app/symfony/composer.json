@@ -33,6 +33,7 @@
         "symfony/swiftmailer-bundle": "^3.4",
         "symfony/translation": "5.1.*",
         "symfony/validator": "5.1.*",
+        "symfony/webpack-encore-bundle": "^1.8",
         "symfony/yaml": "5.1.*",
         "vich/uploader-bundle": "^1.16"
     },

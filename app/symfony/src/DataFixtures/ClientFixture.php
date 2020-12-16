@@ -26,7 +26,7 @@ class ClientFixture extends Fixture
                 ->setHomePhone($faker->phoneNumber)
                 ->setMobilePhone($faker->phoneNumber)
                 ->setSiret($faker->siret)
-                ->setAddress($faker->buildingNumber . ', ' . $faker->streetName)
+                ->setStreet($faker->buildingNumber . ', ' . $faker->streetName)
                 ->setPostalCode($faker->postcode)
                 ->setCity($faker->city)->setCountry(self::DEFAULT_COUNTRY)
                 ->setLatitude($faker->latitude(43, 49))->setLongitude($faker->longitude(1.1, 1.5));

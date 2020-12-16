@@ -1,5 +1,6 @@
 {# templates/admin/form.html.twig #}
-{% block _Quotation_title_widget %}
-  <a href="{{ path('generate_invoice', {'id': 1}) }}">Facturer ce devis;qke up</a>
-{% endblock %}
-aqqqqqqqqqqq
+{% extends '@!EasyAdmin/layout.html.twig' %}
+
+    {% block body_javascript %}
+<script src="{{ asset('build/front.js') }}" ></script>
+    {% endblock body_javascript %}

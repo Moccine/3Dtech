@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cart{% endblock %}
+
+{% block body %}
+  Cart
+
+  {{ form_start(form) }}
+  
+  {% for cart in form.purchases %}
+    {{ form_row(cart.delivery) }}
+    <p>
+      {{ form_row(cart.startDate) }}
+      {{ form_row(cart.endDate) }}
+    </p>
+  {% endfor %}
+
+  {{ form_end(form) }}
+
+  {% include 'front/order/summary.html.twig' with {'order': order} only %}
+  
+  <a href="{{ path('cart_empty') }}" onclick="return confirm('Are you sure?')" class="btn">Empty cart</a>
+
+  <a href="{{ path('location', {id: order.id}) }}" class="btn">Next step</a>
+
+{% endblock %}

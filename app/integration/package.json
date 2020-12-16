@@ -1,0 +1,30 @@
+{
+    "devDependencies": {
+        "@symfony/webpack-encore": "^0.31.0",
+        "autoprefixer": "^9.8.4",
+        "copy-webpack-plugin": "^6.3.2",
+        "core-js": "^3.8.0",
+        "node-sass": "^4.14.1",
+        "postcss-loader": "^3.0.0",
+        "regenerator-runtime": "^0.13.7",
+        "sass-loader": "^9.0.1",
+        "webpack-notifier": "^1.11.0"
+    },
+    "license": "UNLICENSED",
+    "private": true,
+    "scripts": {
+        "start": "yarn install && yarn run encore dev",
+        "dev-server": "yarn run encore dev-server",
+        "dev": "yarn install && yarn run encore dev",
+        "watch": "yarn run encore dev --watch",
+        "build": "yarn run encore production --progress"
+    },
+    "dependencies": {
+        "bootstrap": "^4.5.3",
+        "jquery": "^3.5.1",
+        "lodash": "^4.17.20",
+        "material-design-iconic-font": "^2.2.0",
+        "popper.js": "^1.16.1",
+        "select2": "^4.0.13"
+    }
+}

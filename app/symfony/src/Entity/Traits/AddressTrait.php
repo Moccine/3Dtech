@@ -4,18 +4,14 @@ declare(strict_types=1);
 namespace App\Entity\Traits;
 
 use App\Entity\Address;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 trait AddressTrait
 {
     /**
      * @ORM\Column(type="string", length=125, nullable=true)
      */
-    private string $address;
+    private string $street;
 
     /**
      * @ORM\Column(type="string", length=12, nullable=true)
@@ -43,14 +39,14 @@ trait AddressTrait
     private ?float $longitude;
 
 
-    public function getAddress(): ?string
+    public function getStreet(): ?string
     {
-        return $this->address;
+        return $this->street;
     }
 
-    public function setAddress(string $address): self
+    public function setStreet(string $street): self
     {
-        $this->address = $address;
+        $this->street = $street;
         $this->country = Address::FRANCE;
         return $this;
     }

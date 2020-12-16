@@ -1,0 +1,23 @@
+<!-- Common Modal -->
+
+<div class="modal fade" id="{{ id }}" tabindex="-1" role="dialog" aria-labelledby="modal-duplicateLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm-custom" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal-duplicateLabel">{{ title }}</h5>
+                <button type="button" class="btn close" data-dismiss="modal" aria-label="{{ "app.action.close"|trans }}">
+                    <i class="zmdi zmdi-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name='quotation-id'>
+                <div class="text-center">{{ message }}</div>
+            </div>
+            <div class="modal-footer modal-actions text-center">
+                <button href="" type="button" data-dismiss="modal" class="btn btn-primary-outline btn-submit">{{ 'app.action.close'|trans }}</button>
+                <button type="button" data-type='{{ type }}' class="btn btn-primary btn-submit btnDuplicationConfirm">{{ 'app.action.validated'|trans }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,141 @@
+{
+	"info": {
+		"_postman_id": "09faeae2-bc46-49c6-a311-03ba83e2d8ef",
+		"name": "Netrent",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentification",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/login_check?username=netrent@netrent.fr&password=12345678Qq",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login_check"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "netrent@netrent.fr"
+						},
+						{
+							"key": "password",
+							"value": "12345678Qq"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create Voucher API",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2MDYzOTAxNTYsImV4cCI6MTYwNjM5Mzc1Niwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoiZ2RpZWhsQG10cy5uZXQifQ.TMOmeLM_jaRhOHU1M6S3cDtXtCooLeGRTn7g96mOoWYF68eMHK24eHovSqGO08clCqwXrpdNNuvm_BEjY3AKTmGyk1mgEzZyywgBEHvciQ3g07jYImFqA34q0sZWX8vBOSY7hkln3ydG5W7G_iEw-Zs7Z5xeyqUUt6MCVkwA23NipJEVSZGFvobQaW-ljOX2SDapfA__QT3GJ7s5RARzZkUdZZ-Omxc7ff60hZ87prV4Pp99KQaMempGKA4ZMNEOO-3HFxRfscqPPRvUGXkS2mdbpwNLwvCVenx0T1fqVeuVA76nvbPUT1ZWXdcEb94nSmNOKa5xydXzfB2kUrRxN2ANvIszByisLaoNJ6PmwmsPkFNluLED0O0VN-tr7IVe1upG6XvLzTEOatXtxov-gOTRliRDovdJzHLli5ep_TPs0hEgJRgDsAUGvK-Tw0-R0NZc_DGiPDprUTvmcjhPDj0F4PAfIagUB9NzYe33Wt1Au7P2z-SuxxeqJDU7lRQzkcb0yCsjz0B8EgUZdHgXOaGGgNspTW85cTcsRMjLqjHAarqqX8PYpwH7phgwLLunorxVJRibud006Ck91dCrjOu2-JMKr4v4Gx-slAXZKXNBNShGZfBoqmt5zmYEe9KK8sAkwAiNcIPCJt2tSyO5zcL1decQKnKwmPKuDp-QR5s",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/voucher?machine=1&order=35",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"voucher"
+					],
+					"query": [
+						{
+							"key": "machine",
+							"value": "1"
+						},
+						{
+							"key": "order",
+							"value": "35"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update Voucher API",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2MDYzOTEwMzcsImV4cCI6MTYwNjM5NDYzNywicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoiZ2RpZWhsQG10cy5uZXQifQ.Kpub_HdvO9VtjcJOCz8BbaHj_jC-aHn5QBxr4FT9IqpRN2U3yvzEsVuFRCb_AmCi9C_5KMMbEhMG2s--WEjKJquJ5MrgG6MD_IBv9ONmGSU1hIxDiIbNP4HeqPNljkmZ_-s4kPVmu59eMdq2F_C431LAZJirqp2bYX1ljAHyeyeXMXM5AE_daEMX_3cEaEhxfNEr9ucO78E7LV9u9pR52kzhDDCcQI9ay_tOu7oiL8GlR3NY8uHDj9LuJR2d3-qEjxcFHJoPLr83or8J1EZswFm53sMZonAdH-swEzS4xTNOpqnTloys9HgO7sWgYMi7NAeJOngPBckvSJ3x3n0GHgUuYBfX94XmXxWTUS5c9_3KzRKDYf_X6l_0NA5YCI8Kr2Y_KW-qgcag5zMyR81JUhp1PBFPlk9xO9SDPgd4uDfJX8Ubyrpe4qXkqsrCL7B-t-elf_RGeFmt_UsaqzkEo0jFAdXAeubz9qHht7JeO-uDnEHm_TZXXetOpELBeIa_nI_M2wEOTX2MTb7StWopPuVK7kt9-lrqtpcUehT8SVXB7QG_k5Dj_4ZqY0qvqA4EiG4dHVoBed-69IeZI8sukNFDlUnk1DurDswLHYvuTufs0lqapSE0hFfQem-PwuITQpSx5U9zaTt8Nb1GUmJBVq2VpWOBcg8uyLyFv0Jy15A"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/voucher?id=13&machine=1&order=124",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"voucher"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "13"
+						},
+						{
+							"key": "machine",
+							"value": "1"
+						},
+						{
+							"key": "order",
+							"value": "124"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

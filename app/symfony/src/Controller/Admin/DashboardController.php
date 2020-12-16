@@ -39,7 +39,7 @@ class DashboardController extends AbstractDashboardController
         return Dashboard::new()
             ->setTitle('3DTECH')
             ->setTitle('Tableau de bord')
-            ->setFaviconPath('favicon.svg')
+           // ->setFaviconPath('favicon.svg')
             ->setTranslationDomain('my-custom-domain')
             ->setTextDirection('ltr')
             ;

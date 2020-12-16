@@ -16,6 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Quotation
 {
     use IdentifiableTrait;
+
     //use AddressTrait;
 
     /**
@@ -98,16 +99,15 @@ class Quotation
     private $client;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Product::class)
+     * @ORM\OneToMany(targetEntity=QuotationLine::class, mappedBy="quotation")
      */
-    private $products;
-
+    private $quotationLine;
 
     public function __construct()
     {
         $this->quotationDate = new \DateTime();
         $this->amount = 0;
-        $this->products = new ArrayCollection();
+        $this->quotationLine = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -314,30 +314,6 @@ class Quotation
     }
 
     /**
-     * @return Collection|Product[]
-     */
-    public function getProducts(): Collection
-    {
-        return $this->products;
-    }
-
-    public function addProduct(Product $product): self
-    {
-        if (!$this->products->contains($product)) {
-            $this->products[] = $product;
-        }
-
-        return $this;
-    }
-
-    public function removeProduct(Product $product): self
-    {
-        $this->products->removeElement($product);
-
-        return $this;
-    }
-
-    /**
      * @return string|null
      */
     public function getTitle(): ?string
@@ -353,6 +329,34 @@ class Quotation
         $this->title = $title;
     }
 
+    /**
+     * @return Collection|QuotationLine[]
+     */
+    public function getQuotationLine(): Collection
+    {
+        return $this->quotationLine;
+    }
 
+    public function addQuotationLine(QuotationLine $quotationLine): self
+    {
+        if (!$this->quotationLine->contains($quotationLine)) {
+            $this->quotationLine[] = $quotationLine;
+            $quotationLine->setQuotation($this);
+        }
 
+        return $this;
+    }
+
+    public function removeQuotationLine(QuotationLine $quotationLine): self
+    {
+        if ($this->quotationLine->removeElement($quotationLine)) {
+            // set the owning side to null (unless already changed)
+            if ($quotationLine->getQuotation() === $this) {
+                $quotationLine->setQuotation(null);
+            }
+        }
+
+        return $this;
+    }
+    
 }

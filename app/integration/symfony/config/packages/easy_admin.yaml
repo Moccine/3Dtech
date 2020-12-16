@@ -1,0 +1,19 @@
+easy_admin:
+  entities:
+    - App\Entity\User
+    - App\Entity\Article
+      label: Article
+      form:
+        fields:
+          - { property: 'content', type: 'fos_ckeditor' }
+          - { property: 'file', type: 'vich_image' }
+      list:
+        fields:
+          - { property: 'image', type: 'image', base_path: '%app.path.article_images%' }
+      show:
+        fields:
+            - { property: 'image', type: 'image', base_path: '%app.path.article_images%' }
+  design:
+    form_theme:
+      - '@EasyAdmin/form/bootstrap_4.html.twig'
+      - '@FOSCKEditor/Form/ckeditor_widget.html.twig'

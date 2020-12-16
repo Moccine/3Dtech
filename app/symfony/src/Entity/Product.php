@@ -11,6 +11,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\ProductRepository;
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository", repositoryClass=ProductRepository::class)
  */
@@ -83,9 +84,10 @@ class Product
 
         return $this;
     }
+
     public function __toString(): string
     {
-        return $this->name;
+        return sprintf('%s', $this->category->getName());
     }
 
 }

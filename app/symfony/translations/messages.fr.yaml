@@ -1,7 +1,13 @@
 app:
-  name: '3dtech idf'
-  address: 'Adresse :717 rue de la chapelle 78955 Carrières sous Poissy – FRANCE'
+  name: '3D TECHNOLOGIE SYSTEM IDF'
+  vat:
+    number: 'Numéro TVA FR12889861704'
+  address:
+    name: '717 rue de la chapelle'
+    postal_code: '78955 Carrières sous Poissy'
+    country: 'FRANCE'
   phone: '09 54 53 24 08'
+  tel: '0785042014'
   email: 'contact@3dtechidf.com'
   caterory:
     code: 'Code'
@@ -65,3 +71,16 @@ app:
     updatePasswordError: 'Une erreur s''est produite lors de la mise à jour de votre mot passe'
     subscriptionNewsletter: 'Votre inscription à la newsletter a bien été prise en compte.'
     closeIncident: 'L''incident a bien été cloturé'
+invoice:
+  number: 'N°'
+  date: 'Date'
+  reference: 'Références'
+  designation: 'Désignation'
+  quantity: 'Qté'
+  price_ht: 'Prix HT'
+  total_ht: 'Total HT'
+  taxe: 'Taxe'
+  tax_label: 'Libellé Taxe'
+  Base_rate_ht: 'Taux Base hors taxe'
+  amount_tax: 'Montant Taxe'
+

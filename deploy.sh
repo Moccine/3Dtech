@@ -4,9 +4,9 @@ echo -e 'Loading the github deployment key'
 pkill -f 'ssh-agent -s'
 eval `ssh-agent -s`
 
-#ssh-add ~/.ssh/github-boilerplate-symfony
+#ssh-add ~/.ssh/github-3dtech
 git pull origin $(git rev-parse --abbrev-ref HEAD)
-#ssh-add ~/.ssh/github-3Dtech
+#ssh-add ~/.ssh/github-3dtech
 echo -e 'Download updates'
 echo -e 'Installing Symfony dependencies'
 

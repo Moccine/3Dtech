@@ -101,7 +101,9 @@
         <script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
 
         <!--====== Main js ======-->
-        <script src="{{ asset('assets/js/main.js') }}"></script>
+    {% include 'block/js_vars.block.html.twig' %}
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+        {{ encore_entry_script_tags('front') }}
         {% block javascripts %}{% endblock %}
     </body>
 </html>

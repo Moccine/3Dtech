@@ -4,8 +4,11 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use App\Entity\Quotation;
+use App\Form\ProductType;
+use App\Form\QuotationLineType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -23,39 +26,52 @@ class QuotationCrudController extends AbstractCrudController
     {
         return Quotation::class;
     }
-    public function configureCrud(Crud $crud): Crud
+   /*   public function configureCrud(Crud $crud): Crud
     {
-        return $crud
-            // ...
+        return  $crud->overrideTemplates([
+        'crud/new' => 'admin/pages/new.html.twig',
+    ]);
+    }*/
 
-            // don't forget to add EasyAdmin's form theme at the end of the list
-            // (otherwise you'll lose all the styles for the rest of form fields)
-            ->setFormThemes(['admin/form.html.twig', '@EasyAdmin/crud/form_theme.html.twig'])
-            ;
+    public function configureAssets(Assets $assets): Assets
+    {
+        return $assets
+            // the argument of these methods is passed to the asset() Twig function
+            // CSS assets are added just before the closing </head> element
+            // and JS assets are added just before the closing </body> element
+            ->addJsFile('build/front.js');
     }
-
     public function configureFields(string $pageName): iterable
     {
         return [
-            //TextField::new('name', 'Nom'),
+            TextField::new('name', 'Nom'),
             TextField::new('reference', 'Reference'),
-            TextField::new('payment', 'Mode de payement'),
-            //TextField::new('designation'),
-            TextField::new('address', 'Adresse'),
-            NumberField::new('quantity', 'Quantité'),
+            TextField::new('payment', 'payement'),
+            TextField::new('designation'),
             AssociationField::new('deadline', 'Délai'),
             AssociationField::new('client', 'Client'),
-            AssociationField::new('products', 'Produits'),
+            CollectionField::new('quotationLine', 'Offres')
+                ->allowAdd()
+                ->allowDelete()
+                ->setEntryIsComplex(true)
+                ->setEntryType(QuotationLineType::class)
+                ->setFormTypeOptions([
+                    'by_reference' => 'false'
+                ]),
+
+
             MoneyField::new('totalHT', 'HT')->hideOnForm()->setCurrency('EUR'),
             MoneyField::new('Amount', 'TTC')->hideOnForm()->setCurrency('EUR'),
-            TextField::new('title', null)
-                // ...
-                ->setFormTypeOptions([
-                    'block_name' => '',
-                ])->onlyOnForms()->setCustomOptions([
-                    'toto' => 4
-                ])
         ];
+    }
+
+    public function configureActions(Actions $actions): Actions
+    {
+
+        $viewInvoice = Action::new('View Invoice', 'Facturer')->linkToCrudAction(Crud::PAGE_INDEX);
+
+        return $actions->add(Crud::PAGE_INDEX, $viewInvoice);
+
     }
 
     public function createEntity(string $entityFqcn)

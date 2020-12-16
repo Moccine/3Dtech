@@ -1,0 +1,7 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Machines!{% endblock %}
+
+{% block body %}
+  <a href="{{ path('add_to_cart', {id: machine.id}) }}" class="btn">Add to Cart</a>
+{% endblock %}

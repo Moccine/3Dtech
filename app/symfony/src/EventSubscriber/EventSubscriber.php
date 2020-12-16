@@ -57,10 +57,10 @@ class EventSubscriber implements EventSubscriberInterface
         $products = $quotation->getProducts();
         $price = 0;
         foreach ($products as $product) {
-            $price += $product->getPrice();
+            $price += $product->getPrice() * $product->getQuantity();
         }
         $totalHt = $price * $quotation->getQuantity();
-        $quotation->setAmount($totalHt*(1+0.2))->setTotalHt($totalHt);
+        $quotation->setAmount($totalHt * (1.2))->setTotalHt($totalHt);
         $client = $quotation->getClient();
         if ($quotation->getClient() instanceof Client) {
             $address = sprintf("%s %s %s %s",

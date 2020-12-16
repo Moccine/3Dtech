@@ -1,0 +1,49 @@
+{% extends '@!EasyAdmin/layout.html.twig' %}
+
+{% block main %}
+    <section class="content-header">
+        <h3>Creation d'un devis</h3>
+    </section>
+    <div class="wrapper content-panel">
+        {% block new_form %}`
+            {{ form_start(new_form) }}
+            <div class="row">
+                <div class="form-group col-6">
+                    {{ form_row(new_form.name) }}
+                </div>
+
+                <div class="form-group  col-6">
+                    {{ form_row(new_form.reference) }}
+                </div>
+                <div class="form-group  col-6">
+                    {{ form_row(new_form.payment) }}
+                </div>
+                <div class="form-group  col-6">
+                    {{ form_row(new_form.designation) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-2">
+                    {{ form_row(new_form.deadline) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-6">
+                    {{ form_row(new_form.client) }}
+                </div>
+                <div id="client-address"></div>
+            </div>
+            <div class="row">
+                <div class="form-group col-12">
+                </div>
+            </div>
+            {{ form_end(new_form) }}
+
+        {% endblock new_form %}
+
+    </div>
+    {% include 'block/js_vars.block.html.twig' %}
+{% endblock %}
+    {% block body_javascript %}
+        {{ encore_entry_script_tags('front') }}
+    {% endblock body_javascript %}

@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article{% endblock %}
+
+{% block body %}
+
+  Article
+
+  <ul>
+    {% for article in articles %}
+      {{ loop.index }}
+      <li>Title: {{  article.title }}</li>
+      <li>Content: {{ article.content }}</li>
+      <hr>
+    {% endfor %}
+  </ul>
+
+{% endblock %}

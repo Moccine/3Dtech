@@ -20,7 +20,7 @@ class AddressFixtures extends Fixture
         $faker = Factory::create('fr_FR');
         for ($i = 0; $i <= 100; ++$i) {
             $address = new Address();
-            $address->setAddress($faker->buildingNumber.', '.$faker->streetName)
+            $address->setStreet($faker->buildingNumber.', '.$faker->streetName)
                 ->setPostalCode($faker->postcode)
                 ->setCity($faker->city)->setCountry(self::DEFAULT_COUNTRY)
                 ->setLatitude($faker->latitude(43, 49))->setLongitude($faker->longitude(1.1, 1.5));

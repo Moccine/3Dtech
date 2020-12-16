@@ -12,7 +12,7 @@ class QuotationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
+       /* $builder
             ->add('name')
             ->add('description')
             ->add('quotationDate')
@@ -26,7 +26,7 @@ class QuotationType extends AbstractType
             ->add('status')
             ->add('deposit')
             ->add('billingAddress')
-        ;
+        ;*/
     }
 
     public function configureOptions(OptionsResolver $resolver)

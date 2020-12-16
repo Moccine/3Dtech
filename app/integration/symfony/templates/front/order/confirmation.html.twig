@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Confirmation{% endblock %}
+
+{% block body %}
+  Confirmation!
+
+  {% include 'front/order/summary.html.twig' with {order: order} only %}
+
+  {% if order.type == constant('App\\Entity\\Order::TYPE_QUOTATION') %}
+    <a href="{{ path('download_PDF', {id: order.id}) }}" class="btn">Download PDF</a>
+  {% endif %}
+
+{% endblock %}
