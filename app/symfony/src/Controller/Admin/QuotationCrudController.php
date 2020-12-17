@@ -19,6 +19,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
+use App\Controller\Admin\Field\QuotationField;
 
 class QuotationCrudController extends AbstractCrudController
 {
@@ -39,7 +40,7 @@ class QuotationCrudController extends AbstractCrudController
             // the argument of these methods is passed to the asset() Twig function
             // CSS assets are added just before the closing </head> element
             // and JS assets are added just before the closing </body> element
-            ->addJsFile('build/front.js');
+            ->addJsFile('/build/front.js');
     }
     public function configureFields(string $pageName): iterable
     {
@@ -50,14 +51,15 @@ class QuotationCrudController extends AbstractCrudController
             TextField::new('designation'),
             AssociationField::new('deadline', 'Délai'),
             AssociationField::new('client', 'Client'),
-            CollectionField::new('quotationLine', 'Offres')
+            QuotationField::new('quotationLine', 'quotationLine'),
+            /*CollectionField::new('quotationLine', 'Offres')
                 ->allowAdd()
                 ->allowDelete()
                 ->setEntryIsComplex(true)
                 ->setEntryType(QuotationLineType::class)
                 ->setFormTypeOptions([
                     'by_reference' => 'false'
-                ]),
+                ]),*/
 
 
             MoneyField::new('totalHT', 'HT')->hideOnForm()->setCurrency('EUR'),

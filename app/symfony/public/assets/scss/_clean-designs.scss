@@ -24,7 +24,7 @@
 
 		& .item{
 			height: 515px;
-			background-image: linear-gradient(90deg, #d1651a 0%, #c1282a 100%);
+			background-image: linear-gradient(90deg, #0d538bcf  0%, #0d538b 100%);
 			border-radius: 5px;
 			position: relative;
 			@media #{$md} {
@@ -93,7 +93,7 @@
 				font-weight: 700;
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
-				background-image: linear-gradient(90deg, #d1651a 0%, #c1282a 100%);
+				background-image: linear-gradient(90deg, #0d538bcf  0%, #0d538b 100%);
 				position: relative;
 				&::before{
 					position: absolute;
@@ -103,7 +103,7 @@
 					transform: translateY(-50%);
 					height: 2px;
 					width: 60px;
-					background-image: linear-gradient(90deg, #d1651a 0%, #c1282a 100%);
+					background-image: linear-gradient(90deg, #0d538bcf  0%, #0d538b 100%);
 				}
 			}
 			& .title{

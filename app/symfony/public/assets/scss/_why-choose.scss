@@ -23,7 +23,7 @@
 				font-weight: 700;
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
-				background-image: linear-gradient(90deg, #d1651a 0%, #c1282a 100%);
+				background-image: linear-gradient(90deg, #0d538bcf 0%, #0d538b 100%);
 				position: relative;
 				&::before{
 					position: absolute;
@@ -33,7 +33,7 @@
 					transform: translateY(-50%);
 					height: 2px;
 					width: 60px;
-					background-image: linear-gradient(90deg, #d1651a 0%, #c1282a 100%);
+					background-image: linear-gradient(90deg, #0d538bcf 0%, #0d538b 100%);
 				}
 			}
 			& .title{
@@ -141,7 +141,7 @@
 		& .play{
 			height: 150px;
 			width: 150px;
-			background: linear-gradient(90deg, rgba(209,101,26,1) 0%, rgba(193,40,42,1) 100%);
+			background: linear-gradient(90deg, #0d538bcf 0%, #0d538b 100%);
 			position: absolute;
 			top: 40px;
 			right: 40px;
@@ -161,7 +161,7 @@
 				text-align: center;
 				& i{
 					color: $white;
-					background: #b13322;
+					background: #0d538b;
 					height: 75px;
 					width: 75px;
 					text-align: center;

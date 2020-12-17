@@ -17,7 +17,7 @@
 			font-weight: 700;
 			-webkit-background-clip: text;
 			-webkit-text-fill-color: transparent;
-			background-image: linear-gradient(90deg, #d1651a 0%, #c1282a 100%);
+			background-image: linear-gradient(90deg, #0d538bcf  0%, #0d538b 100%);
 			position: relative;
 			&::before{
 				position: absolute;
@@ -27,7 +27,8 @@
 				transform: translateY(-50%);
 				height: 2px;
 				width: 60px;
-				background-image: linear-gradient(90deg, #d1651a 0%, #c1282a 100%);
+				background-image: linear-gradient(90deg, #0d538bcf  0%, #0d538b 100%);
+
 			}
 		}
 		& .title{
@@ -104,7 +105,7 @@
 				line-height: 52px;
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
-				background-image: linear-gradient(90deg, #d1651a 0%, #c1282a 100%);
+				background-image: linear-gradient(90deg, #0d538bcf  0%, #0d538b 100%);
 			}
 			& .title{
 				color: $black;
@@ -121,7 +122,7 @@
 				font-weight: 600;
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
-				background-image: linear-gradient(90deg, #d1651a 0%, #c1282a 100%);
+				background-image: linear-gradient(90deg, #0d538bcf  0%, #0d538b 100%);
 			}
 		}
 		&:hover{
@@ -233,12 +234,12 @@
 	&.services-about{
 		& .section-title{
 			& span{
-				background-image: linear-gradient(90deg, #d1651a 0%, #c1282a 100%);
+				background-image: linear-gradient(90deg, #0d538bcf  0%, #0d538b 100%);
 				&::before{
-					background-image: linear-gradient(90deg, #d1651a 0%, #c1282a 100%);
+					background-image: linear-gradient(90deg, #0d538bcf  0%, #0d538b 100%);
 				}				
 				&::after{
-					background-image: linear-gradient(90deg, #d1651a 0%, #c1282a 100%);
+					background-image: linear-gradient(90deg, #0d538bcf  0%, #0d538b 100%);
 				}
 			}
 			& .title{
@@ -246,7 +247,7 @@
 			}
 		}
 		& .services-item{
-			background-image: linear-gradient(90deg, #d1651a 0%, #c1282a 100%);
+			background-image: linear-gradient(90deg, #0d538bcf  0%, #0d538b 100%);
 			& i{
 				background: #f9ebe9;
 				color: $theme-color;
@@ -330,12 +331,12 @@
 			& span{
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
-				background-image: linear-gradient(90deg, #d1651a 0%, #c1282a 100%);
+				background-image: linear-gradient(90deg, #0d538bcf  0%, #0d538b 100%);
 				&::before{
 					display: none;
 				}
 				&::after{
-					background-image: linear-gradient(90deg, #d1651a 0%, #c1282a 100%);
+					background-image: linear-gradient(90deg, #0d538bcf  0%, #0d538b 100%);
 				}
 			}
 			& .title{
@@ -344,7 +345,7 @@
 			& .nav{
 				& li{
 					& a{
-						background-image: linear-gradient(90deg, #d1651a 0%, #c1282a 100%);
+						background-image: linear-gradient(90deg, #0d538bcf  0%, #0d538b 100%);
 						&.active{
 							background: $white;
 						}
@@ -453,7 +454,7 @@
 						height: 8px;
 						width: 8px;
 						border-radius: 50%;
-						background-image: linear-gradient(90deg, #d1651a 0%, #c1282a 100%);
+						background-image: linear-gradient(90deg, #0d538bcf  0%, #0d538b 100%);
 					}
 				}
 			}
@@ -523,7 +524,7 @@
 						top: 0;
 						height: 100%;
 						border: 0;
-						background-image: linear-gradient(90deg, #d1651a 0%, #c1282a 100%);
+						background-image: linear-gradient(90deg, #0d538bcf  0%, #0d538b 100%);
 						width: 60px;
 						color: $white;
 						border-radius: 4px;
@@ -545,7 +546,7 @@
 				font-weight: 700;
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
-				background-image: linear-gradient(90deg, #d1651a 0%, #c1282a 100%);
+				background-image: linear-gradient(90deg, #0d538bcf  0%, #0d538b 100%);
 				position: relative;
 				margin-top: 37px;
 				&::before{
@@ -556,7 +557,7 @@
 					transform: translateY(-50%);
 					height: 2px;
 					width: 60px;
-					background-image: linear-gradient(90deg, #d1651a 0%, #c1282a 100%);
+					background-image: linear-gradient(90deg, #0d538bcf  0%, #0d538b 100%);
 				}
 			}
 			& .title{
@@ -586,7 +587,7 @@
 			text-align: center;
 			line-height: 100px;
 			border-radius: 50%;
-			background-image: linear-gradient(90deg, #d1651a 0%, #c1282a 100%);
+			background-image: linear-gradient(90deg, #0d538bcf  0%, #0d538b 100%);
 			color: $white;
 			font-size: 24px;
 			@media #{$xs} {
