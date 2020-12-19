@@ -15,6 +15,7 @@ Encore
 
     // will output as web/build/theme.min.css
     .addStyleEntry('main.min', './sass/main.scss')
+    .addStyleEntry('custom.min', './sass/custom.scss')
 
     // allow less files to be processed
     .enableSassLoader()

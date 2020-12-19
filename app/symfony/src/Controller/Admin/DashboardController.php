@@ -10,6 +10,8 @@ use App\Entity\Deadlines;
 use App\Entity\Invoice;
 use App\Entity\Product;
 use App\Entity\Quotation;
+use App\Entity\Slider;
+use App\Entity\SlideShow;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -58,5 +60,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Address', 'fas fa-map-marker-alt', Address::class);
         yield MenuItem::linkToCrud('Client', 'fas fa-users', Client::class);
         yield MenuItem::linkToCrud('Invoice', 'fas fa-file-invoice', Invoice::class);
+        yield MenuItem::linkToCrud('Slider', 'fas fa-file-book', Slider::class);
     }
 }

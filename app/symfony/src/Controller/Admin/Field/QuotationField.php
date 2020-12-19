@@ -18,7 +18,7 @@ class QuotationField implements FieldInterface
             ->setTemplatePath('admin/form.html.twig')
             // this is used in 'edit' and 'new' pages to edit the field contents
             // you can use your own form types too
-            ->setFormType(QuotationLineType::class)->setCustomOption()
+            ->setFormType(QuotationLineType::class)
             ->addCssClass('field-map')
             // these methods allow to define the web assets loaded when the
             // field is displayed in any CRUD page (index/detail/edit/new)

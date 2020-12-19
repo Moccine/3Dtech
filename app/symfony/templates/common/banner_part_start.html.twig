@@ -1,4 +1,5 @@
-<section class="banner-area d-flex align-items-center bg_cover" style="background-image: url(assets/images/banner-bg.jpg);">
+
+<section class="banner-area d-flex align-items-center bg_cover" style="background-image: url({{ asset('images/slides/5fdd49e3eed97170437417.jpg') }});">
   <div class="container">
     <div class="row">
       <div class="col-lg-7">
@@ -7,9 +8,9 @@
           <p class="wow fadeInLeft" data-wow-duration="1.2s" data-wow-delay=".6s">
             Tout inclus et illimité
           </p>
-          <a class="main-btn wow slideInLeft" data-wow-duration="1.2s" data-wow-delay=".9s" href="#">
+          <a class="main-btn wow slideInLeft" data-wow-duration="1.2s" data-wow-delay=".9s" href="{{ path('ask_of_quote') }}">
             Devis Gratuit <i class="flaticon-right-arrow"></i></a>
-          <a class="main-btn wow slideInRight" data-wow-duration="1.2s" data-wow-delay=".9s" href="#">
+          <a class="main-btn wow slideInRight" data-wow-duration="1.2s" data-wow-delay=".9s" href="{{ path('maintenance_park') }}">
             <i class="flaticon-left-arrow"></i> Decouvrir </a>
         </div>
       </div>

@@ -4,7 +4,14 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-
+    elasticsearch_suffix: '%env(resolve:ELASTICSEARCH_SUFFIX)%'
+    elasticsearch_host: '%env(resolve:ELASTICSEARCH_HOST)%'
+    elasticsearch_port: '%env(resolve:ELASTICSEARCH_PORT)%'
+    app_path_slide_images: '%env(resolve:SLIDE_IMAGE_PATH)%'
+    app.path.article_images: /images/articles/
+    app.path.page_images: /images/pages/
+    app.path.slide_images: /images/slides/
+    app.path.associate_images: /images/associates/
 services:
     # default configuration for services in *this* file
     _defaults:

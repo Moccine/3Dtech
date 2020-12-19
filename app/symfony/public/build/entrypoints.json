@@ -13,6 +13,14 @@
       "css": [
         "/build/main.min.css"
       ]
+    },
+    "custom.min": {
+      "js": [
+        "/build/runtime.js"
+      ],
+      "css": [
+        "/build/custom.min.css"
+      ]
     }
   }
 }
