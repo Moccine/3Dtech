@@ -23,7 +23,7 @@ class Sender implements SenderInterface
         string $to,
         string $subject,
         string $content,
-        ?array $bindings,
+        ?array $bindings ,
         ?array $attachments
     ): void {
         $email = new Email();

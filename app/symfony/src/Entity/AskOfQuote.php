@@ -18,17 +18,6 @@ class AskOfQuote
      */
     private $id;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Product::class, cascade={"persist", "remove"})
-     * @Assert\NotBlank()
-     */
-    private $product;
-
-    /**
-     * @ORM\OneToOne(targetEntity=Deadlines::class, cascade={"persist", "remove"})
-     * @Assert\NotBlank()
-     */
-    private $deadLine;
 
     /**
      * @ORM\Column(type="integer")
@@ -43,61 +32,48 @@ class AskOfQuote
 
     /**
      * @ORM\Column(type="string", length=255)
-     *  @Assert\NotBlank()
+     * @Assert\NotBlank()
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
-     *  @Assert\NotBlank()
+     * @Assert\NotBlank()
      */
     private $company;
 
     /**
      * @ORM\Column(type="string", length=255)
-     *  @Assert\Email ()
+     * @Assert\Email ()
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
-     *  @Assert\NotBlank ()
+     * @Assert\NotBlank ()
      */
     private $phone;
 
     /**
      * @ORM\Column(type="text")
-     *  @Assert\NotBlank ()
+     * @Assert\NotBlank ()
      */
     private $description;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class)
+     */
+    private $category;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Deadlines::class)
+     */
+    private $deadline;
+
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getProduct(): ?Product
-    {
-        return $this->product;
-    }
-
-    public function setProduct(?Product $product): self
-    {
-        $this->product = $product;
-
-        return $this;
-    }
-
-    public function getDeadLine(): ?Deadlines
-    {
-        return $this->deadLine;
-    }
-
-    public function setDeadLine(?Deadlines $deadLine): self
-    {
-        $this->deadLine = $deadLine;
-
-        return $this;
     }
 
     public function getMaterialNumber(): ?int
@@ -183,4 +159,31 @@ class AskOfQuote
 
         return $this;
     }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getDeadline(): ?Deadlines
+    {
+        return $this->deadline;
+    }
+
+    public function setDeadline(?Deadlines $deadline): self
+    {
+        $this->deadline = $deadline;
+
+        return $this;
+    }
+
+
+
 }

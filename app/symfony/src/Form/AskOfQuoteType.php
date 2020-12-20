@@ -18,11 +18,12 @@ class AskOfQuoteType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('product', EntityType::class, [
+        $builder->add('category', EntityType::class, [
             'label' => false,
-            'placeholder' => '- Choisissez votre projet IT ? -',
             'attr' => [
-                'class' => 'input-box'
+                'class' => 'input-box',
+                'placeholder' => '- Choisissez votre projet IT ? -',
+
             ],
             'class' => Category::class,
             'query_builder' => function (EntityRepository $er) {
@@ -38,49 +39,54 @@ class AskOfQuoteType extends AbstractType
 
             ])
             ->add('serverNumber', ChoiceType::class, [
-                'placeholder' => '- Nombre de serveur(s) -',
+                    'placeholder' => '- Nombre de serveur(s) -',
                     'label' => false,
                     'choices' => range(1, 10),
                 ]
             )
             ->add('name', null, [
                 'label' => false,
-                'attr' => [
-                    'placeholder' => '- Votre nom et prénom* -'
-                ]
+                'data' => 'Nom',
+        'attr' => [
+        'placeholder' => '- Votre nom et prénom* -'
+    ]
             ])
             ->add('company', null, [
-                    'label' => false,
-                    'attr' => [
-                        'placeholder' => 'Votre entreprise*'
-                    ]
-                ]
-            )
-            ->add('email', null, [
-                'label' => false,
-                'attr' => [
-                    'placeholder' => 'Adresse email**'
-                ]
-            ])
-            ->add('phone', null, [
-                'label' => false,
-                'attr' => [
-                    'placeholder' => 'Votre numéro*'
-                ]
-            ])
-            ->add('description', null, [
-                'label' => false,
-                'attr' => [
-                    'placeholder' => 'Votre nom et prénom*'
-                ]
-            ])
-            ->add('deadLine', null, [
-                'placeholder' => '- Pour quel délai ? -*',
-                'label' => false,
-                ])
-            ->add('submit', SubmitType::class, [
-                'label' => 'app.form.registration.submit',
-            ]);
+            'data' => 'Company',
+
+            'label' => false,
+            'attr' => [
+                'placeholder' => 'Votre entreprise*'
+            ]
+        ]
+    )
+        ->add('email', null, [
+            'label' => false,
+            'attr' => [
+                'placeholder' => 'Adresse email**'
+            ]
+        ])
+        ->add('phone', null, [
+            'data' => 'email@gmail.com',
+            'label' => false,
+            'attr' => [
+                'placeholder' => 'Votre numéro*'
+            ]
+        ])
+        ->add('description', null, [
+            'label' => false,
+            'data' => 'email@gmail.com',
+            'attr' => [
+                'placeholder' => 'Votre nom et prénom*'
+            ]
+        ])
+        ->add('deadline', null, [
+            'placeholder' => '- Pour quel délai ? -*',
+            'label' => false,
+        ])
+        ->add('submit', SubmitType::class, [
+            'label' => 'app.form.registration.submit',
+        ]);
 
     }
 

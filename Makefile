@@ -9,6 +9,8 @@ up:
 
 stop:
 		docker-compose stop
+down:
+		docker-compose down
 
 deploy:
 		sh bin/deploy.sh
