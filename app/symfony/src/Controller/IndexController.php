@@ -16,10 +16,9 @@ class IndexController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         /** @var SlideShow $slideShow */
-        $sliders = $em->getRepository(SlideShow::class)->findAll();
 
         return $this->render('home/index.html.twig', [
-            'slideShow' => $sliders[rand(0,count($sliders) - 1)],
+            'slideShow' => '',
         ]);
     }
     /**

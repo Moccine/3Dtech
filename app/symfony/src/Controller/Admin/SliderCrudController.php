@@ -32,7 +32,7 @@ class SliderCrudController extends AbstractCrudController
 
         $image =ImageField::new('image', 'Image')->onlyOnIndex()->setBasePath('/images/slides')->setUploadDir('public/slides')
 ;
-       // $file = ImageField::new('file', 'Image')->onlyOnForms()->setFormType(VichImageType::class)
+        $file = ImageField::new('file', 'Image')->onlyOnForms()->setFormType(VichImageType::class)
         ;
 
 
