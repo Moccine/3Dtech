@@ -78,11 +78,10 @@ class AskOfQuote
 
     /**
      * AskOfQuote constructor.
-     * @param $phone
      */
     public function __construct()
     {
-        $this->createdAt = new DateTime();
+        $this->createdAt = new \DateTime();
     }
 
 

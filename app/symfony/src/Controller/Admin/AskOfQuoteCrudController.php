@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\AskOfQuote;
 use Doctrine\DBAL\Types\IntegerType;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
@@ -27,6 +28,9 @@ class AskOfQuoteCrudController extends AbstractCrudController
             IntegerField::new('serverNumber', 'Serveurs'),
             TextEditorField::new('description')->onlyOnDetail(),
             EmailField::new('email', 'email'),
+            TextField::new('phone', 'mobile'),
+            AssociationField::new('category', 'Projet IT'),
+            AssociationField::new('deadline', 'Delai'),
         ];
     }
 
