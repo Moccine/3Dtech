@@ -28,15 +28,11 @@ class AskOfQuoteController extends AbstractController
             $em->persist($askOfQuote);
             $em->flush();
             $to=$askOfQuote->getEmail();
-$subject = 'demande de devis';
-$content = 'dmende devis ';//$sender->doTemplate();
-$bindings = [];
-$attachments = null;
-            $sender->deliver($to,
-                $subject,
-                $content,
-                $bindings,
-                $attachments);
+            $subject = 'demande de devis';
+            $content = $sender->doTemplate();
+            $bindings = [];
+            $attachments = null;
+            $sender->deliver($to, $subject, $content,  $bindings, $attachments);
 
         }
         return $this->render('ask_of_quote/index.html.twig', [

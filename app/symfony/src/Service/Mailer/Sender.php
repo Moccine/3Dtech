@@ -36,7 +36,7 @@ class Sender implements SenderInterface
     }
 
 
-    public function doTemplate($template, array $options)
+    public function doTemplate($template, ?array $options)
     {
         return $this->twig->render($template, $options);
     }
