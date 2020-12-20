@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use App\Entity\Address;
+use App\Entity\AskOfQuote;
 use App\Entity\Category;
 use App\Entity\Client;
 use App\Entity\Deadlines;
@@ -61,5 +62,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Client', 'fas fa-users', Client::class);
         yield MenuItem::linkToCrud('Invoice', 'fas fa-file-invoice', Invoice::class);
         yield MenuItem::linkToCrud('Slider', 'fas fa-file-book', Slider::class);
+        yield MenuItem::linkToCrud('Demande de devis', 'fas fa-file-book', AskOfQuote::class);
     }
 }

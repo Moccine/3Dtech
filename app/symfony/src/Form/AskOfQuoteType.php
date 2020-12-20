@@ -16,13 +16,21 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class AskOfQuoteType extends AbstractType
 {
+
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('category', EntityType::class, [
+        $descrption = "Lorem Ipsum is simply dummy text of the printing and typesetting i
+        ndustry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+         It has survived not only five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+";
+        $builder->add('category', null, [
+            'placeholder' => '- Choisissez votre projet IT ? -',
             'label' => false,
             'attr' => [
                 'class' => 'input-box',
-                'placeholder' => '- Choisissez votre projet IT ? -',
 
             ],
             'class' => Category::class,
@@ -32,6 +40,10 @@ class AskOfQuoteType extends AbstractType
             },
             'choice_label' => 'name',
         ])
+            ->add('deadline', null, [
+                'placeholder' => '- Pour quel délai ? -*',
+                'label' => false,
+            ])
             ->add('materialNumber', ChoiceType::class, [
                 'placeholder' => '- Nombre d\'ordinateur(s) -',
                 'label' => false,
@@ -47,46 +59,44 @@ class AskOfQuoteType extends AbstractType
             ->add('name', null, [
                 'label' => false,
                 'data' => 'Nom',
-        'attr' => [
-        'placeholder' => '- Votre nom et prénom* -'
-    ]
+                'attr' => [
+                    'placeholder' => '- Votre nom et prénom* -'
+                ]
             ])
             ->add('company', null, [
-            'data' => 'Company',
+                    'data' => 'Company',
 
-            'label' => false,
-            'attr' => [
-                'placeholder' => 'Votre entreprise*'
-            ]
-        ]
-    )
-        ->add('email', null, [
-            'label' => false,
-            'attr' => [
-                'placeholder' => 'Adresse email**'
-            ]
-        ])
-        ->add('phone', null, [
-            'data' => 'email@gmail.com',
-            'label' => false,
-            'attr' => [
-                'placeholder' => 'Votre numéro*'
-            ]
-        ])
-        ->add('description', null, [
-            'label' => false,
-            'data' => 'email@gmail.com',
-            'attr' => [
-                'placeholder' => 'Votre nom et prénom*'
-            ]
-        ])
-        ->add('deadline', null, [
-            'placeholder' => '- Pour quel délai ? -*',
-            'label' => false,
-        ])
-        ->add('submit', SubmitType::class, [
-            'label' => 'app.form.registration.submit',
-        ]);
+                    'label' => false,
+                    'attr' => [
+                        'placeholder' => 'Votre entreprise*'
+                    ]
+                ]
+            )
+            ->add('email', null, [
+                'label' => false,
+                'data' => 'email@gmail.co',
+
+                'attr' => [
+                    'placeholder' => 'Adresse email*'
+                ]
+            ])
+            ->add('phone', null, [
+                'data' => '0700000000',
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Votre numéro*'
+                ]
+            ])
+            ->add('description', null, [
+                'label' => false,
+                'data' => $descrption,
+                'attr' => [
+                    'placeholder' => 'Votre nom et prénom*'
+                ]
+            ])
+            ->add('submit', SubmitType::class, [
+                'label' => 'app.form.registration.submit',
+            ]);
 
     }
 

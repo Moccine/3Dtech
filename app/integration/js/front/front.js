@@ -1,7 +1,6 @@
 let $ = require('jquery');
 let select2 = require('select2');
 const {getRoute, trans, httpRequest} = require('../common');
-console.log(httpRequest);
 
 $(document).ready(function () {
     let clientSelect = $('form#new-Quotation-form').find('select#Quotation_client');

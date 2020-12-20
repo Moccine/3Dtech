@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\TimestampableTrait;
 use App\Repository\AskOfQuoteRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Faker\Provider\DateTime;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -11,6 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class AskOfQuote
 {
+    use TimestampableTrait;
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -21,12 +24,15 @@ class AskOfQuote
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
      *
      */
     private $materialNumber = 0;
 
+
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
      */
     private $serverNumber = 0;
 
@@ -50,7 +56,7 @@ class AskOfQuote
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank ()
+     * @Assert\NotBlank  ()
      */
     private $phone;
 
@@ -69,6 +75,15 @@ class AskOfQuote
      * @ORM\ManyToOne(targetEntity=Deadlines::class)
      */
     private $deadline;
+
+    /**
+     * AskOfQuote constructor.
+     * @param $phone
+     */
+    public function __construct()
+    {
+        $this->createdAt = new DateTime();
+    }
 
 
     public function getId(): ?int
