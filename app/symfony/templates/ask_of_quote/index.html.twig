@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MaintenanceParkController!{% endblock %}
+
+{% block body %}
+    <div class="page-title-area d-flex align-items-center bg_cover"
+         style="background-image: url({{ asset('assets/images/page-title-bg.jpg') }});">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="page-title-content text-center">
+                        <h6 class="title">Devis informatique sur-mesure</h6>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html">Les 6 services inclus dans votre pack
+                                        maintenance informatique
+                                    </a></li>
+                                <li class="breadcrumb-item active" aria-current="page">en profiter</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="team-details pt-120 pb-120">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-md-6 col-sm-8">
+                    <div class="team-details-thumb">
+                        <div class="thumb">
+                            <img src="{{ asset('assets/images/pack-maintenance-informatique-entreprise.jpg') }}" alt="">
+                        </div>
+                        <div class="content text-center">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="team-details-content">
+                        <h5 class="title">UN PROJET INFORMATIQUE POUR VOTRE ENTREPRISE ? OBTENEZ RAPIDEMENT VOTRE DEVIS
+                            SUR-MESURE</h5>
+                        <span> + services illimités</span>
+                        <p>Demandez votre devis gratuit et sans engagement auprès de nos experts. Veillez remplir les
+                            champs du formulaires ci-dessous en choisissant votre configuration. </p>
+                    </div>
+                    <div class="faq-form ask-quote">
+                        {{ form_start(form) }}
+
+                        <div class="row">
+                            <div class="col-lg-12 ">
+                                <h4>Quel est votre besoin ?</h4>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="input-box mt-20">
+                                    {{ form_row(form.product, {'attr': {'class' : 'wide'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="input-box mt-20 ">
+                                    {{ form_row(form.deadLine, {'attr': {'class' : 'wide'}}) }}
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>Votre parc informatique ?</h4>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="input-box mt-20 ">
+                                    {{ form_row(form.materialNumber, {'attr': {'class' : 'wide'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="input-box mt-20">
+                                    {{ form_row(form.serverNumber, {'attr': {'class' : 'wide'}}) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4 sty>Vos coordonnées?</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">{{ form_row(form.name) }}</div>
+                            <div class="col-lg-6">{{ form_row(form.company) }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">{{ form_row(form.email) }}</div>
+                            <div class="col-lg-6">{{ form_row(form.phone) }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">{{ form_row(form.description, {'attr':{'class': 'input-box mt-30"'}}) }}</div>
+                        </div>
+                        <div class="input-box mt-20">
+                            {{ form_row(form.submit, {'attr':{'class': 'main-btn btn-lg'}}) }}
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
