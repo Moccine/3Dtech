@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MaintenanceParkController!{% endblock %}
+
+{% block body %}
+    <div class="page-title-area d-flex align-items-center bg_cover"
+         style="background-image: url({{ asset('assets/images/page-title-bg.jpg') }});">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="page-title-content text-center">
+                        <h6 class="title">Devis informatique sur-mesure</h6>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html">Les 6 services inclus dans votre pack
+                                        maintenance informatique
+                                    </a></li>
+                                <li class="breadcrumb-item active" aria-current="page">en profiter</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="team-details pt-120 pb-120">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-md-6 col-sm-8">
+                    <div class="team-details-thumb">
+                        <div class="thumb">
+                            <img src="{{ asset('assets/images/pack-maintenance-informatique-entreprise.jpg') }}" alt="">
+                        </div>
+                        <div class="content text-center">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="team-details-content">
+                        <h5 class="title">UN PROJET INFORMATIQUE POUR VOTRE ENTREPRISE ? OBTENEZ RAPIDEMENT VOTRE DEVIS
+                            SUR-MESURE</h5>
+                        <span> + services illimités</span>
+                        <p>Demandez votre devis gratuit et sans engagement auprès de nos experts. Veillez remplir les
+                            champs du formulaires ci-dessous en choisissant votre configuration. </p>
+                    </div>
+                    <div class="faq-form ask-quote">
+                         <h4> Votre demande a bien éte prise en compte, nous vou recontactons dans un btref delai</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

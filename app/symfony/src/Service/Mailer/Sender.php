@@ -13,10 +13,11 @@ class Sender implements SenderInterface
     private MailerInterface $mailer;
      private string $companyEmail;
      private Environment $twig;
-    public function __construct(MailerInterface $mailer)
+    public function __construct(MailerInterface $mailer, Environment $twig)
     {
         $this->mailer = $mailer;
         $this->companyEmail = $_ENV['AGENCY_EMAIL'];
+        $this->twig = $twig;
     }
 
     public function deliver(

@@ -27,17 +27,29 @@ class AskOfQuoteController extends AbstractController
         if ($form->isSubmitted() and $form->isValid()) {
             $em->persist($askOfQuote);
             $em->flush();
-            $to=$askOfQuote->getEmail();
+            $to = $askOfQuote->getEmail();
             $subject = 'demande de devis';
-            $content = $sender->doTemplate();
+            $content = $sender->doTemplate('ask_of_quote/email_confirm.html.twig', ['askOfQuote' => $askOfQuote,]);
             $bindings = [];
             $attachments = null;
-            $sender->deliver($to, $subject, $content,  $bindings, $attachments);
+            $sender->deliver($to, $subject, $content, $bindings, $attachments);
+            return $this->redirectToRoute('ask_of_quote_confirm', ['id' => $askOfQuote->getId()]);
 
         }
         return $this->render('ask_of_quote/index.html.twig', [
-            'controller_name' => 'AskOfQuoteController',
             'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/devis-informatique/confirm/{id}", name="ask_of_quote_confirm")
+     * @param Request $request
+     * @return Response
+     */
+    public function confirm(AskOfQuote $askOfQuote): Response
+    {
+        return $this->render('ask_of_quote/ask_quote_confirm.html.twig', [
+            'askOfQuote' => $askOfQuote,
         ]);
     }
 }
