@@ -31,4 +31,5 @@ cd ../integration/ && yarn run start
 #
 #echo -e 'Updating permissions'
 ##chmod -R +w var
+umask 0
 #chown www-data: ../* -R
