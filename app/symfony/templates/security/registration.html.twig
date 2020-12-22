@@ -23,7 +23,7 @@
                   <div class="faq-title">
                     <h4 class="title">Inscription</h4>
                   </div>
-                  {{ form_start(form) }}
+                  {{ form_start(form, {'attr': { 'id' : 'registration-form'}}) }}
                   <div class="input-box mt-1400" style="padding-bottom: 5px">
                     {{ form_row(form.client.type) }}
                   </div>
@@ -70,9 +70,9 @@
                   </div>
 
                   </div>
-                  <div class="input-box mt-20">
-                    {{ form_row(form.submit, {'attr':{'class': 'main-btn mt-35'}}) }}
-                  </div>
+                <div class="input-box mt-20">
+                  {{ form_row(form.submit, {'attr':{'class': 'main-btn btn-lg'}}) }}
+                </div>
                   {{ form_row(form._token) }}
                   {{ form_start(form) }}
                 </div>
