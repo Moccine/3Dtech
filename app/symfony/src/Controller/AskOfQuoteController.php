@@ -25,6 +25,7 @@ class AskOfQuoteController extends AbstractController
         $form = $this->createForm(AskOfQuoteType::class, $askOfQuote);
         $form->handleRequest($request);
         if ($form->isSubmitted() and $form->isValid()) {
+            $askOfQuote->setUpdatedAt(new \DateTime());
             $em->persist($askOfQuote);
             $em->flush();
             $to = $askOfQuote->getEmail();
