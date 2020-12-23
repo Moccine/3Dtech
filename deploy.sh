@@ -24,7 +24,7 @@ echo -e 'Installation of assets'
 php bin/console assets:install public
 echo -e 'Installation of Front dependencies'
 cd ../integration/ && yarn run start:prod
-
+cd ../symfony
 echo -e 'Clear du cache'
 php bin/console cache:clear
 php bin/console cache:warmup
