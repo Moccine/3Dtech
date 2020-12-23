@@ -23,6 +23,7 @@
         "symfony/framework-bundle": "5.1.*",
         "symfony/http-client": "5.1.*",
         "symfony/mailer": "5.1.*",
+        "symfony/mailjet-mailer": "^5.2",
         "symfony/monolog-bundle": "^3.5",
         "symfony/orm-pack": "^1.0.8",
         "symfony/security-bundle": "5.1.*",

@@ -12,6 +12,8 @@ parameters:
     app.path.page_images: /images/pages/
     app.path.slide_images: /images/slides/
     app.path.associate_images: /images/associates/
+    mailjet.api_key: 'faec95767c315d53419dffc10c58363b'
+    mailjet.secret_key: '7a3ca815dc8c1dd3bce787c1364bbe09'
 services:
     # default configuration for services in *this* file
     _defaults:

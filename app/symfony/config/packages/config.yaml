@@ -1,0 +1,3 @@
+mailjet:
+  api_key:    "%mailjet.api_key%"
+  secret_key: "%mailjet.secret_key%"
