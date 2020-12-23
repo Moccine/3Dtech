@@ -14,7 +14,7 @@ trait AddressTrait
     private string $street;
 
     /**
-     * @ORM\Column(type="string", length=12, nullable=true)
+     * @ORM\Column(type="string", length=50, nullable=true)
      */
     private string $city;
 
