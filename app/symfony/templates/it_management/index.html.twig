@@ -1,0 +1,170 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MaintenanceParkController!{% endblock %}
+
+{% block body %}
+    <div class="page-title-area d-flex align-items-center bg_cover"
+         style="background-image: url({{ asset('assets/images/page-title-bg.jpg') }});">
+        <div class="container">
+            <div class="row it-management">
+                <div class="col-lg-12">
+                    <div class="page-title-content text-center ">
+                        <h6 class="title">Infogérance de parc informatique et services managés pour PME</h6>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html">Les 6 services inclus dans votre pack
+                                        maintenance informatique
+                                    </a></li>
+                                <li class="breadcrumb-item active" aria-current="page">en profiter</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="team-details pt-120 pb-120">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-md-6 col-sm-8">
+                    <div class="team-details-thumb">
+                        <div class="thumb">
+                            <img src="{{ asset('assets/images/infogerance-informatique-pme-1.jpg') }}" alt="">
+                        </div>
+                        <div class="content text-center">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="team-details-content">
+                        <h4 class="title">L’INFOGÉRANCE INFORMATIQUE CHEZ IDTECH</h4>
+                        <span> + services illimités</span>
+                        <p>
+                            Gérer, sécuriser et optimiser votre infrastructure informatique
+                            Spécialiste de l’infogérance et des services managés pour les PME, Idtech propose des
+                            prestations complètes afin de garantir la disponibilité et la performance de votre système
+                            informatique :
+
+                            Support technique et assistance
+                            Vos collaborateurs sont assistés quotidiennement sur toutes les problématiques liées à
+                            l’utilisation de leur poste de travail.
+
+                            Administration et sécurisation de parc informatique
+                            Vos serveurs sont sécurisés, maintenus et administrés pour une utilisation optimale.
+
+                            Gestion des comptes et des droits
+                            Nous gérons vos comptes utilisateurs ainsi que vos droits d’accès.
+
+                            Supervision et maintenance Proactive
+                            Nous vous garantissons le bon état de votre matériel : Supervision 24h/24 , 7j/7,
+                            maintenance informatique, réparation et optimisation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <section class="fun-facts-area fun-facts-about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-9">
+                    <div class="fun-facts-content">
+                        <span class=" wow fadeInLeft animated" data-wow-duration="1000ms"
+                              data-wow-delay="0ms">3DTECH</span>
+                        <h3 class="title wow fadeInLeft animated" data-wow-duration="1000ms" data-wow-delay="300ms">
+                            DEVIS GRATUIT</h3>
+                        <p class=" wow fadeInLeft animated" data-wow-duration="1000ms" data-wow-delay="600ms">
+                            DEVIS GRATUIT ET SANS ENGAGEMENT DES QUESTIONS ? BESOIN D’UN DEVIS GRATUIT ET SANS
+                            ENGAGEMENT ?
+                            PARLEZ-EN À UN EXPERT CHEZ Idtech
+                        </p>
+                        <a class="main-btn wow fadeInUp animated"
+                           data-wow-duration="1000ms" data-wow-delay="900ms"
+                           href="{{ path('ask_of_quote') }}">Demander un devis <i class="flaticon-right-arrow"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="fun-facts-progress">
+                        <div class="progress-item d-block d-sm-flex justify-content-start justify-content-lg-end">
+                            <div class="item">
+                                <div class="box">
+                                    <div id="circle5"></div>
+                                    <h3 class="title"><span class="counter">400</span>%</h3>
+                                </div>
+                                <div class="content text-center">
+                                    <span>PME nous font confiance à nos expertises</span>
+                                </div>
+                            </div>
+                            <div class="item ml-120">
+                                <div class="box">
+                                    <div id="circle6"></div>
+                                    <h3 class="title">+<span class="counter">40</span>%</h3>
+                                </div>
+                                <div class="content text-center">
+                                    <span>de chiffre d’affaires en 2019</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress-item d-block d-sm-flex justify-content-start justify-content-lg-end mt-45">
+                            <div class="item">
+                                <div class="box">
+                                    <div id="circle7"></div>
+                                    <h3 class="title">+<span class="counter">62</span>%</h3>
+                                </div>
+                                <div class="content text-center">
+                                    <span>maintenus et supervisés 24h/24, 7J/7</span>
+                                </div>
+                            </div>
+                            <div class="item ml-120">
+                                <div class="box">
+                                    <div id="circle8"></div>
+                                    <h3 class="title"><span class="counter">85</span>%</h3>
+                                </div>
+                                <div class="content text-center">
+                                    <span>Projects Completed </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="brand-area pt-120">
+        <div class="container">
+            <div class="row brand-active">
+                <div class="col-lg-3">
+                    <div class="brand-item text-center">
+                        <a href="#"><img src="{{ asset('assets/images/brand-11.png') }}alt=" brand"></a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="brand-item text-center">
+                        <a href="#"><img src="{{ asset('assets/images/brand-12.png') }}" alt="brand"></a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="brand-item text-center">
+                        <a href="#"><img src="{{ asset('assets/images/brand-13.png') }}" alt="brand"></a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="brand-item text-center">
+                        <a href="#"><img src="{{ asset('assets/images/brand-14.png') }}" alt="brand"></a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="brand-item text-center">
+                        <a href="#"><img src="{{ asset('assets/images/brand-15.png') }}" alt="brand"></a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="brand-item text-center">
+                        <a href="#"><img src="{{ asset('assets/images/brand-12.png') }}" alt="brand"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
