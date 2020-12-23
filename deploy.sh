@@ -20,16 +20,16 @@ cd ../integration/ && yarn run start
 
 
 
-#echo -e 'Installation of assets'
-#php bin/console assets:install public
-#echo -e 'Installation of Front dependencies'
-#cd ../integration/ && yarn run start:prod
-#
-#echo -e 'Clear du cache'
-#php bin/console cache:clear
-#php bin/console cache:warmup
-#
-#echo -e 'Updating permissions'
-##chmod -R +w var
+echo -e 'Installation of assets'
+php bin/console assets:install public
+echo -e 'Installation of Front dependencies'
+cd ../integration/ && yarn run start:prod
+
+echo -e 'Clear du cache'
+php bin/console cache:clear
+php bin/console cache:warmup
+
+echo -e 'Updating permissions'
+chmod -R +w var
 umask 0
-#chown www-data: ../* -R
+chown www-data: ../* -R
