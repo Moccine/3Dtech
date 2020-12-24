@@ -1,227 +1,208 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-  <!--====== PAGE TITLE PART START ======-->
+    <!--====== PAGE TITLE PART START ======-->
 
-  <div class="page-title-area d-flex align-items-center bg_cover" style="background-image: url({{ asset('assets/images/page-title-bg.jpg') }});">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="page-title-content text-center">
-            <h3 class="title">Contact</h3>
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Contact</li>
-              </ol>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!--====== PAGE TITLE PART ENDS ======-->
-
-  <!--====== CONTACT PART START ======-->
-
-  <div class="contact-area pt-90 pb-120">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="contact-item text-center mt-30">
-            <i class="flaticon-location"></i>
-            <h4 class="title">Adresse</h4>
-            <ul>
-              <li>717 rue de la chapelle </li>
-              <li>78955 Carrières sous Poissy </li>
-              <li>FRANCE</li>
-            </ul>
-            <a class="main-btn" href="#">itinéraire</a>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="contact-item text-center mt-30">
-            <i class="flaticon-dial-pad"></i>
-            <h4 class="title">Téléphone</h4>
-            <ul>
-              <li> Telephone : 09 54 53 24 08</li>
-              <li> </li>
-              <li> </li>
-            </ul>
-            <a class="main-btn" href="#">Nous joindre</a>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="contact-item text-center mt-30">
-            <i class="flaticon-email"></i>
-            <h4 class="title">Email</h4>
-            <ul>
-              <li>contact@3dtech.com</li>
-              <li> </li>
-              <li> </li>
-            </ul>
-            <a class="main-btn" href="#">Nous ecrire</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!--====== CONTACT PART ENDS ======-->
-
-  <!--====== CONTACT PART ENDS ======-->
-  <div class="google-map">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14612.975409527537!2d90.497437!3d23.7029844!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1586797125892!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-  </div>
-  <!--====== CONTACT PART ENDS ======-->
-
-  <!--====== FAQ PART START ======-->
-
-  <section class="faq-area faq-about bg_cover pt-115 pb-120" style="background-image:
-  url({{ asset('assets/images/faq-bg.jpg') }});">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <div class="section-title text-center">
-            <span>FAQs</span>
-            <h3 class="title">Let’s Help </h3>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <div class="faq-box-area faq-box-about">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="faq-box white-bg">
+    <div class="page-title-area d-flex align-items-center bg_cover"
+         style="background-image: url({{ asset('assets/images/page-title-bg.jpg') }});">
+        <div class="container">
             <div class="row">
-              <div class="col-lg-6">
-                <div class="faq-accordion">
-                  <div class="faq-accordion-content">
-                    <h4 class="title">Questions fréquemment posées</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  </div>
-                  <div class="accordion" id="accordionExample">
-                    <div class="card">
-                      <div class="card-header" id="headingOne">
-                        <a class="" href="" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                          How do I become an author?
-                        </a>
-                      </div>
-
-                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                        <div class="card-body">
-                          <p>Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitatio</p>
-                        </div>
-                      </div>
-                    </div> <!-- card -->
-                    <div class="card">
-                      <div class="card-header" id="headingTwo">
-                        <a class="collapsed" href="" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                          Get support for an item ?
-                        </a>
-                      </div>
-                      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                        <div class="card-body">
-                          <p>Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitatio</p>
-                        </div>
-                      </div>
-                    </div> <!-- card -->
-                    <div class="card">
-                      <div class="card-header" id="headingThree">
-                        <a class="collapsed" href="" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                          How Does Blockchain Technology Work?
-                        </a>
-                      </div>
-                      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                        <div class="card-body">
-                          <p>Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitatio</p>
-                        </div>
-                      </div>
-                    </div> <!-- card -->
-                    <div class="card">
-                      <div class="card-header" id="headingFour">
-                        <a class="collapsed" href="" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                          Can I use trademarked names in my items?
-                        </a>
-                      </div>
-                      <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-                        <div class="card-body">
-                          <p>Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitatio</p>
-                        </div>
-                      </div>
-                    </div> <!-- card -->
-                  </div>
+                <div class="col-lg-12">
+                    <div class="page-title-content text-center">
+                        <h3 class="title">Contact</h3>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Contact</li>
+                            </ol>
+                        </nav>
+                    </div>
                 </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="faq-form">
-                  <div class="faq-title">
-                    <h4 class="title">Votre question</h4>
-                  </div>
-                  <form action="#">
-                    <div class="input-box mt-20">
-                      <input type="text" placeholder="Name">
-                    </div>
-                    <div class="input-box mt-20">
-                      <input type="email" placeholder="Email">
-                    </div>
-                    <div class="input-box mt-20">
-                      <textarea name="#" id="#" cols="30" rows="10" placeholder="Messages"></textarea>
-                      <button class="main-btn mt-35" type="button">Envoyer</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 
-  <!--====== FAQ PART ENDS ======-->
+    <!--====== PAGE TITLE PART ENDS ======-->
 
-  <!--====== BRAND PART START ======-->
+    <!--====== CONTACT PART START ======-->
 
-  {% include 'common/brand_section.html.twig' %}
-
-  <!--====== BRAND PART ENDS ======-->
-
-  <!--====== SUBSCRIBE PART START ======-->
-
-  <div class="subscribe-area">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="subscribe-box">
-            <div class="row align-items-center">
-              <div class="col-lg-6">
-                <div class="subscribe-info pl-65">
-                  <h3 class="title">Besion d'un devis?</h3>
-                  <ul>
-                    <li><a href="tel:+84935815989">Phone: +84 935 815 989</a></li>
-                    <li><a href="mailto:borexonline@mail.com">Email: borexonline@mail.com</a></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="subscribe-info pl-50 pr-70">
-                  <h3 class="title">Need Consultation?</h3>
-                  <form action="#">
-                    <div class="input-box">
-                      <input type="email" placeholder="Email">
-                      <button type="button">Subscribe</button>
+    <div class="contact-area pt-90 pb-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="contact-item text-center mt-30">
+                        <i class="flaticon-location"></i>
+                        <h4 class="title">Adresse</h4>
+                        <ul>
+                            <li>717 rue de la chapelle</li>
+                            <li>78955 Carrières sous Poissy</li>
+                            <li>FRANCE</li>
+                        </ul>
+                        <a class="main-btn" href="#">itinéraire</a>
                     </div>
-                  </form>
                 </div>
-              </div>
+                <div class="col-lg-4">
+                    <div class="contact-item text-center mt-30">
+                        <i class="flaticon-dial-pad"></i>
+                        <h4 class="title">Téléphone</h4>
+                        <ul>
+                            <li> Telephone : 09 54 53 24 08</li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <a class="main-btn" href="#">Nous joindre</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="contact-item text-center mt-30">
+                        <i class="flaticon-email"></i>
+                        <h4 class="title">Email</h4>
+                        <ul>
+                            <li>contact@3dtech.com</li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <a class="main-btn" href="#">Nous ecrire</a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 
+    <!--====== CONTACT PART ENDS ======-->
+
+    <!--====== CONTACT PART ENDS ======-->
+    <div class="google-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14612.975409527537!2d90.497437!3d23.7029844!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1586797125892!5m2!1sen!2sbd"
+                width="600" height="450" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
+    <!--====== CONTACT PART ENDS ======-->
+
+    <!--====== FAQ PART START ======-->
+
+    <section class="faq-area faq-about bg_cover pt-115 pb-120" style="background-image:
+            url({{ asset('assets/images/faq-bg.jpg') }});">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-title text-center">
+                        <span>FAQs</span>
+                        <h3 class="title">Nous ecrire </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="faq-box-area faq-box-about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="faq-box white-bg">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="faq-accordion">
+                                    <div class="faq-accordion-content">
+                                        <h4 class="title">Questions fréquemment posées</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                            tempor incididunt ut labore et dolore magna aliqua.</p>
+                                    </div>
+                                    <div class="accordion" id="accordionExample">
+                                        <div class="card">
+                                            <div class="card-header" id="headingOne">
+                                                <a class="" href="" data-toggle="collapse" data-target="#collapseOne"
+                                                   aria-expanded="true" aria-controls="collapseOne">
+                                                    How do I become an author?
+                                                </a>
+                                            </div>
+
+                                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                                 data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do
+                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                                                        enim ad minim veniam, quis nostrud exercitatio</p>
+                                                </div>
+                                            </div>
+                                        </div> <!-- card -->
+                                        <div class="card">
+                                            <div class="card-header" id="headingTwo">
+                                                <a class="collapsed" href="" data-toggle="collapse"
+                                                   data-target="#collapseTwo" aria-expanded="false"
+                                                   aria-controls="collapseTwo">
+                                                    Get support for an item ?
+                                                </a>
+                                            </div>
+                                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                                 data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do
+                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                                                        enim ad minim veniam, quis nostrud exercitatio</p>
+                                                </div>
+                                            </div>
+                                        </div> <!-- card -->
+                                        <div class="card">
+                                            <div class="card-header" id="headingThree">
+                                                <a class="collapsed" href="" data-toggle="collapse"
+                                                   data-target="#collapseThree" aria-expanded="false"
+                                                   aria-controls="collapseThree">
+                                                    How Does Blockchain Technology Work?
+                                                </a>
+                                            </div>
+                                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                                 data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do
+                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                                                        enim ad minim veniam, quis nostrud exercitatio</p>
+                                                </div>
+                                            </div>
+                                        </div> <!-- card -->
+                                        <div class="card">
+                                            <div class="card-header" id="headingFour">
+                                                <a class="collapsed" href="" data-toggle="collapse"
+                                                   data-target="#collapseFour" aria-expanded="false"
+                                                   aria-controls="collapseFour">
+                                                    Can I use trademarked names in my items?
+                                                </a>
+                                            </div>
+                                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                                                 data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do
+                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                                                        enim ad minim veniam, quis nostrud exercitatio</p>
+                                                </div>
+                                            </div>
+                                        </div> <!-- card -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="faq-form">
+                                    <div class="faq-title">
+                                        <h4 class="title">Votre question</h4>
+                                    </div>
+                                    <form action="#">
+                                        <div class="input-box mt-20">
+                                            <input type="text" placeholder="Name">
+                                        </div>
+                                        <div class="input-box mt-20">
+                                            <input type="email" placeholder="Email">
+                                        </div>
+                                        <div class="input-box mt-20">
+                                            <textarea name="#" id="#" cols="30" rows="10"
+                                                      placeholder="Messages"></textarea>
+                                            <button class="main-btn mt-35" type="button">Envoyer</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'common/brand_section.html.twig' %}
+    {% include 'common/subcribe_part.html.twig' %}
 {% endblock %}
