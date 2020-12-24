@@ -13,8 +13,6 @@ class ComputerEquipmentController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('computer_equipment/index.html.twig', [
-            'controller_name' => 'ComputerEquipmentController',
-        ]);
+        return $this->render('computer_equipment/index.html.twig');
     }
 }
