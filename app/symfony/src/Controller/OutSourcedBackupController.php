@@ -13,8 +13,6 @@ class OutSourcedBackupController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('out_sourced_backup/index.html.twig', [
-            'controller_name' => 'OutSourcedBackupController',
-        ]);
+        return $this->render('out_sourced_backup/index.html.twig');
     }
 }

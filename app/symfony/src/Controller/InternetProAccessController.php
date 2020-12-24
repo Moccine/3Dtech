@@ -13,8 +13,6 @@ class InternetProAccessController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('internet_pro_access/index.html.twig', [
-            'controller_name' => 'InternetProAccessController',
-        ]);
+        return $this->render('internet_pro_access/index.html.twig');
     }
 }
