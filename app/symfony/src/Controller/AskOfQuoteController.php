@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\AskOfQuote;
 use App\Form\AskOfQuoteType;
 use App\Service\Mailer\Sender;
-use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

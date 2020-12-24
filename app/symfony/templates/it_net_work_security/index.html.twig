@@ -1,20 +1,190 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ItNetWorkSecurityController!{% endblock %}
-
+{% block title %}Hello MaintenanceParkController!{% endblock %}
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="page-title-area d-flex align-items-center bg_cover"
+         style="background-image: url({{ asset('assets/images/page-title-bg.jpg') }});">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="page-title-content text-center">
+                        <h3 class="title">Sécurité informatique et réseau</h3>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html">Les 6 services inclus dans votre pack
+                                        maintenance informatique
+                                    </a></li>
+                                <li class="breadcrumb-item active" aria-current="page">en profiter</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/symfony/src/Controller/ItNetWorkSecurityController.php'|file_link(0) }}">src/Controller/ItNetWorkSecurityController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/symfony/templates/it_net_work_security/index.html.twig'|file_link(0) }}">templates/it_net_work_security/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <!--====== SERVICES DETAILS PART START ======-->
+
+    <section class="services-details-area pt-90 pb-120">
+        <div class="container">
+            <div class="row justify-content-center">
+                {% include 'common/service_details_start.html.twig' %}
+                <div class="col-lg-8 order-lg-2 order-1">
+                    <div class="services-details-content mt-30">
+                        <div class="services-details-thumb">
+                            <img src="assets/images/service-details-thumb.jpg" alt="">
+                            <span>sécurité</span>
+                            <h3 class="title">SÉCURITÉ INFORMATIQUE ET DU RÉSEAU D’ENTREPRIS</h3>
+                            <p>
+                                Protégez votre entreprise des intrusions et des pertes de données
+                                La sécurité fait partie de la problématique liée à l’utilisation de l’informatique.
+                                Plusieurs facteurs peuvent menacer votre infrastructure informatique que ce soit des
+                                virus, des piratages et/ou l’insouciance de vos utilisateurs. La menace est toujours
+                                présente et un défaut de vigilance peut couter très cher, que ce soit du vol ou des
+                                pertes de données ou la casse de vos matériels informatiques.. </p>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mt-45">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="services-details-play">
+                                <img src="{{ asset('assets/images/pack-maintenance-informatique-entreprise-226x300.jpg') }}"
+                                     alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="services-details-play-content">
+                                <h4 class="title">MISE EN PLACE D’UNE STRATÉGIE DE SÉCURITÉ PROACTIVE</h4>
+                                <p>
+                                    A travers la mise en place d’une stratégie de sécurité efficace ARESCOM s’appuie sur
+                                    l’expertise d’un pôle d’ingénieurs chargés de mettre en place et de maintenir un
+                                    système de sécurité efficace tant pour vos matériels que vos données.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mt-45">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="services-details-play-content">
+                                <h4 class="title">MISE EN PLACE D’UNE STRATÉGIE DE SÉCURITÉ PROACTIVE</h4>
+                                <p>
+                                    A travers la mise en place d’une stratégie de sécurité efficace ARESCOM s’appuie sur
+                                    l’expertise d’un pôle d’ingénieurs chargés de mettre en place et de maintenir un
+                                    système de sécurité efficace tant pour vos matériels que vos données.
+                                </p>
+                                <p>
+                                    Pare feu, antivirus managé, filtrage web, politique de droits d’accès de vos
+                                    fichiers partagés sont autant d’outils que nous mettons en place pour sécuriser
+                                    votre infrastructure informatique.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="services-details-play">
+                                <img src="{{ asset('assets/images/idtechidf-securite-informatique-2-450x316.jpg') }}"
+                                     alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="services-details-content mt-30">
+                        <div class="services-details-thumb">
+                            <img src="assets/images/service-details-thumb.jpg" alt="">
+                            <h3 class="title">PROTECTION DE VOTRE RÉSEAU INFORMATIQUE</h3>
+                            <p>
+                                Fruit de notre expérience et de notre expertise, nous avons créé notre propre solution
+                                de Firewall : « ARES SECURITY » qui est une solution complète de sécurisation de votre
+                                système informatique. Idéal pour contrôler les flux entrants et sortants du réseau
+                                informatique de votre entreprise, ARES SECURITY est un boîtier tout-en-un qui permet de
+                                :
+                            <ul>
+                                <li>Bloquer les intrusions d’un réseau tiers.</li>
+                                <li>Gérer les accès aux sites web non autorisés.</li>
+                                <li>Sécuriser les échanges de données.</li>
+                                <li>Protéger le réseau des attaques virales.</li>
+                                <li>Gérer et optimiser la bande passante.</li>
+                            </ul>
+
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="brand-area pt-120">
+        <div class="container">
+            <div class="row brand-active">
+                <div class="col-lg-3">
+                    <div class="brand-item text-center">
+                        <a href="#"><img src="assets/images/brand-11.png" alt="brand"></a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="brand-item text-center">
+                        <a href="#"><img src="assets/images/brand-12.png" alt="brand"></a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="brand-item text-center">
+                        <a href="#"><img src="assets/images/brand-13.png" alt="brand"></a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="brand-item text-center">
+                        <a href="#"><img src="assets/images/brand-14.png" alt="brand"></a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="brand-item text-center">
+                        <a href="#"><img src="assets/images/brand-15.png" alt="brand"></a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="brand-item text-center">
+                        <a href="#"><img src="assets/images/brand-12.png" alt="brand"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--====== BRAND PART ENDS ======-->
+
+    <!--====== SUBSCRIBE PART START ======-->
+
+    <div class="subscribe-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="subscribe-box">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <div class="subscribe-info pl-65">
+                                    <h3 class="title">Need Consultation?</h3>
+                                    <ul>
+                                        <li><a href="tel:+84935815989">Phone: +84 935 815 989</a></li>
+                                        <li><a href="mailto:borexonline@mail.com">Email: borexonline@mail.com</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="subscribe-info pl-50 pr-70">
+                                    <h3 class="title">Need Consultation?</h3>
+                                    <form action="#">
+                                        <div class="input-box">
+                                            <input type="email" placeholder="Email">
+                                            <button type="button">Subscribe</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
