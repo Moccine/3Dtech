@@ -1,20 +1,199 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CompanyWifiNetworkController!{% endblock %}
-
+{% block title %}Hello MaintenanceParkController!{% endblock %}
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="page-title-area d-flex align-items-center bg_cover"
+         style="background-image: url({{ asset('assets/images/page-title-bg.jpg') }});">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="page-title-content text-center">
+                        <h3 class="title">Réseau Wifi entreprise</h3>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html">Les 6 services inclus dans votre pack
+                                        maintenance informatique
+                                    </a></li>
+                                <li class="breadcrumb-item active" aria-current="page"><a
+                                            href="{{ path('ask_of_quote') }}">en profiter</a></li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/symfony/src/Controller/CompanyWifiNetworkController.php'|file_link(0) }}">src/Controller/CompanyWifiNetworkController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/symfony/templates/company_wifi_network/index.html.twig'|file_link(0) }}">templates/company_wifi_network/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <!--====== SERVICES DETAILS PART START ======-->
+
+    <section class="services-details-area pt-90 pb-120">
+        <div class="container">
+            <div class="row justify-content-center">
+                {% include 'common/service_details_start.html.twig' %}
+                <div class="col-lg-8 order-lg-2 order-1">
+                    <div class="services-details-content mt-30">
+                        <div class="services-details-thumb">
+                            <img src="assets/images/idtechidf-mail-pro-exhange" alt="">
+                            <span>Réseau Wifi entreprise</span>
+                            <h3 class="title">WIFI ENTREPRISE : ÉTUDE <br> ET INSTALLATION DE RÉSEAU SANS FIL SÉCURISÉ
+                            </h3>
+                            <p>
+                            <h6>Assurez la mobilité de vos collaborateurs et visiteurs grâce à une connexion Wifi
+                                performante dans vos locaux</h6>
+                            Mettre en place un réseau sans fil sur votre lieu de travail est tout aussi important que le
+                            choix de votre accès internet. Pour obtenir une connexion optimale, il est primordiale
+                            d’effectuer un audit de couverture d’un réseau Wifi.
+                            sont mises en avant afin de s’adapter à votre infrastructure à vos besoins et à vos budgets.
+                            </p>
+                            <p>
+                                Pour y parvenir, l’expertise Arescom consiste à mesurer et implémenter une solution Wifi
+                                fiable et sécurisée à l’aide de technologies pointues : Heatmap (cartographie de
+                                puissance/couverture), bornes wifi managées, architecture hébergée. Parallèlement, tous
+                                les équipements réseaux seront administrés à l’aide d’outil de supervision et de gestion
+                                centralisée.
+                            </p>
+
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-12 col-md-12">
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="services-details-play-content">
+                                <div class="services-details-play">
+                                    <img src="{{ asset('assets/images/3dtech-reseau-wifi.png') }}"
+                                         alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mt-45">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="services-details-play-content">
+                                <h4 class="title">Un accompagnement de bout en bout pour déployer votre réseau Wifi
+                                    d’entreprise</h4>
+                                <p>
+                                    En fonction de vos contraintes d’organisation et de la surface à couvrir, nos
+                                    experts en réseau auront pour mission d’intégrer la solution Wifi la plus adéquate
+                                    pour vos utilisateurs. Aussi, nous oeuvrons pour renforcer la sécurité de votre
+                                    réseau informatique, et ce, quelle que soit votre infrastructure existante.
+                                <ul>
+                                    <li>Étude de couverture réseau et simulation Wifi sur plan</li>
+                                    <li>Fourniture, installation et configuration d’équipements réseaux (switch, bornes
+                                        Wifi managées, câblage)
+                                    </li>
+                                    <li>Création et gestion de portail captif sécurisé et simple d’utilisation</li>
+                                    <li>Sécurisation et administration de vos accès réseaux</li>
+                                    <li>Supervision en temps réel et mises à jour de vos bornes Wifi à distance</li>
+                                </ul>
+
+                                </p>
+                                <p>
+                                    Pare feu, antivirus managé, filtrage web, politique de droits d’accès de vos
+                                    fichiers partagés sont autant d’outils que nous mettons en place pour sécuriser
+                                    votre infrastructure informatique.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="services-details-play-content">
+                                <h4 class="title">BOOSTEZ VOS ACCÈS INTERNET ET AUGMENTEZ VOTRE PRODUCTIVITÉ</h4>
+                                <p>
+                                    Votre débit internet ne suffit plus à répondre à votre flux de travail ? La
+                                    mobilité, l’IoT, le Cloud et le télétravail vous contraint à améliorer la capacité
+                                    de votre réseau ? Grâce à une connexion internet adaptée à vos besoins, vous
+                                    bénéficiez d’une fluidité de travail, d’une sécurité de vos accès ainsi que d’une
+                                    stabilité du réseau dans son ensemble.
+                                </p>
+                                <p>
+                                    Découvrez nos solutions d’accès internet vous permettant de répondre aux nouvelles
+                                    exigences de vos utilisateurs et de votre entreprise : Fibre optique, ADSL/VDSL,
+                                    SDSL, accès VPN sécurisé.
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <div class="brand-area pt-120">
+        <div class="container">
+            <div class="row brand-active">
+                <div class="col-lg-3">
+                    <div class="brand-item text-center">
+                        <a href="#"><img src="assets/images/brand-11.png" alt="brand"></a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="brand-item text-center">
+                        <a href="#"><img src="assets/images/brand-12.png" alt="brand"></a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="brand-item text-center">
+                        <a href="#"><img src="assets/images/brand-13.png" alt="brand"></a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="brand-item text-center">
+                        <a href="#"><img src="assets/images/brand-14.png" alt="brand"></a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="brand-item text-center">
+                        <a href="#"><img src="assets/images/brand-15.png" alt="brand"></a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="brand-item text-center">
+                        <a href="#"><img src="assets/images/brand-12.png" alt="brand"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--====== BRAND PART ENDS ======-->
+
+    <!--====== SUBSCRIBE PART START ======-->
+
+    <div class="subscribe-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="subscribe-box">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <div class="subscribe-info pl-65">
+                                    <h3 class="title">Need Consultation?</h3>
+                                    <ul>
+                                        <li><a href="tel:+84935815989">Phone: +84 935 815 989</a></li>
+                                        <li><a href="mailto:borexonline@mail.com">Email: borexonline@mail.com</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="subscribe-info pl-50 pr-70">
+                                    <h3 class="title">Need Consultation?</h3>
+                                    <form action="#">
+                                        <div class="input-box">
+                                            <input type="email" placeholder="Email">
+                                            <button type="button">Subscribe</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

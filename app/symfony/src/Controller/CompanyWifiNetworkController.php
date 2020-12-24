@@ -13,8 +13,6 @@ class CompanyWifiNetworkController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('company_wifi_network/index.html.twig', [
-            'controller_name' => 'CompanyWifiNetworkController',
-        ]);
+        return $this->render('company_wifi_network/index.html.twig');
     }
 }
