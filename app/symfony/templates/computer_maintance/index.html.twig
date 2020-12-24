@@ -1,0 +1,132 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MaintenanceParkController!{% endblock %}
+
+{% block body %}
+    <div class="page-title-area d-flex align-items-center bg_cover"
+         style="background-image: url({{ asset('assets/images/page-title-bg.jpg') }});">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="page-title-content text-center">
+                        <h3 class="title">Maintenance informatique entreprise</h3>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="index.html">
+                                        Les 6 services inclus dans votre pack maintenance informatique </a></li>
+                                <li class="breadcrumb-item active" aria-current="page">en profiter</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="team-details pt-120 pb-120">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-md-6 col-sm-8">
+                    <div class="team-details-thumb">
+                        <div class="thumb">
+                            <img src="{{ asset('assets/images/maintenance-informatique-entreprise-pack-2.jpg') }}"
+                                 alt="">
+                        </div>
+                        <div class="content text-center">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="team-details-content">
+                        <h4 class="title">PACK MAINTENANCE INFORMATIQUE PME </h4>
+                        <h6>Un pack tout inclus + services illimités pour vous assister au quotidien</h6>
+                        <span> + services illimités</span>
+                        <p>
+                            Notre coeur de métier c’est la maintenance informatique et l’infogérance de votre
+                            infrastructure : Maintenance préventive, support à distance, interventions sur site,
+                            administration, rapports et suivis.
+                        </p>
+                        <p>
+                            Les opérations de maintenance informatique viennent gérer tant les équipements réseaux, les
+                            postes, les serveurs, les systèmes d’exploitations et les divers applicatifs utiles à votre
+                            entreprise.
+                        </p>
+                        <p>
+                            Plus que cela ARESCOM c’est aussi l’optimisation et la sécurisation de votre infrastructure
+                            avec une équipe d’ingénieurs dédiée à l’évolution de l’ensemble de votre SI.
+                        </p>
+                        <h6>Travaillez sereinement grâce à un système informatique disponible et à jour ! </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="fun-facts-area fun-facts-about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-9">
+                    <div class="fun-facts-content">
+                        <span class=" wow fadeInLeft animated" data-wow-duration="1000ms"
+                              data-wow-delay="0ms">3DTECH</span>
+                        <h3 class="title wow fadeInLeft animated" data-wow-duration="1000ms" data-wow-delay="300ms">
+                            DEVIS GRATUIT</h3>
+                        <p class=" wow fadeInLeft animated" data-wow-duration="1000ms" data-wow-delay="600ms">
+                            DEVIS GRATUIT ET SANS ENGAGEMENT DES QUESTIONS ? BESOIN D’UN DEVIS GRATUIT ET SANS
+                            ENGAGEMENT ?
+                            PARLEZ-EN À UN EXPERT CHEZ ARESCOM
+                        </p>
+                        <a class="main-btn wow fadeInUp animated" data-wow-duration="1000ms" data-wow-delay="900ms"
+                           href="#">Demander un devis <i class="flaticon-right-arrow"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="fun-facts-progress">
+                        <div class="progress-item d-block d-sm-flex justify-content-start justify-content-lg-end">
+                            <div class="item">
+                                <div class="box">
+                                    <div id="circle5"></div>
+                                    <h3 class="title"><span class="counter">400</span>%</h3>
+                                </div>
+                                <div class="content text-center">
+                                    <span>PME nous font confiance à nos expertises</span>
+                                </div>
+                            </div>
+                            <div class="item ml-120">
+                                <div class="box">
+                                    <div id="circle6"></div>
+                                    <h3 class="title">+<span class="counter">40</span>%</h3>
+                                </div>
+                                <div class="content text-center">
+                                    <span>de chiffre d’affaires en 2019 </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress-item d-block d-sm-flex justify-content-start justify-content-lg-end mt-45">
+                            <div class="item">
+                                <div class="box">
+                                    <div id="circle7"></div>
+                                    <h3 class="title">+<span class="counter">62</span>%</h3>
+                                </div>
+                                <div class="content text-center">
+                                      <span>maintenus et supervisés 24h/24, 7J/7 </span>
+                                </div>
+                            </div>
+                            <div class="item ml-120">
+                                <div class="box">
+                                    <div id="circle8"></div>
+                                    <h3 class="title"><span class="counter">85</span>%</h3>
+                                </div>
+                                <div class="content text-center">
+                                    <span>Projects Completed </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% include 'common/brand_section.html.twig' %}
+    {% include 'common/subcribe_part.html.twig' %}
+
+{% endblock %}
