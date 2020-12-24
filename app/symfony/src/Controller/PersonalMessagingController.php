@@ -13,8 +13,6 @@ class PersonalMessagingController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('personal_messaging/index.html.twig', [
-            'controller_name' => 'PersonalMessagingController',
-        ]);
+        return $this->render('personal_messaging/index.html.twig');
     }
 }
