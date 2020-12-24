@@ -13,8 +13,6 @@ class OfficeSoftwareController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('office_software/index.html.twig', [
-            'controller_name' => 'OfficeSoftwareController',
-        ]);
+        return $this->render('office_software/index.html.twig');
     }
 }
