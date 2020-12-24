@@ -13,8 +13,6 @@ class MaintenanceParkController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('maintenance_park/index.html.twig', [
-            'controller_name' => 'MaintenanceParkController',
-        ]);
+        return $this->render('maintenance_park/index.html.twig',);
     }
 }
