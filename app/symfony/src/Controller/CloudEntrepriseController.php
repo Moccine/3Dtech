@@ -13,8 +13,6 @@ class CloudEntrepriseController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('cloud_entreprise/index.html.twig', [
-            'controller_name' => 'CloudEntrepriseController',
-        ]);
+        return $this->render('cloud_entreprise/index.html.twig');
     }
 }

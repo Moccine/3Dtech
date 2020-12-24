@@ -1,20 +1,189 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CloudEntrepriseController!{% endblock %}
-
+{% block title %}Hello MaintenanceParkController!{% endblock %}
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="page-title-area d-flex align-items-center bg_cover"
+         style="background-image: url({{ asset('assets/images/page-title-bg.jpg') }});">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="page-title-content text-center">
+                        <h3 class="title">Cloud entreprise DaaS</h3>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html">Les 6 services inclus dans votre pack
+                                        maintenance informatique
+                                    </a></li>
+                                <li class="breadcrumb-item active" aria-current="page"><a
+                                            href="{{ path('ask_of_quote') }}">en profiter</a></li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/symfony/src/Controller/CloudEntrepriseController.php'|file_link(0) }}">src/Controller/CloudEntrepriseController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/symfony/templates/cloud_entreprise/index.html.twig'|file_link(0) }}">templates/cloud_entreprise/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <!--====== SERVICES DETAILS PART START ======-->
+
+    <section class="services-details-area pt-90 pb-120">
+        <div class="container">
+            <div class="row justify-content-center">
+                {% include 'common/service_details_start.html.twig' %}
+                <div class="col-lg-8 order-lg-2 order-1">
+                    <div class="services-details-content mt-30">
+                        <div class="services-details-thumb">
+                            <img src="assets/images/idtechidf-mail-pro-exhange" alt="">
+                            <span>Cloud entreprise</span>
+                            <h3 class="title">SOLUTION CLOUD ENTREPRISE :<br> DAAS, SAAS, PRA</h3>
+                            <p>
+                            <h6>Migrez vers le Cloud entreprise en tout sérénité</h6>
+                            Vous souhaitez externaliser vos serveurs et applications en data center ? Travailler
+                            depuis où vous le souhaitez simplement via un accès internet ? ARESCOM vous accompagne
+                            pour la dématérialisation de votre infrastructure informatique. Vous souhaitez mettre en
+                            place un serveur en data center, migrer vos postes de travail en DAAS ou faire un Plan
+                            de Reprise d’Activité (PRA) dans le cloud.
+
+                            </p>
+                            <h5>Evoluer vers le DaaS, un Bureau Virtuel hébergé</h5>
+                            <p>
+                                Le DaaS est une technologie de virtualisation dernière génération. Bien plus qu’un
+                                simple stockage, votre poste de travail est hébergé sur nos serveurs sécurisés.<b></b>
+                                Vous
+                                accédez à votre environnement de travail personnalisé depuis n’importe quel support
+                                connecté. Profitez de nos licences office et email exchange maintenues à jour.
+
+                                Bénéficiez des principaux avantages du Cloud Daas pour entreprise :
+                            <ul class="list">
+                                N’investissez plus dans une infrastructure informatique de pointe pour votre activité
+                                Modifiez le nombre d’utilisateurs à volonté.
+                                Productivité et flexibilité garanties.
+                            </ul>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-12 col-md-12">
+                            <h4>La virtualisation de vos serveurs informatiques par le cloud DaaS</h4>
+                            <div class="services-details-play">
+                                <img src="{{ asset('assets/images/3dtechidf-cloud-entreprise.png') }}"
+                                     alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="services-details-play-content">
+                                <p>
+                                    Partager vos agendas, contacts et fichiers collaboratifs.
+                                    Utiliser votre propre nom de domaine (www.votre-société.fr)
+                                    Protéger vos mails contre les spams et les virus.
+                                    Synchroniser et accéder à vos mails en tous lieux.
+                                    Archiver et sauvegarder vos mails.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mt-45">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="services-details-play-content">
+                                <h4 class="title">UNE MESSAGERIE UNIFIÉE, UN TRAVAIL COLLABORATIF !</h4>
+                                <p>
+                                    Grâce à une messagerie unifiée mise en place par nos soins, vous améliorez la
+                                    mobilité de vos collaborateurs et vous gagnez en efficacité. Vos fichiers , agendas,
+                                    mails, contacts, etc… sont désormais accessibles à distance sur tous vos terminaux.
+                                </p>
+                                <p>
+                                    Pare feu, antivirus managé, filtrage web, politique de droits d’accès de vos
+                                    fichiers partagés sont autant d’outils que nous mettons en place pour sécuriser
+                                    votre infrastructure informatique.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="services-details-play">
+                                <img src="{{ asset('assets/images/i3dtechidf-email-professionnel.png') }}"
+                                     alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <div class="brand-area pt-120">
+        <div class="container">
+            <div class="row brand-active">
+                <div class="col-lg-3">
+                    <div class="brand-item text-center">
+                        <a href="#"><img src="assets/images/brand-11.png" alt="brand"></a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="brand-item text-center">
+                        <a href="#"><img src="assets/images/brand-12.png" alt="brand"></a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="brand-item text-center">
+                        <a href="#"><img src="assets/images/brand-13.png" alt="brand"></a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="brand-item text-center">
+                        <a href="#"><img src="assets/images/brand-14.png" alt="brand"></a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="brand-item text-center">
+                        <a href="#"><img src="assets/images/brand-15.png" alt="brand"></a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="brand-item text-center">
+                        <a href="#"><img src="assets/images/brand-12.png" alt="brand"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--====== BRAND PART ENDS ======-->
+
+    <!--====== SUBSCRIBE PART START ======-->
+
+    <div class="subscribe-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="subscribe-box">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <div class="subscribe-info pl-65">
+                                    <h3 class="title">Need Consultation?</h3>
+                                    <ul>
+                                        <li><a href="tel:+84935815989">Phone: +84 935 815 989</a></li>
+                                        <li><a href="mailto:borexonline@mail.com">Email: borexonline@mail.com</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="subscribe-info pl-50 pr-70">
+                                    <h3 class="title">Need Consultation?</h3>
+                                    <form action="#">
+                                        <div class="input-box">
+                                            <input type="email" placeholder="Email">
+                                            <button type="button">Subscribe</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
