@@ -13,8 +13,6 @@ class DiscoverAllController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('discover_all/index.html.twig', [
-            'controller_name' => 'DiscoverAllController',
-        ]);
+        return $this->render('discover_all/index.html.twig');
     }
 }
