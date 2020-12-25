@@ -16,10 +16,7 @@ class IndexController extends AbstractController
     public function index()
     {
         $em = $this->getDoctrine()->getManager();
-        $user = new User();
-        $em->persist($user->setEmail('test66@gmail.com')->setPassword('rrr'));
-        $em->flush();
-        dd($user);
+
         return $this->render('home/index.html.twig', [
             'slideShow' => '',
         ]);
