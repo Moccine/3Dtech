@@ -1,112 +1,66 @@
 <section class="services-area">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-4">
-        <div class="services-content mt-95">
-          <span>3DTECH</span>
-          <h3 class="title">Nos services</h3>
-          <p>
-            LA PERFORMANCE DE VOTRE INFORMATIQUE D’ENTREPRISE AU COEUR DE NOTRE MISSION</p>
-            <p>Mettre en place, maintenir, gérer et optimiser votre infrastructure informatique afin que celle-ci soit 100% disponible pour le travail de vos collaborateurs au quotidien. </p>
-          <a class="main-btn" href="#">View more <i class="flaticon-right-arrow"></i></a>
+    <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-4 col-md-6 col-sm-9">
+            <div class="services-content mt-95">
+              <span>3DTECH</span>
+              <h3 class="title">Nos services</h3>
+              <p>
+                LA PERFORMANCE DE VOTRE INFORMATIQUE D’ENTREPRISE AU COEUR DE NOTRE MISSION</p>
+              <a class="main-btn" href="#">{{ 'app.learn_more'|trans }} <i class="flaticon-right-arrow"></i></a>
+            </div>
+          </div>
+
+          {% include 'common/common_portfolio.html.twig'  with
+                {
+                    title : 'Maintenance informatique des PME',
+                    imageRef : 'assets/images/services-1.png',
+                    link: 'computer_maintance'
+                } %}
+            {% include 'common/common_portfolio.html.twig'  with
+                {
+                    title : 'Infogérance de vos postes et services',
+                    imageRef : 'assets/images/services-2.png',
+                    link: 'computer_park_supervision'
+                } %}
+            {% include 'common/common_portfolio.html.twig'  with
+                {
+                    title : 'Supervision de votre parc informatique 24h/7',
+                    imageRef : 'assets/images/services-3.png',
+                    link: 'computer_park_supervision'
+                } %}
+            {% include 'common/common_portfolio.html.twig'  with
+                {
+                    title : 'Sécurité de votre réseau et de vos données',
+                    imageRef : 'assets/images/services-4.png',
+                    link: 'computer_park_supervision'
+                } %}
+            {% include 'common/common_portfolio.html.twig'  with
+                {
+                    title : 'Gestion intégrale de votre messagerie pro',
+                    imageRef : 'assets/images/services-6.png',
+                    link: 'computer_park_supervision'
+                } %}
+            {% include 'common/common_portfolio.html.twig'  with
+                {
+                    title : 'Optimisation de votre infrastructure it',
+                    imageRef : 'assets/images/services-5.png',
+                    link: 'computer_park_supervision'
+                } %}
+
+          {% include 'common/common_portfolio.html.twig'  with
+                {
+                    title : 'Expertise d\'une entreprise certifiée',
+                    imageRef : 'assets/images/services-7.png',
+                    link: 'computer_park_supervision'
+                } %}
+
+            {% include 'common/common_portfolio.html.twig'  with
+                {
+                    title : 'Expertise d\'une entreprise certifiée',
+                    imageRef : 'assets/images/services-7.png',
+                    link: 'computer_park_supervision'
+                } %}
         </div>
-      </div>
-      <div class="col-lg-4 col-md-6 col-sm-9">
-        <div class="services-item mt-80">
-          <div class="services-thumb">
-            <img src="{{ asset('assets/images/services-1.png') }}" alt="">
-          </div>
-          <div class="services-item-content">
-            <i class="flaticon-delivery"></i>
-            <h6 class="title">MAINTENANCE </br>INFORMATIQUE </br>DES PME</h6>
-            <a href="{{ path('computer_maintance') }}">en savoir plus </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 col-sm-9">
-        <div class="services-item mt-80">
-          <div class="services-thumb">
-            <img src="assets/images/services-2.png" alt="">
-          </div>
-          <div class="services-item-content">
-            <i class="flaticon-atm"></i>
-            <h6 class="title">INFOGÉRANCE  DE VOS<br> POSTES  ET SERVEURS</h6>
-            <a href="{{ path('computer_park_supervision') }}">en savoir plus</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 col-sm-9">
-        <div class="services-item mt-80">
-          <div class="services-thumb">
-            <img src="assets/images/services-3.png" alt="">
-          </div>
-          <div class="services-item-content">
-            <i class="flaticon-protection"></i>
-            <h5 class="title">SUPERVISION DE VOTRE <br>PARC INFORMATIQUE 24/7</h5>
-            <a href="#">en savoir plus </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 col-sm-9">
-        <div class="services-item mt-80">
-          <div class="services-thumb">
-            <img src="assets/images/services-4.png" alt="">
-          </div>
-          <div class="services-item-content">
-            <i class="flaticon-plus"></i>
-            <h5 class="title">SÉCURITÉ DE VOTRE <br>RÉSEAU ET DE VOS DONNÉES</h5>
-            <a href="#">en savoir plus </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 col-sm-9">
-        <div class="services-item mt-80">
-          <div class="services-thumb">
-            <img src="assets/images/services-5.png" alt="">
-          </div>
-          <div class="services-item-content">
-            <i class="flaticon-dial-pad"></i>
-            <h5 class="title">OPTIMISATION DE VOTRE <br>INFRASTRUCTURE IT</h5>
-            <a href="#">en savoir plus </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 col-sm-9">
-        <div class="services-item mt-80">
-          <div class="services-thumb">
-            <img src="assets/images/services-6.png" alt="">
-          </div>
-          <div class="services-item-content">
-            <i class="flaticon-envelope"></i>
-            <h5 class="title">GESTION INTÉGRALE DE<br> VOTRE MESSAGERIE PRO</h5>
-            <a href="#">en savoir plus </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 col-sm-9">
-        <div class="services-item mt-80">
-          <div class="services-thumb">
-            <img src="assets/images/services-7.png" alt="">
-          </div>
-          <div class="services-item-content">
-            <i class="flaticon-graphs"></i>
-            <h5 class="title">EXPERTISE D’UNE <br>ENTREPRISE CERTIFIÉE</h5>
-            <a href="#">en savoir plus </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 col-sm-9">
-        <div class="services-item mt-80">
-          <div class="services-thumb">
-            <img src="assets/images/services-8.png" alt="">
-          </div>
-          <div class="services-item-content">
-            <i class="flaticon-star"></i>
-            <h5 class="title">EXPERTISE D’UNE <br>ENTREPRISE CERTIFIÉE</h5>
-            <a href="#">en savoir plus </a>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
 </section>

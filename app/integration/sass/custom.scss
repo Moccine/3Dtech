@@ -1,9 +1,9 @@
-
 /* ---- Home ---- */
-.faq-form.ask-quote{
-  .row{
+.faq-form.ask-quote {
+  .row {
     padding-top: 15px;
     padding-bottom: 15px;
+
     textarea {
       resize: none;
       height: 200px;
@@ -11,10 +11,12 @@
     }
   }
 }
+
 button#ask_of_quote_submit, button#submit {
   width: 100%;
 }
-.discover-all{
+
+.discover-all {
   .services-thumb {
     overflow: hidden;
     z-index: 1;
@@ -24,23 +26,27 @@ button#ask_of_quote_submit, button#submit {
     overflow: hidden;
   }
 }
-.all-brand{
-  .brand-item{
+
+.all-brand {
+  .brand-item {
     width: 210px;
     height: 118px !important;
     overflow: hidden;
   }
 }
-.contact-items{
-  ul{
+
+.contact-items {
+  ul {
     width: 370px;
     height: 90px;
   }
-  .main-btn{
+
+  .main-btn {
     border: 0.5px solid #b2b2b2;
   }
 }
-.computer-maintenance{
+
+.computer-maintenance {
   .services-3-area .section-title .nav li a {
     margin: 0;
     padding: 0;
@@ -49,7 +55,35 @@ button#ask_of_quote_submit, button#submit {
     padding: 0px 30px;
     font-size: 18px;
     font-weight: 600;
-    margin:0 -15px;
+    margin: 0 -15px;
 
+  }
+}
+
+.home-page {
+  .banner-area .banner-content .title {
+    font-size: 90px;
+    line-height: 80px;
+  }
+  .banner-area::before{
+    background-color: rgba(9, 64, 116, 0.5);
+  }
+  .pt-115 {
+    padding-top: 26px;
+  }
+  .blog-area .section-title {
+    padding-bottom: 20px;
+  }
+  .pb-120 {
+    padding-bottom: 30px;
+  }
+  .services-area {
+    background: #f2f5f8;
+    padding-top: 5px;
+    padding-bottom: 120px;
+  }
+  .services-area .services-content p {
+    padding-right: 50px;
+    padding-bottom: 10px;
   }
 }

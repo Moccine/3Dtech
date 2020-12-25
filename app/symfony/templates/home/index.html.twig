@@ -1,9 +1,12 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+  <div class="home-page">
   <!--====== BANNER PART START ======-->
   {% include 'common/banner_part_start.html.twig' %}
   <!--====== BANNER PART ENDS ======-->
-
+  <!--====== BLOG PART START ======-->
+  {% include 'common/blog_part.html.twig' %}
+  <!--====== BLOG PART ENDS ======-->
   <!--====== SERVICES PART START ======-->
   {% include 'common/services_part.html.twig' %}
   <!--====== SERVICES PART ENDS ======-->
@@ -32,11 +35,10 @@
   {% include 'common/team_part.html.twig' %}
   <!--====== TEAM PART ENDS ======-->
 
-  <!--====== BLOG PART START ======-->
-  {% include 'common/blog_part.html.twig' %}
-  <!--====== BLOG PART ENDS ======-->
+
 
   <!--====== SUBSCRIBE PART START ======-->
   {% include 'common/subcribe_part.html.twig' %}
   <!--====== SUBSCRIBE PART ENDS ======-->
+  </div>
 {% endblock %}

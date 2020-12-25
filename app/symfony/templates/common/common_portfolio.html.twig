@@ -1,0 +1,22 @@
+{% if imageRef is not defined %}
+  {%  set  imageRef = 'assets/images/services-1.png' %}
+{% endif %}
+{% if link is not defined %}
+  {%  set  link = 'computer_maintance' %}
+{% endif %}
+{% if title is not defined %}
+  {%  set  title = 'computer_maintance' %}
+{% endif %}
+
+<div class="col-lg-4 col-md-6 col-sm-9">
+  <div class="services-item mt-80">
+    <div class="services-thumb">
+      <img src="{{ asset(imageRef) }}" alt="">
+    </div>
+    <div class="services-item-content">
+      <a href="{{ path(link) }}">
+        <h6>{{ title }}</h6>
+      </a>
+    </div>
+  </div>
+</div>
