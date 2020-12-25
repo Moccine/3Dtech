@@ -97,7 +97,7 @@ class UserSubscriber implements EventSubscriberInterface
     public function onRegisteredConfirmed(UserEvent $event): void
     {
         $event->getUser()->setEnabled(true);
-
+       $user = $event->getUser();
         $this->em->flush();
         $template = $this->twig->render('security/enabled_mail.html.twig');
 
@@ -105,6 +105,17 @@ class UserSubscriber implements EventSubscriberInterface
             $event->getUser()->getEmail(),
             'enabled email',
             $template,
+            [],
+            []
+        );
+        $alertInscription = $this->twig->render('security/alert_new_inscription_mail.html.twig',
+        [
+            'user' => $user
+        ]);
+        $this->sender->deliver(
+            $_ENV['AGENCY_EMAIL'],
+            'nouvelle inscription',
+            $alertInscription,
             [],
             []
         );
