@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Entity\Traits\CreatedAtTrait;
 use App\Entity\Traits\IdentifiableTrait;
+use App\Entity\Traits\UpdatedAtTrait;
 use App\Repository\VoucherRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -12,10 +14,14 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
  * @ORM\DiscriminatorMap({"voucher" = "App\Entity\Voucher", "entry" = "App\Entity\Voucher\Entry", "release" = "App\Entity\Voucher\Release"})
+ * @ORM\HasLifecycleCallbacks()
  */
 class Voucher
 {
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
     use IdentifiableTrait;
+
     /**
      * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="vouchers")
      */

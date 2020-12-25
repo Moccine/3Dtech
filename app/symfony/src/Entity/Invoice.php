@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Entity\Traits\CreatedAtTrait;
 use App\Entity\Traits\IdentifiableTrait;
 use App\Entity\Traits\TimestampableTrait;
+use App\Entity\Traits\UpdatedAtTrait;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -20,11 +22,16 @@ use App\Entity\Client;
  * @ORM\Entity(repositoryClass="InvoiceRepository::class")
  * @ORM\HasLifecycleCallbacks
  * @Vich\Uploadable()
+ * @ORM\HasLifecycleCallbacks()
+ *
  */
 class Invoice
 {
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
     use IdentifiableTrait;
-    use TimestampableTrait;
+
+
     public const STATUS_EDITION = 'EDITION';
     public const STATUS_ARCHIVED = 'ARCHIVED';
     public const INVOICE_STATUS = [

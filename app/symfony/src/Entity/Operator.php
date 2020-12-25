@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Entity\Traits\CreatedAtTrait;
 use App\Entity\Traits\IdentifiableTrait;
+use App\Entity\Traits\UpdatedAtTrait;
 use App\Repository\OperatorRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -14,13 +16,15 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ORM\Entity(repositoryClass=OperatorRepository::class)
  * @UniqueEntity("email");
+ * @ORM\HasLifecycleCallbacks()
  */
 class Operator implements UserInterface
 {
     public const ROLE_OPERATOR = 'ROLE_OPERATOR';
 
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
     use IdentifiableTrait;
-
     /**
      * @ORM\Column(length=180, unique=true)
      */

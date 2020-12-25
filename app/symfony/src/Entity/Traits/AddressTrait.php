@@ -8,6 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 trait AddressTrait
 {
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
+    use IdentifiableTrait;
+
     /**
      * @ORM\Column(type="string", length=125, nullable=true)
      */

@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Entity\Traits\CodifiableTrait;
+use App\Entity\Traits\CreatedAtTrait;
 use App\Entity\Traits\IdentifiableTrait;
+use App\Entity\Traits\UpdatedAtTrait;
 use App\Repository\CouponRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -13,11 +15,15 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=CouponRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Coupon
 {
-    use IdentifiableTrait;
     use CodifiableTrait;
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
+    use IdentifiableTrait;
+
 
     /**
      * @ORM\Column(type="integer")

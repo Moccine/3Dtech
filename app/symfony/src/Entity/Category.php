@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Entity\Traits\CodifiableTrait;
+use App\Entity\Traits\CreatedAtTrait;
 use App\Entity\Traits\IdentifiableTrait;
+use App\Entity\Traits\UpdatedAtTrait;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -13,12 +15,15 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository", repositoryClass=CategoryRepository::class)
  * @UniqueEntity(fields={"code"})
+ * @ORM\HasLifecycleCallbacks()
+ *
  */
 class Category
 {
-    use IdentifiableTrait;
     use CodifiableTrait;
-
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
+    use IdentifiableTrait;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)

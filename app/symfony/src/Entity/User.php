@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Entity\Traits\CreatedAtTrait;
 use App\Entity\Traits\IdentifiableTrait;
+use App\Entity\Traits\UpdatedAtTrait;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -15,12 +17,15 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @UniqueEntity(fields={"email"})
+ * @ORM\HasLifecycleCallbacks()
  */
 class User implements UserInterface
 {
     public const ROLE_USER = 'ROLE_USER';
 
     use IdentifiableTrait;
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
 
     /**
      * @ORM\Column(length=180, unique=true)

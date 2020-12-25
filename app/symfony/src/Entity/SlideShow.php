@@ -3,7 +3,9 @@
 namespace App\Entity;
 
 use App\Entity\Traits\CodifiableTrait;
+use App\Entity\Traits\CreatedAtTrait;
 use App\Entity\Traits\IdentifiableTrait;
+use App\Entity\Traits\UpdatedAtTrait;
 use App\Repository\SlideShowRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -12,13 +14,15 @@ use App\Entity\Slider;
 
 /**
  * @ORM\Entity(repositoryClass=SlideShowRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class SlideShow
 {
     public const SLIDESHOW_HOMEPAGE = 'homepage';
 
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
     use IdentifiableTrait;
-
     /**
      * @ORM\OneToMany(targetEntity=Slider::class, mappedBy="slideshow", cascade={"persist"})
      */

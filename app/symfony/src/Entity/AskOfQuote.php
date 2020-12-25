@@ -2,24 +2,25 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\CreatedAtTrait;
+use App\Entity\Traits\IdentifiableTrait;
 use App\Entity\Traits\TimestampableTrait;
+use App\Entity\Traits\UpdatedAtTrait;
 use App\Repository\AskOfQuoteRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Faker\Provider\DateTime;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=AskOfQuoteRepository::class)
+ * @ORM\HasLifecycleCallbacks()
+ *
  */
 class AskOfQuote
 {
-    use TimestampableTrait;
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
+    use IdentifiableTrait;
+
 
 
     /**
@@ -85,11 +86,6 @@ class AskOfQuote
         $this->updatedAt = new \DateTime();
     }
 
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getMaterialNumber(): ?int
     {

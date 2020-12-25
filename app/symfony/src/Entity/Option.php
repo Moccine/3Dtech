@@ -4,13 +4,16 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Entity\Traits\CreatedAtTrait;
 use App\Entity\Traits\IdentifiableTrait;
+use App\Entity\Traits\UpdatedAtTrait;
 use App\Repository\OptionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=OptionRepository::class)
  * @ORM\Table(name="`option`")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Option
 {
@@ -24,8 +27,9 @@ class Option
         self::DEFAULT_AMOUNT_2 => 20,
     ];
 
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
     use IdentifiableTrait;
-
     /**
      * @ORM\Column(type="integer", nullable=true)
      */

@@ -4,7 +4,9 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Entity\Traits\AddressTrait;
+use App\Entity\Traits\CreatedAtTrait;
 use App\Entity\Traits\IdentifiableTrait;
+use App\Entity\Traits\UpdatedAtTrait;
 use App\Repository\QuotationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -12,12 +14,13 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=QuotationRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Quotation
 {
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
     use IdentifiableTrait;
-
-    //use AddressTrait;
 
     /**
      * @ORM\Column(type="string", length=255)

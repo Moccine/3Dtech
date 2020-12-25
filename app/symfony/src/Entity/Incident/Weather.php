@@ -5,15 +5,17 @@ declare(strict_types=1);
 namespace App\Entity\Incident;
 
 use App\Entity\Incident;
+use App\Entity\Traits\CreatedAtTrait;
 use App\Entity\Traits\IdentifiableTrait;
+use App\Entity\Traits\UpdatedAtTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity()
+ * @ORM\HasLifecycleCallbacks()
  */
 class Weather extends Incident
 {
-    use IdentifiableTrait;
 
     /**
      * @ORM\Column(type="string", length=255)

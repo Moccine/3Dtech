@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Entity\Traits\AddressTrait;
+use App\Entity\Traits\CreatedAtTrait;
 use App\Entity\Traits\IdentifiableTrait;
+use App\Entity\Traits\UpdatedAtTrait;
 use App\Repository\ClientRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -15,6 +17,8 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * @ORM\Entity(repositoryClass=ClientRepository::class)
+ * @ORM\HasLifecycleCallbacks()
+ *
  */
 class Client
 {
@@ -22,12 +26,14 @@ class Client
     public const TYPE_PROFESSIONAL = 'Entreprise';
 
     public static array $types = [
-        self::TYPE_INDIVIDUAL  => self::TYPE_INDIVIDUAL,
-        self::TYPE_PROFESSIONAL =>  self::TYPE_PROFESSIONAL
+        self::TYPE_INDIVIDUAL => self::TYPE_INDIVIDUAL,
+        self::TYPE_PROFESSIONAL => self::TYPE_PROFESSIONAL
     ];
 
+    use AddressTrait;
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
     use IdentifiableTrait;
-     use AddressTrait;
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -136,7 +142,7 @@ class Client
         return $this;
     }
 
-    public function getHomePhone():?string
+    public function getHomePhone(): ?string
     {
         return $this->homePhone;
     }
@@ -216,7 +222,7 @@ class Client
 
     public function __toString()
     {
-        return $this->company??$this->firstName;
+        return $this->company ?? $this->firstName;
     }
 
     /**

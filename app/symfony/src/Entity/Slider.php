@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\CreatedAtTrait;
 use App\Entity\Traits\IdentifiableTrait;
+use App\Entity\Traits\UpdatedAtTrait;
 use App\Repository\SliderRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
@@ -12,21 +14,24 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 /**
  * @ORM\Entity(repositoryClass=SliderRepository::class)
  * @Vich\Uploadable
+ * @ORM\HasLifecycleCallbacks()
  */
 class Slider
 {
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
     use IdentifiableTrait;
 
     /**
      * @Vich\UploadableField(mapping="slide_images", fileNameProperty="image")
      * @var File
      */
-    private  $file = null;
+    private $file = null;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private  $image;
+    private $image;
 
     /**
      * @ORM\ManyToOne(targetEntity=Slideshow::class, inversedBy="slides", cascade={"persist"})
@@ -38,15 +43,6 @@ class Slider
      */
     private string $title;
 
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private \DateTime $updatedAt;
-
-    public function getSlideshow(): ?Slideshow
-    {
-        return $this->slideshow;
-    }
 
     public function setSlideshow(Slideshow $slideshow): self
     {
@@ -97,11 +93,6 @@ class Slider
     public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
-    }
-
-    public function setUpdatedAt(?\DateTime $updatedAt): void
-    {
-        $this->updatedAt = $updatedAt;
     }
 
 }

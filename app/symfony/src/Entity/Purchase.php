@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Entity\Traits\CreatedAtTrait;
 use App\Entity\Traits\IdentifiableTrait;
+use App\Entity\Traits\UpdatedAtTrait;
 use App\Repository\PurchaseRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -12,6 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=PurchaseRepository::class)
  * @ORM\Table(name="`purchase`")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Purchase
 {
@@ -25,8 +28,9 @@ class Purchase
 
     public const DEFAULT_AMOUNT = 1;
 
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
     use IdentifiableTrait;
-
     /**
      * @ORM\Column(type="integer")
      */

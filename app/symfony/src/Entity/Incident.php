@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Entity\Traits\CreatedAtTrait;
 use App\Entity\Traits\IdentifiableTrait;
+use App\Entity\Traits\UpdatedAtTrait;
 use App\Repository\IncidentRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -13,14 +15,17 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
  * @ORM\DiscriminatorMap({"incident" = "App\Entity\Incident", "accident" = "App\Entity\Incident\Accident", "weather" = "App\Entity\Incident\Weather", "steal" = "App\Entity\Incident\Steal"})
+ * @ORM\HasLifecycleCallbacks()
+ *
  */
 class Incident
 {
     public const STATUS_IN_PROGRESS = 'in_progress';
     public const STATUS_CLOSE = 'close';
 
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
     use IdentifiableTrait;
-
     /**
      * @ORM\Column(type="string", length=255)
      */

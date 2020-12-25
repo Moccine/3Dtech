@@ -2,20 +2,21 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\CreatedAtTrait;
+use App\Entity\Traits\IdentifiableTrait;
+use App\Entity\Traits\UpdatedAtTrait;
 use App\Repository\QuotationLineRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=QuotationLineRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class QuotationLine
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
+    use IdentifiableTrait;
 
     /**
      * @ORM\OneToOne(targetEntity=Product::class, cascade={"persist", "remove"})
@@ -57,10 +58,6 @@ class QuotationLine
      */
     private $quotation;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getProduct(): ?Product
     {

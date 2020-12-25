@@ -3,12 +3,16 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Entity\Traits\CreatedAtTrait;
 use App\Entity\Traits\IdentifiableTrait;
+use App\Entity\Traits\UpdatedAtTrait;
 use App\Repository\TokenRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=TokenRepository::class)
+ * @ORM\HasLifecycleCallbacks()
+
  */
 class Token
 {
@@ -17,8 +21,9 @@ class Token
     public const TYPE_CONFIRM = 'confirm';
     public const TYPE_RESET = 'reset';
 
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
     use IdentifiableTrait;
-
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */

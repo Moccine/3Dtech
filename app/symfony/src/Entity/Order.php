@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Entity\Traits\CreatedAtTrait;
 use App\Entity\Traits\IdentifiableTrait;
+use App\Entity\Traits\UpdatedAtTrait;
 use App\Repository\OrderRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -15,6 +17,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=OrderRepository::class)
  * @ORM\Table(name="`order`")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Order
 {
@@ -31,8 +34,9 @@ class Order
         self::TYPE_QUOTATION => 'quotation',
     ];
 
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
     use IdentifiableTrait;
-
     /**
      * @ORM\OneToMany(targetEntity=Purchase::class, mappedBy="order", cascade={"persist"})
      * @Assert\Valid()
@@ -71,11 +75,6 @@ class Order
      */
     private string $type = self::TYPE_BILL;
 
-    /**
-     * @ORM\Column(type="datetime")
-     * @Gedmo\Timestampable(on="create")
-     */
-    private \DateTimeInterface $createdAt;
 
     /**
      * @ORM\OneToMany(targetEntity=Voucher::class, mappedBy="border", cascade={"persist"})
@@ -169,18 +168,6 @@ class Order
     public function setType(string $type): self
     {
         $this->type = $type;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): \DateTimeInterface
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
-    {
-        $this->createdAt = $createdAt;
 
         return $this;
     }

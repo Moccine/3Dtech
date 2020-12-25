@@ -4,17 +4,21 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Entity\Traits\CodifiableTrait;
+use App\Entity\Traits\CreatedAtTrait;
 use App\Entity\Traits\IdentifiableTrait;
+use App\Entity\Traits\UpdatedAtTrait;
 use App\Repository\ParameterRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=ParameterRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Parameter
 {
-    use IdentifiableTrait;
-    use CodifiableTrait;
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
+    use IdentifiableTrait;    use CodifiableTrait;
 
     /**
      * @ORM\Column(type="string", length=255)

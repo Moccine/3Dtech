@@ -4,19 +4,24 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Entity\Traits\CreatedAtTrait;
 use App\Entity\Traits\IdentifiableTrait;
+use App\Entity\Traits\UpdatedAtTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=App\Repository\AdminRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Admin implements UserInterface
 {
     public const ROLE_ADMIN = 'ROLE_ADMIN';
 
     use IdentifiableTrait;
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
 
     /**
      * @ORM\Column(type="string")

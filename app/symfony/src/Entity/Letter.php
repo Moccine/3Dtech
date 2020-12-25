@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Entity\Traits\CodifiableTrait;
+use App\Entity\Traits\CreatedAtTrait;
 use App\Entity\Traits\IdentifiableTrait;
+use App\Entity\Traits\UpdatedAtTrait;
 use App\Repository\LetterRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -13,11 +15,14 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * @ORM\Entity(repositoryClass=LetterRepository::class)
  * @UniqueEntity("code")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Letter
 {
-    use IdentifiableTrait;
     use CodifiableTrait;
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
+    use IdentifiableTrait;
 
     /**
      * @ORM\Column(type="text")
@@ -33,11 +38,6 @@ class Letter
      * @ORM\Column(type="string", length=255)
      */
     private string $subject;
-
-    public function getId(): int
-    {
-        return $this->id;
-    }
 
     public function getContent(): string
     {

@@ -3,20 +3,22 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Entity\Traits\CreatedAtTrait;
+use App\Entity\Traits\IdentifiableTrait;
+use App\Entity\Traits\UpdatedAtTrait;
 use App\Repository\DeadlinesRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=DeadlinesRepository::class)
+ * @ORM\HasLifecycleCallbacks()
+ *
  */
 class Deadlines
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
+    use IdentifiableTrait;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -37,12 +39,6 @@ class Deadlines
      * @ORM\Column(type="date", nullable=true)
      */
     private $endDate;
-
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getName(): ?string
     {
