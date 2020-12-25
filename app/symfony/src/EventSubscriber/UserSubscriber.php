@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\EventSubscriber;
 
+use App\Entity\Client;
 use App\Entity\Order;
 use App\Entity\Token;
 use App\Event\UserEvent;
@@ -78,10 +79,15 @@ class UserSubscriber implements EventSubscriberInterface
         ]);
 
         $url = $this->urlGenerator->generate('registration_confirm', ['value' => $token->getValue()], UrlGeneratorInterface::ABSOLUTE_URL);
-        $template = $this->twig->render('security/comfirm_mail.html.twig', ['url' => $url]);
+        $template = $this->twig->render('security/comfirm_mail.html.twig',
+            [
+                'url' => $url,
+                'user' => $event->getUser(),
+
+            ]);
         $this->sender->deliver(
             $event->getUser()->getEmail(),
-            'mail confirmation',
+            'Inscription client',
             $template,
             [],
             []
@@ -97,7 +103,7 @@ class UserSubscriber implements EventSubscriberInterface
     public function onRegisteredConfirmed(UserEvent $event): void
     {
         $event->getUser()->setEnabled(true);
-       $user = $event->getUser();
+        $user = $event->getUser();
         $this->em->flush();
         $template = $this->twig->render('security/enabled_mail.html.twig');
 
@@ -108,17 +114,23 @@ class UserSubscriber implements EventSubscriberInterface
             [],
             []
         );
-        $alertInscription = $this->twig->render('security/alert_new_inscription_mail.html.twig',
-        [
+        $client = $this->em->getRepository(Client::class)->findBy([
             'user' => $user
         ]);
-        $this->sender->deliver(
-            $_ENV['AGENCY_EMAIL'],
-            'nouvelle inscription',
-            $alertInscription,
-            [],
-            []
-        );
+        if ($client instanceof Client) {
+            $alertInscription = $this->twig->render('security/alert_new_inscription_mail.html.twig',
+                [
+                    'user' => $user
+                ]);
+            $this->sender->deliver(
+                $_ENV['AGENCY_EMAIL'],
+                'nouvelle inscription',
+                $alertInscription,
+                [],
+                []
+            );
+        }
+
     }
 
     /**

@@ -47,6 +47,7 @@
   <p>
     Bonjour une nouvelle inscription vient d'être réaliser
   </p>
+{% if client is defined %}
 <ul>
   <li>Nom : {{ client.firstName }}</li>
   <li>Prenom : {{ client.lastName }}</li>
@@ -54,5 +55,6 @@
   <li>Entreprise : {{ client.company }}</li>
   <li>Téléphone : {{ client.mobilephone }}</li>
 </ul>
+{% endif %}
 </body>
 </html>

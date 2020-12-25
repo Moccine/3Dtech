@@ -45,13 +45,28 @@ class TestMailCommand extends Command
             $subject = 'demande de devis';
             /** @var Client $client */
             $client = $this->em->getRepository(Client::class)->find(1);
+            $user = $this->em->getRepository(User::class)->find(1);
             $alertInscription = $this->sender->doTemplate('security/alert_new_inscription_mail.html.twig', [
                 'client' => $client
             ]);
-            $this->sender->deliver(
+           /* $this->sender->deliver(
                 $_ENV['AGENCY_EMAIL'],
                 'nouvelle inscription',
                 $alertInscription,
+                [],
+                []
+            );*/
+
+            $template = $this->sender->doTemplate('security/comfirm_mail.html.twig',
+                [
+                    'url' => '$url',
+                    'user' => $user,
+
+                ]);
+            $this->sender->deliver(
+                $user->getEmail(),
+                'Inscription client',
+                $template,
                 [],
                 []
             );
