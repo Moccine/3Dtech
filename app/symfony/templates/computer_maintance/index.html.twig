@@ -3,6 +3,7 @@
 {% block title %}Hello MaintenanceParkController!{% endblock %}
 
 {% block body %}
+<div class="computer-maintenance">
     <div class="page-title-area d-flex align-items-center bg_cover"
          style="background-image: url({{ asset('assets/images/page-title-bg.jpg') }});">
         <div class="container">
@@ -13,8 +14,8 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="index.html">
-                                        Les 6 services inclus dans votre pack maintenance informatique </a></li>
+                                    <a href="#">
+                                        Les services inclus dans votre pack maintenance informatique </a></li>
                                 <li class="breadcrumb-item active" aria-current="page">en profiter</li>
                             </ol>
                         </nav>
@@ -47,12 +48,15 @@
                             administration, rapports et suivis.
                         </p>
                         <p>
-                            Les opérations de maintenance informatique viennent gérer tant les équipements réseaux, les
-                            postes, les serveurs, les systèmes d’exploitations et les divers applicatifs utiles à votre
+                            Les opérations de maintenance informatique viennent gérer tant les équipements réseaux,
+                            les
+                            postes, les serveurs, les systèmes d’exploitations et les divers applicatifs utiles à
+                            votre
                             entreprise.
                         </p>
                         <p>
-                            Plus que cela ARESCOM c’est aussi l’optimisation et la sécurisation de votre infrastructure
+                            Plus que cela ARESCOM c’est aussi l’optimisation et la sécurisation de votre
+                            infrastructure
                             avec une équipe d’ingénieurs dédiée à l’évolution de l’ensemble de votre SI.
                         </p>
                         <h6>Travaillez sereinement grâce à un système informatique disponible et à jour ! </h6>
@@ -61,72 +65,115 @@
             </div>
         </div>
     </section>
-    <section class="fun-facts-area fun-facts-about">
+    <section class="services-3-area services-page">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 col-md-9">
-                    <div class="fun-facts-content">
-                        <span class=" wow fadeInLeft animated" data-wow-duration="1000ms"
-                              data-wow-delay="0ms">3DTECH</span>
-                        <h3 class="title wow fadeInLeft animated" data-wow-duration="1000ms" data-wow-delay="300ms">
-                            DEVIS GRATUIT</h3>
-                        <p class=" wow fadeInLeft animated" data-wow-duration="1000ms" data-wow-delay="600ms">
-                            DEVIS GRATUIT ET SANS ENGAGEMENT DES QUESTIONS ? BESOIN D’UN DEVIS GRATUIT ET SANS
-                            ENGAGEMENT ?
-                            PARLEZ-EN À UN EXPERT CHEZ ARESCOM
-                        </p>
-                        <a class="main-btn wow fadeInUp animated" data-wow-duration="1000ms" data-wow-delay="900ms"
-                           href="#">Demander un devis <i class="flaticon-right-arrow"></i></a>
+            <div class="row justify-content-start">
+                <div class="col-lg-8">
+                    <div class="section-title">
+                        <span>Nos Services</span>
+                        <h4>Les services inclus dans votre pack maintenance informatique </h4>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="fun-facts-progress">
-                        <div class="progress-item d-block d-sm-flex justify-content-start justify-content-lg-end">
-                            <div class="item">
-                                <div class="box">
-                                    <div id="circle5"></div>
-                                    <h3 class="title"><span class="counter">400</span>%</h3>
-                                </div>
-                                <div class="content text-center">
-                                    <span>PME nous font confiance à nos expertises</span>
-                                </div>
-                            </div>
-                            <div class="item ml-120">
-                                <div class="box">
-                                    <div id="circle6"></div>
-                                    <h3 class="title">+<span class="counter">40</span>%</h3>
-                                </div>
-                                <div class="content text-center">
-                                    <span>de chiffre d’affaires en 2019 </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="progress-item d-block d-sm-flex justify-content-start justify-content-lg-end mt-45">
-                            <div class="item">
-                                <div class="box">
-                                    <div id="circle7"></div>
-                                    <h3 class="title">+<span class="counter">62</span>%</h3>
-                                </div>
-                                <div class="content text-center">
-                                      <span>maintenus et supervisés 24h/24, 7J/7 </span>
-                                </div>
-                            </div>
-                            <div class="item ml-120">
-                                <div class="box">
-                                    <div id="circle8"></div>
-                                    <h3 class="title"><span class="counter">85</span>%</h3>
-                                </div>
-                                <div class="content text-center">
-                                    <span>Projects Completed </span>
-                                </div>
-                            </div>
-                        </div>
+                <div class="col-lg-12">
+                    <div class="section-title text-center">
+                        <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="pills-home-tab"
+                                   data-toggle="pill" href="#pills-home" role="tab"
+                                   aria-controls="pills-home" aria-selected="true">
+                                    Hotline assistance
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-profile-tab"
+                                   data-toggle="pill" href="#pills-profile" role="tab"
+                                   aria-controls="pills-profile" aria-selected="false">
+                                    Supervision 24h/24 7j/7
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-contact-tab"
+                                   data-toggle="pill" href="#pills-contact" role="tab"
+                                   aria-controls="pills-contact"
+                                   aria-selected="false">
+                                    Intervention sur site
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-car-tab"
+                                   data-toggle="pill" href="#pills-car" role="tab"
+                                   aria-controls="pills-car" aria-selected="false">
+                                    Securité et sauvegarde
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <div class="services-3-box pt-50">
+        <div class="container">
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                     aria-labelledby="pills-home-tab">
+                    <div class="row justify-content-center">
+                        {% include 'common/computer_maint_tab.html.twig' with
+                            {
+                                minTitle : 'Disponibilté',
+                                imageRef: 'assets/images/3dtech-hotline-informatique-2.jpg',
+                                title : 'Hotline et télémaintenance illimitée par nos techniciens de proximité',
+                                description : 'Joignable et réactif, notre support technique est à votre disposition pour
+                                tous incidents ou demandes de vos collaborateurs. Vous disposez d’une ligne directe pour
+                                joindre un technicien de support à distance, d’un espace client en ligne (support.arescom.fr) pour créer et
+                                suivre vos demandes ainsi qu’un email dédié. Vous êtes directement mis en contact avec notre équipe de techniciens hotline
+                                ou recontacté en moins de 30 minutes en cas de pic d’activités.',
+                            } %}
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <div class="row justify-content-center">
+                        {% include 'common/computer_maint_tab.html.twig' with
+                            {
+                                minTitle : 'Proactivité',
+                                imageRef: 'assets/images/3dtech-supervision-serveur-informatique.jpg',
+                                title : 'Supervision instantanée 24H/24, 7j/7 de votre parc informatique',
+                                description : 'Nous assurons une prestation de haute qualité via une maintenance préventive et ce grâce à nos outils de supervision instantanée qui nous remontent des informations en temps réel sur l’état de votre parc informatique (postes, serveurs et périphériques).
+Ainsi, nous sommes dans la mesure de vous garantir le bon fonctionnement de votre infrastructure, assurer la disponibilité de vos outils et la continuité de votre activité au quotidien.',
+                            } %}
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                    <div class="row justify-content-center">
+                        {% include 'common/computer_maint_tab.html.twig' with
+                            {
+                                minTitle : 'Proximité',
+                                imageRef: 'assets/images/3dtech-depannage-informatique.jpg',
+                                title : 'Déplacements et interventions sur site par nos techniciens et ingénieurs',
+                                description : 'Joignable et réactif, notre support technique est à votre disposition pour
+                                tous incidents ou demandes de vos collaborateurs. Vous disposez d’une ligne directe pour
+                                joindre un technicien de support à distance, d’un espace client en ligne (support.arescom.fr) pour créer et suivre vos demandes ainsi qu’un email dédié.
+Vous êtes directement mis en contact avec notre équipe de techniciens hotline ou recontacté en moins de 30 minutes en cas de pic d’activités.',
+                            } %}                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-car" role="tabpanel" aria-labelledby="pills-car-tab">
+                    <div class="row justify-content-center">
+                        {% include 'common/computer_maint_tab.html.twig' with
+                            {
+                                imageRef: 'assets/images/3dtech-securite-informatique-2.jpg',
+                                title : 'Gestion des sauvegardes et sécurité de votre réseau (antivirus, firewall, antispam)',
+                                minTitle : 'Sécurité',
+                                description : 'Dès le démarrage de notre prestation nos ingénieurs mettent en place une stratégie de sécurité et de sauvegarde afin de prévenir les risques potentiels.
+Ainsi vos données sont protégées et peuvent être restaurées en cas de problème. Nous utilisons des antivirus managés directement depuis nos consoles de supervision et nous mettons en place une politique de sauvegarde efficace (disque dure externe, serveur de stockage, sauvegarde en data center) : Votre SI est dès lors inébranlable.',
+                            } %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     {% include 'common/brand_section.html.twig' %}
     {% include 'common/subcribe_part.html.twig' %}
 
-{% endblock %}
+    {% endblock %}
