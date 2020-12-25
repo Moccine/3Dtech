@@ -64,7 +64,7 @@ class TestMailCommand extends Command
 
                 ]);
             $this->sender->deliver(
-                $user->getEmail(),
+                $_ENV['AGENCY_EMAIL'],
                 'Inscription client',
                 $template,
                 [],
