@@ -1,5 +1,6 @@
 app:
   name: '3D TECHNOLOGIE SYSTEM IDF'
+  ask_quote: 'Demander un devis'
   vat:
     number: 'Numéro TVA FR12889861704'
   address:
@@ -71,6 +72,7 @@ app:
     updatePasswordError: 'Une erreur s''est produite lors de la mise à jour de votre mot passe'
     subscriptionNewsletter: 'Votre inscription à la newsletter a bien été prise en compte.'
     closeIncident: 'L''incident a bien été cloturé'
+  learn_more: 'Lire la suite'
 invoice:
   number: 'N°'
   date: 'Date'
