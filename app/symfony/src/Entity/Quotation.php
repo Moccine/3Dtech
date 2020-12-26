@@ -42,29 +42,35 @@ class Quotation
      */
     private ?string $reference;
 
-    private ?string $title;
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private ?string $payment;
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private ?string $address;
-    /**
-     * @ORM\Column(type="float", nullable=true)
-     */
-    private ?float $amount;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
-    private ?float $totalHt;
+    private ?float $amount = 0;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
-    private ?float $quantity;
+    private ?float $totalHt = 0;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private ?float $quantity = 1;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private ?float $deposit;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private ?float $discount;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -75,11 +81,6 @@ class Quotation
      * @ORM\Column(type="boolean", nullable=true)
      */
     private bool $status = false;
-
-    /**
-     * @ORM\Column(type="float", nullable=true)
-     */
-    private ?float $deposit;
 
     /**
      * @ORM\OneToOne(targetEntity=Deadlines::class, cascade={"persist", "remove"})
@@ -102,7 +103,7 @@ class Quotation
     private $client;
 
     /**
-     * @ORM\OneToMany(targetEntity=QuotationLine::class, mappedBy="quotation")
+     * @ORM\OneToMany(targetEntity=QuotationLine::class, mappedBy="quotation", cascade={"persist", "remove"}))
      */
     private $quotationLine;
 

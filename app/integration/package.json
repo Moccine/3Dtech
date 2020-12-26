@@ -21,6 +21,8 @@
     },
     "dependencies": {
         "bootstrap": "^4.5.3",
+        "bootstrap-datepicker": "1.7.0",
+        "bootstrap-datepicker-webpack": "^1.7.0-dev",
         "jquery": "^3.5.1",
         "lodash": "^4.17.20",
         "material-design-iconic-font": "^2.2.0",
