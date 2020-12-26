@@ -14,15 +14,14 @@ class QuotationLineType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-           //->add('unitPrice')
-            ->add('discount')
-           // ->add('totalHt')
-           // ->add('amount')
-            ->add('deposit')
-           ->add('quantity')
             ->add('product', EntityType::class, [
                 'class' => Product::class
             ])
+            ->add('quantity')
+             ->add('unitPrice')
+              ->add('discount')
+              ->add('totalHt')
+              ->add('amount')
         ;
     }
 

@@ -24,6 +24,7 @@
         "bootstrap-datepicker": "1.7.0",
         "bootstrap-datepicker-webpack": "^1.7.0-dev",
         "jquery": "^3.5.1",
+        "jquery-nice-select": "^1.1.0",
         "lodash": "^4.17.20",
         "material-design-iconic-font": "^2.2.0",
         "popper.js": "^1.16.1",

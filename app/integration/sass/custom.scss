@@ -67,28 +67,37 @@ button#ask_of_quote_submit, button#submit {
     font-size: 90px;
     line-height: 80px;
   }
-  .banner-area::before{
+
+  .banner-area::before {
     background-color: rgba(9, 64, 116, 0.5);
   }
+
   .pt-115 {
     padding-top: 26px;
   }
+
   .blog-area .section-title {
     padding-bottom: 20px;
   }
+
   .pb-120 {
     padding-bottom: 30px;
   }
+
   .services-area {
     background: #f2f5f8;
     padding-top: 5px;
     padding-bottom: 45px;
   }
+
   .services-area .services-content p {
     padding-right: 50px;
     padding-bottom: 10px;
   }
 }
-.profile-home{
 
-}
+.quotation-form {
+  select {
+    display: block;
+  }
+  }
