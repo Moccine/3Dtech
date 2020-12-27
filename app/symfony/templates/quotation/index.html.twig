@@ -21,80 +21,93 @@
     <div class="container pt-25 pb-25">
         <div class="quotation-form">
             <div class="row">
-                <div class="col-lg-12">
-                    {{ form_start(form) }}
+            </div>
+        </div>
+        <div class="faq-box-area faq-box-about">
+            <div class="container">
+                <div class="row">
                     <div class="col-lg-12">
-                        <div class="col-lg-6">
-                            {{ form_row(form.status) }}
-                        </div>
-                        <div class="col-lg-6">
-                            {{ form_row(form.name) }}
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        {{ form_row(form.reference) }}
-                    </div>
-
-                    <div class="col-lg-6">
-                        {{ form_row(form.designation) }}
-                    </div>
-                    <div class="col-lg-6">
-                        {{ form_row(form.quotationDate) }}
-                    </div>
-                    <div class="col-lg-6">
-                        {{ form_row(form.deadline) }}
-                    </div>
-                    <div class="col-lg-6">
-                        {{ form_row(form.payment) }}
-                    </div>
-                    <div class="col-lg-6">
-                        {{ form_row(form.amount) }}
-                    </div>
-                    <div class="col-lg-6">
-                        {{ form_row(form.quantity) }}
-                    </div>
-
-                    <div class="col-lg-6">
-                        {{ form_row(form.deposit) }}
-                    </div>
-                    <div class="col-lg-6">
-                        {{ form_row(form.description) }}
-                    </div>
-                    <div class="col-lg-6">
-                        {{ form_row(form.totalHt) }}
-                    </div>
-                    <div class="col-lg-6">
-                        <ul id="option-fields-list" class="options-block"
-                            data-prototype="{{ form_widget(form.quotationLine.vars.prototype)|e }}"
-                            data-widget-quotationLine="{{ '<li class="list-unstyled"></li>'|e }}"
-                            data-widget-counter="{{ form.quotationLine|length }}">
-                            {% for quotationLineField in form.quotationLine %}
-                                <li class="list-unstyled">
-                                    <div class="col-auto">{{ form_errors(quotationLineField) }}</div>
-                                    <div class="col-lg-6">
-                                        {{ form_widget(quotationLineField.product) }}
+                        <div class="faq-box white-bg">
+                            <div class="row">
+                            </div>
+                            <div class="faq-form">
+                                <div class="faq-title">
+                                    {{ form_start(form) }}
+                                    <div class="input-box mb-15">
+                                        {{ form_row(form.status) }}
                                     </div>
-                                    <div class="col-lg-6">
-                                        {{ form_widget(quotationLineField.quantity) }}
+                                    <div class="input-box">
+                                        {{ form_row(form.deadline) }}
                                     </div>
-                                    <div class="col-md-6"><a href="javacript:void(0)" class="delete-link-edit"
-                                                             style="float: right">
-                                            <i class="icon-trash" data-toggle="tooltip"
-                                               data-placement="top"
-                                               title="{{ 'app.label.product_delete'|trans }}"></i>
-                                        </a></div>
-                                </li>
-                            {% endfor %}
-                        </ul>
+                                    <div class="input-box">
+                                        {{ form_row(form.name) }}
+                                    </div>
+                                    <div class="input-box">
+                                    {{ form_row(form.reference) }}
+                                    </div>
+                                    <div class="input-box">
+                                    {{ form_row(form.designation) }}
+                                    </div>
+                                    <div class="input-box">
+                                    {{ form_row(form.quotationDate) }}
+                                    </div>
+                                    <div class="input-box">
+                                    {{ form_row(form.payment) }}
+                                    </div>
+                                    <div class="input-box">
+                                    {{ form_row(form.amount) }}
+                                    </div>
+                                    <div class="input-box">
+                                    {{ form_row(form.quantity) }}
+                                    </div>
+                                    <div class="input-box">
+                                    {{ form_row(form.deposit) }}
+                                    </div>
+                                        <div class="input-box">
+                                        {{ form_row(form.description) }}
+                                        </div>
+                                    <div class="input-box">
+                                    {{ form_row(form.totalHt) }}
+                                    </div>
+                                    <ul id="option-fields-list" class="options-block"
+                                        data-prototype="{{ form_widget(form.quotationLine.vars.prototype)|e }}"
+                                        data-widget-quotationLine="{{ '<li class="list-unstyled"></li>'|e }}"
+                                        data-widget-counter="{{ form.quotationLine|length }}">
+                                        {% for quotationLineField in form.quotationLine %}
+                                            <li class="list-unstyled">
+                                                <div class="col-auto">{{ form_errors(quotationLineField) }}</div>
+                                                <div class="cinput-box">
+                                                    {{ form_widget(quotationLineField.product) }}
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    {{ form_widget(quotationLineField.quantity) }}
+                                                </div>
+                                                <div class="input-box"><a href="javacript:void(0)"
+                                                                         class="delete-link-edit"
+                                                                         style="float: right">
+                                                        <i class="icon-trash" data-toggle="tooltip"
+                                                           data-placement="top"
+                                                           title="{{ 'app.label.product_delete'|trans }}"></i>
+                                                    </a></div>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                {{ form(form) }}
 
+                            </div>
 
+                            {{ form_end(form) }}
+                        </div>
                     </div>
-                    {{ form(form) }}
-
-                    {{ form_end(form) }}
                 </div>
             </div>
         </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
     </div>
     {% include 'common/brand_section.html.twig' %}
     {% include 'common/subcribe_part.html.twig' %}

@@ -25,7 +25,7 @@ class QuotationType extends AbstractType
         $builder
             ->add('status', ChoiceType::class, [
                 'label' => false,
-                //'attr' => ['class' => 'wide'],
+                'attr' => ['class' => 'wide'],
 
                 'choices' => [
                     'en cours' => 1,
@@ -58,7 +58,7 @@ class QuotationType extends AbstractType
             ->add('deadline', EntityType::class, [
                 'class' => Deadlines::class,
                 'label' => false,
-                // 'attr' => ['class' => 'wide'],
+                 'attr' => ['class' => 'wide'],
 
             ])
             ->add('payment', ChoiceType::class, [
@@ -68,11 +68,19 @@ class QuotationType extends AbstractType
                     'class' => 'wide client-type'
                 ],
             ])
-            ->add('amount', MoneyType::class,)
-            ->add('totalHt', MoneyType::class)
-            ->add('quantity', IntegerType::class)
+            ->add('amount', MoneyType::class, [
+                'label' => false,
+            ])
+            ->add('totalHt', MoneyType::class, [
+                'label' => false,
+            ])
+            ->add('quantity', IntegerType::class, [
+                'label' => false,
+            ])
 
-            ->add('deposit')
+            ->add('deposit', MoneyType::class, [
+                'label' => false,
+            ])
             ->add('description', TextareaType::class)
             ->add('quotationLine', CollectionType::class, [
                 'entry_type' => QuotationLineType::class,
