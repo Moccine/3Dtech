@@ -28,47 +28,75 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="faq-box white-bg">
-                            <div class="row">
-                            </div>
                             <div class="faq-form">
                                 <div class="faq-title">
                                     {{ form_start(form) }}
-                                    <div class="input-box mb-15">
-                                        {{ form_row(form.status) }}
-                                    </div>
-                                    <div class="input-box">
-                                        {{ form_row(form.deadline) }}
-                                    </div>
-                                    <div class="input-box">
-                                        {{ form_row(form.name) }}
-                                    </div>
-                                    <div class="input-box">
-                                    {{ form_row(form.reference) }}
-                                    </div>
-                                    <div class="input-box">
-                                    {{ form_row(form.designation) }}
-                                    </div>
-                                    <div class="input-box">
-                                    {{ form_row(form.quotationDate) }}
-                                    </div>
-                                    <div class="input-box">
-                                    {{ form_row(form.payment) }}
-                                    </div>
-                                    <div class="input-box">
-                                    {{ form_row(form.amount) }}
-                                    </div>
-                                    <div class="input-box">
-                                    {{ form_row(form.quantity) }}
-                                    </div>
-                                    <div class="input-box">
-                                    {{ form_row(form.deposit) }}
-                                    </div>
-                                        <div class="input-box">
-                                        {{ form_row(form.description) }}
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="input-box mb-15">
+                                                {{ form_row(form.status) }}
+                                            </div>
                                         </div>
-                                    <div class="input-box">
-                                    {{ form_row(form.totalHt) }}
-                                    </div>
+                                        <div class="col-lg-6">
+                                            <div class="input-box mb-15">
+                                                {{ form_row(form.deadline) }}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="input-box">
+                                                {{ form_row(form.name) }}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="input-box">
+                                                {{ form_row(form.reference) }}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="input-box">
+                                                {{ form_row(form.designation) }}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="input-box">
+                                                {{ form_row(form.quotationDate) }}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="input-box">
+                                                {{ form_row(form.payment) }}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="input-box">
+                                                {{ form_row(form.amount) }}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="input-box">
+                                                {{ form_row(form.quantity) }}
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-lg-6">
+                                            <div class="input-box">
+                                                {{ form_row(form.deposit) }}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="input-box">
+                                                {{ form_row(form.totalHt) }}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <div class="input-box">
+                                                {{ form_row(form.description) }}
+                                            </div>
+                                        </div>
+                                    </div>{# end Row #}
                                     <ul id="option-fields-list" class="options-block"
                                         data-prototype="{{ form_widget(form.quotationLine.vars.prototype)|e }}"
                                         data-widget-quotationLine="{{ '<li class="list-unstyled"></li>'|e }}"
@@ -76,15 +104,19 @@
                                         {% for quotationLineField in form.quotationLine %}
                                             <li class="list-unstyled">
                                                 <div class="col-auto">{{ form_errors(quotationLineField) }}</div>
-                                                <div class="cinput-box">
-                                                    {{ form_widget(quotationLineField.product) }}
+                                                <div class="col-lg-12">
+                                                    <div class="input-box">
+                                                        {{ form_widget(quotationLineField.product) }}
+                                                    </div>
                                                 </div>
                                                 <div class="col-lg-6">
+                                                    <div class="input-box">
                                                     {{ form_widget(quotationLineField.quantity) }}
                                                 </div>
+                                                </div>
                                                 <div class="input-box"><a href="javacript:void(0)"
-                                                                         class="delete-link-edit"
-                                                                         style="float: right">
+                                                                          class="delete-link-edit"
+                                                                          style="float: right">
                                                         <i class="icon-trash" data-toggle="tooltip"
                                                            data-placement="top"
                                                            title="{{ 'app.label.product_delete'|trans }}"></i>

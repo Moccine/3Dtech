@@ -50,18 +50,27 @@ class QuotationType extends AbstractType
                 'label' => false,
                 'attr' => [
                     'class' => 'removeMargin',
-                    'placeholder' => 'Ref',
+                    'placeholder' => 'Reference',
                 ]
             ])
-            ->add('designation')
+            ->add('designation', TextType::class, [
+                'label' => false,
+                'attr' => [
+                    'class' => 'removeMargin',
+                    'placeholder' => 'Designation',
+                ]
+            ])
 
             ->add('deadline', EntityType::class, [
                 'class' => Deadlines::class,
+                'placeholder' => 'Date de paiement',
                 'label' => false,
                  'attr' => ['class' => 'wide'],
 
             ])
             ->add('payment', ChoiceType::class, [
+                'placeholder' => 'Mode de paiement',
+
                 'label' => false,
                 'choices' => array_flip(Payment::PAYMENT),
                 'attr' =>[
@@ -70,9 +79,15 @@ class QuotationType extends AbstractType
             ])
             ->add('amount', MoneyType::class, [
                 'label' => false,
+                'attr' =>[
+                    'class' => 'money-type'
+                ],
             ])
             ->add('totalHt', MoneyType::class, [
                 'label' => false,
+                'attr' =>[
+                    'class' => 'money-type'
+                ],
             ])
             ->add('quantity', IntegerType::class, [
                 'label' => false,
@@ -80,8 +95,17 @@ class QuotationType extends AbstractType
 
             ->add('deposit', MoneyType::class, [
                 'label' => false,
+                'attr' =>[
+                    'placeholder' => 'Acompte',
+                    'class' => 'money-type'
+                ]
             ])
-            ->add('description', TextareaType::class)
+            ->add('description', TextareaType::class, [
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Description'
+                ]
+            ])
             ->add('quotationLine', CollectionType::class, [
                 'entry_type' => QuotationLineType::class,
                 'entry_options' => [

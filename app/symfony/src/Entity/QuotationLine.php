@@ -44,14 +44,9 @@ class QuotationLine
     private $amount;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
-     */
-    private $deposit;
-
-    /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $quantity;
+    private $quantity =1;
 
     /**
      * @ORM\ManyToOne(targetEntity=Quotation::class, inversedBy="quotationLine")

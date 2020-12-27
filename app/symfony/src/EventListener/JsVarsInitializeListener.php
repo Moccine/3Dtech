@@ -48,6 +48,7 @@ class JsVarsInitializeListener
 
         // Routes
         $this->jsVars->addRoute('client_address', ['id' => '__id__']);
+        $this->jsVars->addRoute('search_product', ['id' => '__id__']);
                 //API
     }
 }
