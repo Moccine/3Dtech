@@ -42,6 +42,11 @@ class Product
     private float $price;
 
     /**
+     * @ORM\OneToOne(targetEntity=Vat::class, cascade={"persist", "remove"})
+     */
+    private $vat;
+
+    /**
      * @return string
      */
     public function getName(): string
@@ -93,6 +98,18 @@ class Product
     public function __toString(): string
     {
         return sprintf('%s', $this->category->getName());
+    }
+
+    public function getVat(): ?Vat
+    {
+        return $this->vat;
+    }
+
+    public function setVat(?Vat $vat): self
+    {
+        $this->vat = $vat;
+
+        return $this;
     }
 
 }
