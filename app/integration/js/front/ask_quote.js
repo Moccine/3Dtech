@@ -34,7 +34,7 @@ const addNewOption = () => {
     var $addOptionButton = $(` 
            <button type="button" 
             class="add-another-collection-option btn btn-primary-outline main-btn"
-            data-list-selector="#option-fields-list"> Ajouter iune ligne </button> `);
+            data-list-selector="#option-fields-list"> Ajouter une ligne </button> `);
     var $newOptionLi = $('<li class="list-unstyled"></li>').append($addOptionButton);
     $collectionHolder = $('ul.options-block');
     $collectionHolder.append($newOptionLi);
@@ -43,8 +43,23 @@ const addNewOption = () => {
         addQuotationOptionForm($collectionHolder, $newOptionLi);
 
         $('form').find('#quotation_quotationLine_1_product').change((event) => {
+            let $formDatas = $('form').serialize();
+            console.log($formDatas);
+            //select
             let $selectVal = $(event.target).val()
+            // remise
+            let $discount = $('#quotation_quotationLine_1_discount').val()
+            //quantité
+            let $quantity = $('#quotation_quotationLine_1_quantityt').val()
             let route = getRoute('search_product', {'id': $selectVal});
+
+            $.ajaxSetup({
+                url: route,
+                global: false,
+                type: "GET"
+            });
+            $.ajax({ data: {$quantity, $discount,} });
+
             $.get(route, (data) => {
                 console.log(data);
                 $('#quotation_quotationLine_1_unitPrice').val(data.unitPrice)

@@ -91,11 +91,6 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-12">
-                                            <div class="input-box">
-                                                {{ form_row(form.description) }}
-                                            </div>
-                                        </div>
                                     </div>{# end Row #}
                                     <ul id="option-fields-list" class="options-block"
                                         data-prototype="{{ form_widget(form.quotationLine.vars.prototype)|e }}"
@@ -125,8 +120,11 @@
                                         {% endfor %}
                                     </ul>
                                 </div>
-                                {{ form(form) }}
-
+                                <div class="col-lg-12">
+                                    <div class="input-box">
+                                        {{ form_row(form.description) }}
+                                    </div>
+                                </div>
                             </div>
 
                             {{ form_end(form) }}

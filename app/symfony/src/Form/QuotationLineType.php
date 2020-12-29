@@ -18,6 +18,7 @@ class QuotationLineType extends AbstractType
         $builder
             ->add('product', EntityType::class, [
                 'class' => Product::class,
+                'placeholder' => 'Choisir un produit',
                 'attr' => [
                     'placeholder' =>'Quantité',
                     'class' => 'col-lg-6'
