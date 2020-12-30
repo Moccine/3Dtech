@@ -7,8 +7,9 @@ import 'bootstrap-datepicker';
 $(document).ready(function () {
 
     $('.js-datepicker').datepicker({
-        format: 'dd-mm-yyyy',
-        language: 'fr'
+        format: 'mm/dd/yyyy',
+        language: 'fr',
+        startDate:'"01-01-2020")'
     });
     $('.quotation-form').find('select').css('display', 'block');
     $('.quotation-form').find('.nice-select').css('display', 'none');

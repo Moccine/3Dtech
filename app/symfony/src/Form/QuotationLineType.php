@@ -26,6 +26,7 @@ class QuotationLineType extends AbstractType
             ])
             ->add('quantity', IntegerType::class, [
                 'label' => false,
+                'data' => 1,
                 'attr' => [
                     'class' => 'col-lg-4'
                 ]

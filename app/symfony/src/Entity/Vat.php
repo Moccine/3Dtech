@@ -18,7 +18,7 @@ class Vat
     private $id;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
     private $taxe;
 

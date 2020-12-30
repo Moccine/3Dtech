@@ -24,22 +24,22 @@ class QuotationLine
     private $product;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
     private $unitPrice;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
     private $discount;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
     private $totalHt;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
     private $amount;
 
@@ -52,6 +52,21 @@ class QuotationLine
      * @ORM\ManyToOne(targetEntity=Quotation::class, inversedBy="quotationLine")
      */
     private $quotation;
+
+    /**
+     * QuotationLine constructor.
+     * @param $discount
+     * @param $totalHt
+     * @param $amount
+     * @param int $quantity
+     */
+    public function __construct()
+    {
+        $this->discount = 0;
+        $this->totalHt = 0;
+        $this->amount = 0;
+        $this->quantity = 0;
+    }
 
 
     public function getProduct(): ?Product

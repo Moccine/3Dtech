@@ -82,10 +82,6 @@ class Quotation
      */
     private bool $status = false;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Deadlines::class, cascade={"persist", "remove"})
-     */
-    private $deadline;
 
     /**
      * @ORM\Column(type="date", nullable=true)
@@ -106,6 +102,11 @@ class Quotation
      * @ORM\OneToMany(targetEntity=QuotationLine::class, mappedBy="quotation", cascade={"persist", "remove"}))
      */
     private $quotationLine;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Deadlines::class)
+     */
+    private $deadline;
 
     public function __construct()
     {
@@ -251,18 +252,6 @@ class Quotation
         return $this;
     }
 
-    public function getDeadline(): ?Deadlines
-    {
-        return $this->deadline;
-    }
-
-    public function setDeadline(?Deadlines $deadline): self
-    {
-        $this->deadline = $deadline;
-
-        return $this;
-    }
-
     public function getStartDate(): ?\DateTimeInterface
     {
         return $this->startDate;
@@ -359,6 +348,18 @@ class Quotation
                 $quotationLine->setQuotation(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDeadline(): ?Deadlines
+    {
+        return $this->deadline;
+    }
+
+    public function setDeadline(?Deadlines $deadline): self
+    {
+        $this->deadline = $deadline;
 
         return $this;
     }

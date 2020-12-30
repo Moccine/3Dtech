@@ -51,15 +51,15 @@ class QuotationCrudController extends AbstractCrudController
             TextField::new('designation'),
             AssociationField::new('deadline', 'Délai'),
             AssociationField::new('client', 'Client'),
-            QuotationField::new('quotationLine', 'quotationLine'),
-            /*CollectionField::new('quotationLine', 'Offres')
+          //  CollectionField::new('quotationLine', 'quotationLine'),
+            CollectionField::new('quotationLine', 'Offres')
                 ->allowAdd()
                 ->allowDelete()
                 ->setEntryIsComplex(true)
                 ->setEntryType(QuotationLineType::class)
                 ->setFormTypeOptions([
                     'by_reference' => 'false'
-                ]),*/
+                ]),
 
 
             MoneyField::new('totalHT', 'HT')->hideOnForm()->setCurrency('EUR'),

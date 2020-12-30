@@ -6,7 +6,6 @@ $(document).ready(function () {
     let clientSelect = $('form#new-Quotation-form').find('select#Quotation_client');
     clientSelect.select2();
     clientSelect.on('select2:select', function (e) {
-        console.log(clientSelect);
         $id = $(e.target).val()
         $route = getRoute('client_address', {id: $id})
         $.get($route, (data) => {

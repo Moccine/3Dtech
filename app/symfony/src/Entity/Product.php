@@ -37,14 +37,15 @@ class Product
     private ?string $name;
 
     /**
-     * @ORM\Column(type="float", nullable=true, scale=2)
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
     private float $price;
 
     /**
-     * @ORM\OneToOne(targetEntity=Vat::class, cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=Vat::class)
      */
     private $vat;
+
 
     /**
      * @return string

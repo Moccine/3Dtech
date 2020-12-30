@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -44,7 +45,11 @@ class QuotationType extends AbstractType
                 'label' => false,
                 'widget' => 'single_text',
                 'html5' => false,
-                'attr' => ['class' => 'js-datepicker'],
+                'attr' => [
+                    'class' => 'js-datepicker',
+                'placeholder' => 'Date de creation'
+                ],
+                'format' => 'mm/dd/yyyy'
             ])
             ->add('reference', TextType::class, [
                 'label' => false,
@@ -95,6 +100,7 @@ class QuotationType extends AbstractType
 
             ->add('deposit', MoneyType::class, [
                 'label' => false,
+                'data' => 0,
                 'attr' =>[
                     'placeholder' => 'Acompte',
                     'class' => 'money-type'
@@ -102,19 +108,29 @@ class QuotationType extends AbstractType
             ])
             ->add('description', TextareaType::class, [
                 'label' => false,
+                'required' => false,
                 'attr' => [
                     'placeholder' => 'Description'
                 ]
             ])
             ->add('quotationLine', CollectionType::class, [
                 'entry_type' => QuotationLineType::class,
+                'label' => false,
+                'required' => false,
                 'entry_options' => [
                     'label' => false
                 ],
                 'by_reference' => false,
                 'allow_add' => true,
                 'allow_delete' => true,
-            ]);
+                'delete_empty' => true,
+            ])
+        ->add('Valider', SubmitType::class, [
+            'attr' => [
+                'class' => 'main-btn'
+            ]
+        ])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

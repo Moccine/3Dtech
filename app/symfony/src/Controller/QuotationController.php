@@ -28,6 +28,9 @@ class QuotationController extends AbstractController
 
     /**
      * @Route("/quotation/create", name="create_quotation")
+     * @param Request $request
+     * @param EntityManagerInterface $em
+     * @return Response
      */
     public function create(Request $request, EntityManagerInterface $em): Response
     {
@@ -37,7 +40,7 @@ class QuotationController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() and $form->isValid()){
             $em->persist($quotation);
-            dd($quotation);
+            $em->flush();
         }
         return $this->render('quotation/index.html.twig', [
             'form' => $form->createView(),

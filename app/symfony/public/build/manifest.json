@@ -1,4 +1,5 @@
 {
+  "build/custom.min.css": "/build/custom.min.css",
   "build/front.js": "/build/front.js",
   "build/main.min.css": "/build/main.min.css",
   "build/runtime.js": "/build/runtime.js",
@@ -8,6 +9,5 @@
   "build/vendors/material-design-iconic-font/dist/fonts/Material-Design-Iconic-Font.svg": "/build/vendors/material-design-iconic-font/dist/fonts/Material-Design-Iconic-Font.svg",
   "build/vendors/material-design-iconic-font/dist/fonts/Material-Design-Iconic-Font.ttf": "/build/vendors/material-design-iconic-font/dist/fonts/Material-Design-Iconic-Font.ttf",
   "build/vendors/material-design-iconic-font/dist/fonts/Material-Design-Iconic-Font.woff": "/build/vendors/material-design-iconic-font/dist/fonts/Material-Design-Iconic-Font.woff",
-  "build/vendors/material-design-iconic-font/dist/fonts/Material-Design-Iconic-Font.woff2": "/build/vendors/material-design-iconic-font/dist/fonts/Material-Design-Iconic-Font.woff2",
-  "build/custom.min.css": "/build/custom.min.css"
+  "build/vendors/material-design-iconic-font/dist/fonts/Material-Design-Iconic-Font.woff2": "/build/vendors/material-design-iconic-font/dist/fonts/Material-Design-Iconic-Font.woff2"
 }
