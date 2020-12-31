@@ -3,14 +3,12 @@
 
 namespace App\DataFixtures;
 
-
 use App\Entity\Client;
 use App\Entity\User;
 use App\Service\Security\PasswordService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
-
 
 class ClientFixture extends Fixture
 {

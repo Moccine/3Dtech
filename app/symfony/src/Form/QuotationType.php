@@ -94,10 +94,6 @@ class QuotationType extends AbstractType
                     'class' => 'money-type'
                 ],
             ])
-            ->add('quantity', IntegerType::class, [
-                'label' => false,
-            ])
-
             ->add('deposit', MoneyType::class, [
                 'label' => false,
                 'data' => 0,

@@ -27,7 +27,6 @@ class IndexController extends AbstractController
      */
     public function partners()
     {
-
         return $this->render('home/partners.html.twig');
     }
 }

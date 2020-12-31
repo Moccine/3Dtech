@@ -35,10 +35,30 @@ class QuotationController extends AbstractController
     public function create(Request $request, EntityManagerInterface $em): Response
     {
         $quotation = new Quotation();
-
         $form = $this->createForm(QuotationType::class, $quotation);
         $form->handleRequest($request);
-        if($form->isSubmitted() and $form->isValid()){
+        if ($form->isSubmitted() and $form->isValid()) {
+            $em->persist($quotation);
+            $em->flush();
+            return $this->redirect(edit_quotation, );
+        }
+        return $this->render('quotation/index.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/quotation/edit/{id}", name="edit_quotation")
+     * @param Request $request
+     * @param Quotation $quotation
+     * @param EntityManagerInterface $em
+     * @return Response
+     */
+    public function edit(Request $request, Quotation  $quotation, EntityManagerInterface $em): Response
+    {
+        $form = $this->createForm(QuotationType::class, $quotation);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() and $form->isValid()) {
             $em->persist($quotation);
             $em->flush();
         }

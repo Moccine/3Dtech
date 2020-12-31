@@ -35,7 +35,6 @@ class DashboardController extends AbstractDashboardController
 
         // return parent::index();
         return $this->redirect($routeBuilder->setController(ClientCrudController::class)->generateUrl());
-
     }
 
     public function configureDashboard(): Dashboard
@@ -51,7 +50,6 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-
         yield MenuItem::section('Menu Important');
         yield MenuItem::linkToCrud('Clients', 'fas fa-user', Client::class);
         yield MenuItem::linkToCrud('Users', 'fas fa-list', User::class);

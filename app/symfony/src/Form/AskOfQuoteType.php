@@ -16,8 +16,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class AskOfQuoteType extends AbstractType
 {
-
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('category', null, [
@@ -44,7 +42,10 @@ class AskOfQuoteType extends AbstractType
                 'choices' => (range(1, 10)),
 
             ])
-            ->add('serverNumber', ChoiceType::class, [
+            ->add(
+                'serverNumber',
+                ChoiceType::class,
+                [
                     'placeholder' => '- Nombre de serveur(s) -',
                     'label' => false,
                     'choices' => range(1, 10),
@@ -56,7 +57,10 @@ class AskOfQuoteType extends AbstractType
                     'placeholder' => '- Votre nom et prénom* -'
                 ]
             ])
-            ->add('company', null, [
+            ->add(
+                'company',
+                null,
+                [
                     'label' => false,
                     'attr' => [
                         'placeholder' => 'Votre entreprise*'
@@ -84,7 +88,6 @@ class AskOfQuoteType extends AbstractType
             ->add('submit', SubmitType::class, [
                 'label' => 'app.form.registration.submit',
             ]);
-
     }
 
     public function configureOptions(OptionsResolver $resolver)

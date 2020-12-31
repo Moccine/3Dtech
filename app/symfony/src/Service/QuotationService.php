@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Service;
+
 use App\Entity\Quotation;
 use App\Tools\StringTools;
 use Doctrine\ORM\EntityManagerInterface;
@@ -30,7 +31,7 @@ class QuotationService
 
     public function generateQuotePDF(Quotation $quotation)
     {
-      //  $filename = StringTools::slugify(sprintf('Muzeo devis %s  %s', $quotation->getProject(), $quotation->getDate()->format('Ymd')));
+        //  $filename = StringTools::slugify(sprintf('Muzeo devis %s  %s', $quotation->getProject(), $quotation->getDate()->format('Ymd')));
         $filename = 'facture';
         $filename .= '.pdf';
         $tempDir = '/tmp';
@@ -72,6 +73,4 @@ class QuotationService
             return $exception->getMessage();
         }
     }
-
-
 }

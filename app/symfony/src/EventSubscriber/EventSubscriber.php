@@ -18,7 +18,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityPersistedEvent;
 
 class EventSubscriber implements EventSubscriberInterface
 {
-
     public static function getSubscribedEvents(): array
     {
         return [
@@ -63,7 +62,8 @@ class EventSubscriber implements EventSubscriberInterface
         $quotation->setAmount($totalHt * (1.2))->setTotalHt($totalHt);
         $client = $quotation->getClient();
         if ($quotation->getClient() instanceof Client) {
-            $address = sprintf("%s %s %s %s",
+            $address = sprintf(
+                "%s %s %s %s",
                 $client->getAddress(),
                 $client->getPostalCode(),
                 $client->getCity(),
@@ -72,5 +72,4 @@ class EventSubscriber implements EventSubscriberInterface
             $quotation->setAddress($address);
         }
     }
-
 }

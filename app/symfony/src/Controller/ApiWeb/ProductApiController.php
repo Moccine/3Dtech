@@ -3,20 +3,20 @@
 
 namespace App\Controller\ApiWeb;
 
-
 use App\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+
 class ProductApiController extends AbstractController
 {
     /**
      * @Route("/serach/{id}", name="search_product")
      * @return JsonResponse
      */
-    public function calculateQuotationAction(Request $request, Product $product ){
-
+    public function calculateQuotationAction(Request $request, Product $product)
+    {
         $quantity = $request->request->get('quantity')??1;
         $data = [
             'name' => $product->getName(),
@@ -28,5 +28,4 @@ class ProductApiController extends AbstractController
 
         return $this->json($data);
     }
-
 }

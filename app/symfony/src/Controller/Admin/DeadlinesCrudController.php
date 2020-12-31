@@ -20,8 +20,8 @@ class DeadlinesCrudController extends AbstractCrudController
             ->setEntityLabelInPlural('Delais')
             ->setPageTitle('edit', 'Modifier');
 
-            // ...
-            ;
+        // ...
+        ;
     }
     /*
     public function configureFields(string $pageName): iterable

@@ -3,7 +3,6 @@
 
 namespace App\DataFixtures;
 
-
 use App\Entity\Address;
 use App\Entity\Category;
 use App\Entity\Product;
@@ -13,8 +12,6 @@ use Faker\Factory;
 
 class ProductFixtures extends Fixture
 {
-
-
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create('fr_FR');
@@ -30,7 +27,6 @@ class ProductFixtures extends Fixture
                 ->setPrice(rand(50, 7000));
                 $manager->persist($product);
             }
-
         }
 
         $manager->flush();

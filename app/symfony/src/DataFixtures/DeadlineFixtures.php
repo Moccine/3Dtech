@@ -3,7 +3,6 @@
 
 namespace App\DataFixtures;
 
-
 use App\Entity\Address;
 use App\Entity\Category;
 use App\Entity\Deadlines;
@@ -13,8 +12,6 @@ use Faker\Factory;
 
 class DeadlineFixtures extends Fixture
 {
-
-
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create('fr_FR');

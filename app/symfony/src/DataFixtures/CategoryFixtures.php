@@ -3,7 +3,6 @@
 
 namespace App\DataFixtures;
 
-
 use App\Entity\Address;
 use App\Entity\Category;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -12,7 +11,6 @@ use Faker\Factory;
 
 class CategoryFixtures extends Fixture
 {
-
     const CATEGORY_REFERENCE = 'category_ref';
 
     public function load(ObjectManager $manager)

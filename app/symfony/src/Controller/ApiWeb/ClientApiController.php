@@ -15,8 +15,8 @@ class ClientApiController extends AbstractController
      * @param Client $client
      * @return JsonResponse
      */
-    public function clientAddressAction(Client $client ){
-
+    public function clientAddressAction(Client $client)
+    {
         $data = [
             'adddress' => $client->getStreet(),
             'postalCode' => $client->getPostalCode(),
@@ -26,5 +26,4 @@ class ClientApiController extends AbstractController
 
         return $this->json($data);
     }
-
 }

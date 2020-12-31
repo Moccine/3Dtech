@@ -33,5 +33,4 @@ class AskOfQuoteCrudController extends AbstractCrudController
             AssociationField::new('deadline', 'Delai'),
         ];
     }
-
 }

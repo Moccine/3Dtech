@@ -34,7 +34,6 @@ class AskOfQuoteController extends AbstractController
             $attachments = null;
             $sender->deliver($to, $subject, $content, $bindings, $attachments);
             return $this->redirectToRoute('ask_of_quote_confirm', ['id' => $askOfQuote->getId()]);
-
         }
         return $this->render('ask_of_quote/index.html.twig', [
             'form' => $form->createView()

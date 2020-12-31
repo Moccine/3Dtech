@@ -194,7 +194,4 @@ class AskOfQuote
 
         return $this;
     }
-
-
-
 }

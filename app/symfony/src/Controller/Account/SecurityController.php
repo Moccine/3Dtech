@@ -33,7 +33,6 @@ class SecurityController extends AbstractController
             try {
                 $userManager->changePassword($user, $userPassword->getNewPassword());
             } catch (\Exception $e) {
-
                 return $e->getMessage();
             }
         }

@@ -13,7 +13,6 @@ class ComputerParkSupervisionController extends AbstractController
      */
     public function index(): Response
     {
-
         return $this->render('computer_park_supervision/index.html.twig', [
 
             'controller_name' => 'ComputerParkSupervisionController',
@@ -25,7 +24,6 @@ class ComputerParkSupervisionController extends AbstractController
      */
     public function pack(): Response
     {
-
         return $this->render('computer_park_supervision/index.html.twig', [
 
             'controller_name' => 'ComputerParkSupervisionController',

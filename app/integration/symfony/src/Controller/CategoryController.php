@@ -20,11 +20,12 @@ class CategoryController extends AbstractController
      *
      * @return Response
      */
-    public function index(Request $request,
-                          AkeneoService $akeneoService,
-                          AttributeService $attributeService,
-                          ProductService $productService,
-                          AttributeOptionService $attributeOptionService
+    public function index(
+        Request $request,
+        AkeneoService $akeneoService,
+        AttributeService $attributeService,
+        ProductService $productService,
+        AttributeOptionService $attributeOptionService
     ) {
         $akeneoService->upsertProduct();
         // creation de groupe d'attribut

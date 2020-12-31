@@ -60,11 +60,6 @@ class Quotation
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
-    private ?float $quantity = 1;
-
-    /**
-     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
-     */
     private ?float $deposit;
 
     /**
@@ -204,17 +199,6 @@ class Quotation
         return $this;
     }
 
-    public function getQuantity(): ?float
-    {
-        return $this->quantity;
-    }
-
-    public function setQuantity(?float $quantity): self
-    {
-        $this->quantity = $quantity;
-
-        return $this;
-    }
 
     public function getDesignation(): ?string
     {
