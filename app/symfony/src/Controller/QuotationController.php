@@ -40,7 +40,7 @@ class QuotationController extends AbstractController
         if ($form->isSubmitted() and $form->isValid()) {
             $em->persist($quotation);
             $em->flush();
-            return $this->redirect(edit_quotation, );
+            return $this->redirectToRoute('edit_quotation',['id' => $quotation->getId()] );
         }
         return $this->render('quotation/index.html.twig', [
             'form' => $form->createView(),
@@ -59,7 +59,6 @@ class QuotationController extends AbstractController
         $form = $this->createForm(QuotationType::class, $quotation);
         $form->handleRequest($request);
         if ($form->isSubmitted() and $form->isValid()) {
-            $em->persist($quotation);
             $em->flush();
         }
         return $this->render('quotation/index.html.twig', [

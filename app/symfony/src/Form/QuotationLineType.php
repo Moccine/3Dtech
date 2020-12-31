@@ -19,9 +19,10 @@ class QuotationLineType extends AbstractType
             ->add('product', EntityType::class, [
                 'class' => Product::class,
                 'placeholder' => 'Choisir un produit',
+                'label' => false,
                 'attr' => [
                     'placeholder' =>'Quantité',
-                    'class' => 'col-lg-6'
+                    'class' => 'select-product'
                 ]
             ])
             ->add('quantity', IntegerType::class, [

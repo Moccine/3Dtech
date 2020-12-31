@@ -5,6 +5,7 @@ let $submit = $("button#ask_of_quote_submit");
 import 'bootstrap-datepicker';
 
 $(document).ready(function () {
+    updateProduct();
 
     $('.js-datepicker').datepicker({
         format: 'mm/dd/yyyy',
@@ -42,33 +43,7 @@ const addNewOption = () => {
     $collectionHolder.data('index', $collectionHolder.find(':input').length);
     $addOptionButton.on('click', function (e) {
         addQuotationOptionForm($collectionHolder, $newOptionLi);
-
-        $('form').find('#quotation_quotationLine_1_product').change((event) => {
-            let $formDatas = $('form').serialize();
-            console.log($formDatas);
-            //select
-            let $selectVal = $(event.target).val()
-            // remise
-            let $discount = $('#quotation_quotationLine_1_discount').val()
-            //quantité
-            let $quantity = $('#quotation_quotationLine_1_quantityt').val()
-            let route = getRoute('search_product', {'id': $selectVal});
-
-            $.ajaxSetup({
-                url: route,
-                global: false,
-                type: "GET"
-            });
-            $.ajax({ data: {$quantity, $discount,} });
-
-            $.get(route, (data) => {
-                console.log(data);
-                $('#quotation_quotationLine_1_unitPrice').val(data.unitPrice)
-                $('#quotation_quotationLine_1_totalHt').val(data.ht)
-                $('#quotation_quotationLine_1_amount').val(data.ttc)
-                console.log(data);
-            })
-        });
+        updateProduct();
     });
 };
 const deleteOption = () => {
@@ -92,3 +67,40 @@ const addOptionFormDeleteLink = ($tagFormLi) => {
         $tagFormLi.remove();
     });
 };
+
+const updateProduct = () =>{
+
+    let selectProduct = $("#quotation_quotationLine").find("select");
+    console.log(selectProduct);
+
+    //let selectProduct = $('.select-product');
+    $('#quotation_quotationLine_0_quantity').change( (event) => {
+        console.log(event);
+    });
+    selectProduct.change((event) => {
+        let $formDatas = $('form').serialize();
+        console.log($formDatas);
+        //select
+        let $selectVal = $(event.target).val()
+        // remise
+        let $discount = $('#quotation_quotationLine_1_discount').val()
+        //quantité
+        let $quantity = $('#quotation_quotationLine_1_quantityt').val()
+        let route = getRoute('search_product', {'id': $selectVal});
+
+        $.ajaxSetup({
+            url: route,
+            global: false,
+            type: "GET"
+        });
+        $.ajax({ data: {$quantity, $discount,} });
+
+        $.get(route, (data) => {
+            console.log(data);
+            $('#quotation_quotationLine_1_unitPrice').val(data.unitPrice)
+            $('#quotation_quotationLine_1_totalHt').val(data.ht)
+            $('#quotation_quotationLine_1_amount').val(data.ttc)
+            console.log(data);
+        })
+    });
+}

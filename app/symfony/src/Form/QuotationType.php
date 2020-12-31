@@ -121,12 +121,8 @@ class QuotationType extends AbstractType
                 'allow_delete' => true,
                 'delete_empty' => true,
             ])
-        ->add('Valider', SubmitType::class, [
-            'attr' => [
-                'class' => 'main-btn'
-            ]
-        ])
         ;
+
     }
 
     public function configureOptions(OptionsResolver $resolver)
