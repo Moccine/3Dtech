@@ -18,12 +18,12 @@
         <div class="footer-list mt-30">
           <h3 class="title">À PROPOS</h3>
           <ul>
-            <li><a href="#">Maintenance informatique</a></li>
-            <li><a href="#">Solutions informatiques des PME</a></li>
-            <li><a href="#">Votre devis en ligne</a></li>
-            <li><a href="#">Espace recrutement</a></li>
+            <li><a href="{{ path('maintenance_park') }}">Maintenance informatique</a></li>
+            <li><a href="{{ path('computer_maintance') }}">Solutions informatiques des PME</a></li>
+            <li><a href="{{ path('ask_of_quote') }}">Votre devis en ligne</a></li>
+            <li><a href="{{ path('recruit') }}">Espace recrutement</a></li>
             <li><a href="#">Nos mentions légales</a></li>
-            <li><a href="#">Nous contacter</a></li>
+            <li><a href="{{ path('contact') }}">Nous contacter</a></li>
           </ul>
         </div>
       </div>
@@ -31,8 +31,8 @@
         <div class="footer-list item-2 mt-30 pl-45">
           <h3 class="title">SERVICES INFORMATIQUES</h3>
           <ul>
-            <li><a href="#">Infogérance informatique PME</a></li>
-            <li><a href="#">Service informatique externalisé</a></li>
+            <li><a href="{{ path('computer_park_supervision') }}">Infogérance informatique PME</a></li>
+            <li><a href="{{ path('out_sourced_backup') }}">Service informatique externalisé</a></li>
             <li><a href="#">Hotline informatique</a></li>
             <li><a href="#">Informatique d’entreprise</a></li>
             <li><a href="#">Installation informatique</a></li>
@@ -45,9 +45,9 @@
         <div class="footer-list item-2 mt-30 pl-45">
           <h3 class="title">SOLUTIONS PME</h3>
           <ul>
-            <li><a href="#">Solution Cloud entreprise DAAS</a></li>
-            <li><a href="#"> Logiciels et licences</a></li>
-            <li><a href="#">Équipements informatiques</a></li>
+            <li><a href="{{ path('cloud_entreprise') }}">Solution Cloud entreprise DAAS</a></li>
+            <li><a href="{{ path('office_software') }}"> Logiciels et licences</a></li>
+            <li><a href="{{ path('computer_equipment') }}">Équipements informatiques</a></li>
             <li><a href="#">Messagerie professionnelle</a></li>
             <li><a href="#">Réseau Wifi et portail captif</a></li>
             <li><a href="#">Accès internet professionnel</a></li>
