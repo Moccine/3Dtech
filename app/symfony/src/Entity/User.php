@@ -62,6 +62,20 @@ class User implements UserInterface
      */
     private Collection $incidents;
 
+    /**
+     * @ORM\Column(type="array")
+     */
+    private array $roles = [];
+
+    /**
+     * User constructor.
+     * @param array $roles
+     */
+    public function __construct()
+    {
+        $this->roles = [self::ROLE_USER];
+    }
+
     public function getEmail(): string
     {
         return $this->email;
@@ -87,7 +101,7 @@ class User implements UserInterface
      */
     public function getRoles(): array
     {
-        return [self::ROLE_USER];
+        return $this->getRoles();
     }
 
     /**
@@ -170,6 +184,13 @@ class User implements UserInterface
         }
 
         $this->incidents->add($incident);
+
+        return $this;
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
 
         return $this;
     }
