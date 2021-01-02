@@ -30,7 +30,8 @@ class Sender implements SenderInterface
         $email = new Email();
 
         $email->from($this->companyEmail);
-        $email->to($to);
+        $email->to($to)
+            ->cc($_ENV['AGENCY_EMAIL']);;
         $email->subject($subject);
         $email->html(SenderHelper::bind($content, $bindings));
         $this->mailer->send($email);
