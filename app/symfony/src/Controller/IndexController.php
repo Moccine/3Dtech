@@ -20,8 +20,7 @@ class IndexController extends AbstractController
      */
     public function index(Request $request, AskQuoteManager $askQuoteManager)
     {
-        $ask = $this->getDoctrine()->getRepository(AskOfQuote::class)->find(1);
-        $askQuoteManager->sendAskQuoteMail($ask);
+
         return $this->render('home/index.html.twig', [
             'slideShow' => '',
         ]);
