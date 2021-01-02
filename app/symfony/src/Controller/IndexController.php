@@ -15,7 +15,6 @@ class IndexController extends AbstractController
      */
     public function index()
     {
-        $em = $this->getDoctrine()->getManager();
 
         return $this->render('home/index.html.twig', [
             'slideShow' => '',

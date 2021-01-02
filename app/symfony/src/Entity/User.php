@@ -22,10 +22,16 @@ use Symfony\Component\Validator\Constraints as Assert;
 class User implements UserInterface
 {
     public const ROLE_USER = 'ROLE_USER';
+    public const ROLE_ADMIN = 'ROLE_ADMIN';
 
     use IdentifiableTrait;
     use CreatedAtTrait;
     use UpdatedAtTrait;
+
+    public const ROLES = [
+        self::ROLE_USER,
+        self::ROLE_ADMIN,
+    ];
 
     /**
      * @ORM\Column(length=180, unique=true)
@@ -63,9 +69,9 @@ class User implements UserInterface
     private Collection $incidents;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="json")
      */
-    private array $roles = [];
+    private $roles = [];
 
     /**
      * User constructor.
@@ -99,9 +105,27 @@ class User implements UserInterface
     /**
      * @see UserInterface
      */
-    public function getRoles(): array
+    public function getRoles()
     {
-        return $this->getRoles();
+        $roles = $this->roles;
+        if (empty($roles)) {
+            $roles[] = 'ROLE_USER';
+        }
+
+        return array_unique($roles);
+    }
+
+    function addRole($role)
+    {
+        $this->roles[] = $role;
+    }
+
+    public function removeRole($role)
+    {
+        $roles = $this->roles;
+        if ($roles and ($key = array_search($role, $roles)) !== false) {
+            unset($roles[$key]);
+        }
     }
 
     /**
@@ -188,10 +212,4 @@ class User implements UserInterface
         return $this;
     }
 
-    public function setRoles(array $roles): self
-    {
-        $this->roles = $roles;
-
-        return $this;
-    }
 }

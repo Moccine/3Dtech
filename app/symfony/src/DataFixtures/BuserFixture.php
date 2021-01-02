@@ -28,9 +28,13 @@ class BuserFixture extends Fixture
         $faker = Factory::create('fr_FR');
         for ($i = 0; $i < 100; $i++) {
             $user = new User();
+
+            if($i<1){
+                $user->addRole(User::ROLE_ADMIN);
+                $user->setEmail('so.momo@dbmail.com');
+            }
             $password = $this->passwordService->encode($user, 'Connexion2020');
-            $user->setEmail($faker->email)
-                ->setEnabled(true)
+                $user->setEnabled(true)
                 ->setPassword($password);
             $this->addReference(self::USER_REFERENCE.$i, $user);
             $manager->persist($user);
