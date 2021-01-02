@@ -10,12 +10,12 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class AskQuoteManager
 {
-    private EntityManagerInterface $entityManager;
+    private EntityManagerInterface $em;
     private Sender $sender;
 
     public function __construct(EntityManagerInterface $entityManager, Sender $sender)
     {
-        $this->entityManager = $entityManager;
+        $this->em = $entityManager;
         $this->sender = $sender;
     }
     public function create(AskOfQuote $askOfQuote){

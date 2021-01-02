@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\AskOfQuote;
 use App\Entity\NewsLetter;
 use App\Entity\SlideShow;
 use App\Entity\User;
 use App\Form\NewsLetterType;
+use App\Manager\AskQuoteManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,19 +18,12 @@ class IndexController extends AbstractController
     /**
      * @Route("/", name="3dtech_index")
      */
-    public function index(Request $request)
+    public function index(Request $request, AskQuoteManager $askQuoteManager)
     {
-        $newLetter = new NewsLetter();
-        $newLetterForm = $this->createForm(NewsLetterType::class, $newLetter);
-        $newLetterForm->handleRequest($request);
-        if ($newLetterForm->isSubmitted() and $newLetterForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($newLetter);
-            $em->flush();
-        }
+        $ask = $this->getDoctrine()->getRepository(AskOfQuote::class)->find(1);
+        $askQuoteManager->sendAskQuoteMail($ask);
         return $this->render('home/index.html.twig', [
             'slideShow' => '',
-            'form' => $newLetterForm->createView(),
         ]);
     }
 
@@ -39,4 +34,5 @@ class IndexController extends AbstractController
     {
         return $this->render('home/partners.html.twig');
     }
+
 }
