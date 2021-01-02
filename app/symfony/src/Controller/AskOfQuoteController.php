@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\AskOfQuote;
 use App\Form\AskOfQuoteType;
+use App\Manager\AskQuoteManager;
 use App\Service\Mailer\Sender;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,24 +16,19 @@ class AskOfQuoteController extends AbstractController
     /**
      * @Route("/devis-informatique", name="ask_of_quote")
      * @param Request $request
+     * @param AskQuoteManager $askQuoteManager
      * @return Response
      */
-    public function index(Request $request, Sender $sender): Response
+    public function index(Request $request, AskQuoteManager $askQuoteManager): Response
     {
-        $em = $this->getDoctrine()->getManager();
         $askOfQuote = new AskOfQuote();
         $form = $this->createForm(AskOfQuoteType::class, $askOfQuote);
         $form->handleRequest($request);
         if ($form->isSubmitted() and $form->isValid()) {
-            $askOfQuote->setUpdatedAt(new \DateTime());
-            $em->persist($askOfQuote);
-            $em->flush();
-            $to = $askOfQuote->getEmail();
-            $subject = 'demande de devis';
-            $content = $sender->doTemplate('ask_of_quote/email_confirm.html.twig', ['askOfQuote' => $askOfQuote,]);
-            $bindings = [];
-            $attachments = null;
-            $sender->deliver($to, $subject, $content, $bindings, $attachments);
+
+            $askOfQuote = $askQuoteManager->create($askOfQuote);
+            $askQuoteManager->sendAskQuoteMail($askOfQuote);
+
             return $this->redirectToRoute('ask_of_quote_confirm', ['id' => $askOfQuote->getId()]);
         }
         return $this->render('ask_of_quote/index.html.twig', [
