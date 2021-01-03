@@ -19,14 +19,17 @@ class ContactController extends AbstractController
     public function index(Request $request, EntityManagerInterface $em, ContactManager $contactManager): Response
     {
         $contact =  new Contact();
+        $clear = false;
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
         if($form->isSubmitted() and $form->isValid()){
            $contactManager->create($contact);
            $contactManager->sendAskQuoteMail($contact);
+            $clear = true;
         }
         return $this->render('contact/index.html.twig', [
             'form' => $form->createView(),
+            'clear' => $clear,
         ]);
     }
 }
