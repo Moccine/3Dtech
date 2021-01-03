@@ -17,6 +17,7 @@ use App\Repository\ProductRepository;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository", repositoryClass=ProductRepository::class)
  * @ORM\HasLifecycleCallbacks()
+ *
  */
 class Product
 {
@@ -33,11 +34,13 @@ class Product
     private Category $category;
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\NotBlank()
      */
     private ?string $name;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Assert\NotBlank()
      */
     private float $price;
 

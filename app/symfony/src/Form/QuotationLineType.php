@@ -21,43 +21,42 @@ class QuotationLineType extends AbstractType
                 'placeholder' => 'Choisir un produit',
                 'label' => false,
                 'attr' => [
-                    'placeholder' =>'Quantité',
-                    'class' => 'select-product'
+                    'class' => 'col-lg-6  add-product'
                 ]
             ])
             ->add('quantity', IntegerType::class, [
                 'label' => false,
                 'data' => 1,
                 'attr' => [
-                    'class' => 'col-lg-4'
+                    'class' => 'col-lg-6 quantity'
                 ]
             ])
              ->add('unitPrice', MoneyType::class, [
                  'label' => false,
                  'attr' => [
                      'placeholder' =>'Prix unitaire',
-                     'class' => 'col-lg-6',
+                     'class' => 'col-lg-6 unitPrice',
                  ]
              ])
               ->add('discount', MoneyType::class, [
                   'label' => false,
                   'attr' => [
                       'placeholder' =>'Remisee',
-                      'class' => 'col-lg-6'
+                      'class' => 'col-lg-6 discount'
                   ]
               ])
               ->add('totalHt', MoneyType::class, [
                   'label' => false,
                   'attr' => [
                       'placeholder' =>'HT',
-                      'class' => 'col-lg-6'
+                      'class' => 'col-lg-6 ht'
                   ]
               ])
               ->add('amount', MoneyType::class, [
                   'label' => false,
                   'attr' => [
                       'placeholder' =>'TTC',
-                      'class' => 'col-lg-6'
+                      'class' => 'col-lg-6 ttc'
                   ]
               ])
         ;
