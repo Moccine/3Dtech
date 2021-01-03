@@ -39,7 +39,7 @@ class QuotationController extends AbstractController
         if ($form->isSubmitted() and $form->isValid()) {
             $em->persist($quotation);
             $em->flush();
-            return $this->redirectToRoute('edit_quotation',['id' => $quotation->getId()] );
+            return $this->redirectToRoute('edit_quotation', ['id' => $quotation->getId()]);
         }
         return $this->render('quotation/index.html.twig', [
             'form' => $form->createView(),
@@ -53,7 +53,7 @@ class QuotationController extends AbstractController
      * @param EntityManagerInterface $em
      * @return Response
      */
-    public function edit(Request $request, Quotation  $quotation, EntityManagerInterface $em): Response
+    public function edit(Request $request, Quotation $quotation, EntityManagerInterface $em): Response
     {
         $form = $this->createForm(QuotationType::class, $quotation);
         $form->handleRequest($request);
@@ -64,15 +64,31 @@ class QuotationController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
     /**
      * @Route("/quotation/list", name="quaotation_list")
      */
-    public function list(){
+    public function list()
+    {
         $quotations = $this->getDoctrine()->getRepository(Quotation::class)->findAll();
 
-          return $this->render('quotation/list.html.twig', [
+        return $this->render('quotation/list.html.twig', [
             'quotations' => $quotations,
         ]);
+    }
 
+    /**
+     * @Route("/quotation/remove/{id}", name="remove_quotation")
+     */
+    public function remove(Quotation $quotation, EntityManagerInterface $em)
+    {
+        try {
+            $em->remove($quotation);
+            $em->flush();
+        } catch (\Exception $exception) {
+            dd($exception);
+            return $exception->getMessage();
+        }
+        return $this->redirectToRoute('quaotation_list');
     }
 }
