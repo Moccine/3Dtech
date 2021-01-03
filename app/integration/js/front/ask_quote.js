@@ -5,6 +5,8 @@ let $submit = $("button#ask_of_quote_submit");
 import 'bootstrap-datepicker';
 
 $(document).ready(function () {
+    $('.quotation-form').find('select').css('display', 'block');
+    $('.quotation-form').find('.nice-select').css('display', 'none');
     updateProduct();
 
     $('.js-datepicker').datepicker({
@@ -12,8 +14,7 @@ $(document).ready(function () {
         language: 'fr',
         startDate:'"01-01-2020")'
     });
-    $('.quotation-form').find('select').css('display', 'block');
-    $('.quotation-form').find('.nice-select').css('display', 'none');
+
 
     deleteOption();
     addNewOption();
@@ -70,22 +71,17 @@ const addOptionFormDeleteLink = ($tagFormLi) => {
 
 const updateProduct = () =>{
 
-    let selectProduct = $("#quotation_quotationLine").find("select");
-    console.log(selectProduct);
+    let selectProduct = $("select.add-product");
 
-    //let selectProduct = $('.select-product');
-    $('#quotation_quotationLine_0_quantity').change( (event) => {
-        console.log(event);
-    });
     selectProduct.change((event) => {
         let $formDatas = $('form').serialize();
-        console.log($formDatas);
         //select
         let $selectVal = $(event.target).val()
         // remise
         let $discount = $('#quotation_quotationLine_1_discount').val()
         //quantité
-        let $quantity = $('#quotation_quotationLine_1_quantityt').val()
+        let $quantity = $('this').parent().find('.quantity').val()
+        console.log($quantity);
         let route = getRoute('search_product', {'id': $selectVal});
 
         $.ajaxSetup({
@@ -97,6 +93,7 @@ const updateProduct = () =>{
 
         $.get(route, (data) => {
             console.log(data);
+            $('this').parent().find('.quantity').val(2)
             $('#quotation_quotationLine_1_unitPrice').val(data.unitPrice)
             $('#quotation_quotationLine_1_totalHt').val(data.ht)
             $('#quotation_quotationLine_1_amount').val(data.ttc)

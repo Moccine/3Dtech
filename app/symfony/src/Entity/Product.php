@@ -26,6 +26,7 @@ class Product
     use IdentifiableTrait;
     use CodifiableTrait;
 
+
     /**
      * @ORM\ManyToOne(targetEntity=Category::class)
      * @ORM\JoinColumn(nullable=false)

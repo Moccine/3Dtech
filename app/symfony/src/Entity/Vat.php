@@ -27,6 +27,7 @@ class Vat
      */
     private ?string $name;
 
+    const DEFAULT_VAT = 0.2;
 
     public function getId(): ?int
     {
