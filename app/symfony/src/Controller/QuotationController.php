@@ -20,7 +20,6 @@ class QuotationController extends AbstractController
     {
         // $quotationService->generateQuotePDF($quotation);
         //  return @$quotationService->generateQuotePDF($quotation);
-
         return $this->render('quotation/index.html.twig', [
             'controller_name' => 'QuotationController',
         ]);
@@ -64,5 +63,16 @@ class QuotationController extends AbstractController
         return $this->render('quotation/index.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+    /**
+     * @Route("/quotation/list", name="quaotation_list")
+     */
+    public function list(){
+        $quotations = $this->getDoctrine()->getRepository(Quotation::class)->findAll();
+
+          return $this->render('quotation/list.html.twig', [
+            'quotations' => $quotations,
+        ]);
+
     }
 }
