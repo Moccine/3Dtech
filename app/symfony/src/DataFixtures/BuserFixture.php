@@ -34,7 +34,7 @@ class BuserFixture extends Fixture
                 $user->setEmail('so.momo@dbmail.com');
             }
             $password = $this->passwordService->encode($user, 'Connexion2020');
-                $user->setEnabled(true)
+                $user->setEnabled(true)->setEmail($faker->email)
                 ->setPassword($password);
             $this->addReference(self::USER_REFERENCE.$i, $user);
             $manager->persist($user);

@@ -18,8 +18,8 @@ class ProductApiController extends AbstractController
      */
     public function calculateQuotationAction(Request $request, Product $product)
     {
-        $quantity = $request->request->get('quantity') ?? 1;
-        $ht = number_format((float)($product->getPrice() * $quantity), 2, '.', ' ');
+        dump($request);
+        $ht = number_format((float)($product->getPrice() * 1), 2, '.', ' ');
         $taxe = ($product->getVat() instanceof Vat) ? $product->getVat()->getTaxe() : Vat::DEFAULT_VAT;
         $amount = (float)$ht * (1 + (float)$taxe);
         $data = [

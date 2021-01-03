@@ -6,6 +6,8 @@ use App\Entity\Traits\CreatedAtTrait;
 use App\Entity\Traits\IdentifiableTrait;
 use App\Entity\Traits\UpdatedAtTrait;
 use App\Repository\QuotationLineRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -18,10 +20,6 @@ class QuotationLine
     use UpdatedAtTrait;
     use IdentifiableTrait;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Product::class, cascade={"persist", "remove"})
-     */
-    private $product;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
@@ -54,6 +52,16 @@ class QuotationLine
     private $quotation;
 
     /**
+     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="quotationLine")
+     */
+    private $products;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="quotationLine")
+     */
+    private $product;
+
+    /**
      * QuotationLine constructor.
      * @param $discount
      * @param $totalHt
@@ -66,19 +74,7 @@ class QuotationLine
         $this->totalHt = 0;
         $this->amount = 0;
         $this->quantity = 0;
-    }
-
-
-    public function getProduct(): ?Product
-    {
-        return $this->product;
-    }
-
-    public function setProduct(?Product $product): self
-    {
-        $this->product = $product;
-
-        return $this;
+        $this->product = new ArrayCollection();
     }
 
     public function getUnitPrice(): ?float
@@ -164,4 +160,35 @@ class QuotationLine
 
         return $this;
     }
+
+    /**
+     * @return Collection|Product[]
+     */
+    public function getProduct(): Collection
+    {
+        return $this->product;
+    }
+
+    public function addProduct(Product $product): self
+    {
+        if (!$this->product->contains($product)) {
+            $this->product[] = $product;
+            $product->setQuotationLine($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduct(Product $product): self
+    {
+        if ($this->product->removeElement($product)) {
+            // set the owning side to null (unless already changed)
+            if ($product->getQuotationLine() === $this) {
+                $product->setQuotationLine(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

@@ -12,7 +12,7 @@ $(document).ready(function () {
     $('.js-datepicker').datepicker({
         format: 'mm/dd/yyyy',
         language: 'fr',
-        startDate:'"01-01-2020")'
+        startDate: '"01-01-2020")'
     });
 
 
@@ -69,14 +69,23 @@ const addOptionFormDeleteLink = ($tagFormLi) => {
     });
 };
 
-const updateProduct = () =>{
+const updateProduct = () => {
 
     let selectProduct = $("select.add-product");
 
     selectProduct.change((event) => {
+        let $thisSelectProduct = $(event.target);
+        let $quotationLine  = $thisSelectProduct.parent().parent();
+        let $quantityField  = $quotationLine.find('.quantity');
+        let $ttcField       = $quotationLine.find('.ttc');
+        let $unitPriceField = $quotationLine.find('.unitPrice');
+        let $discountField  = $quotationLine.find('.discount');
+        let $htField        = $quotationLine.find('.ht');
+
+
         let $formDatas = $('form').serialize();
         //select
-        let $selectVal = $(event.target).val()
+        let $selectVal = $thisSelectProduct.val()
         // remise
         let $discount = $('#quotation_quotationLine_1_discount').val()
         //quantité
@@ -87,15 +96,17 @@ const updateProduct = () =>{
         $.ajaxSetup({
             url: route,
             global: false,
-            type: "GET"
+            type: "POST"
         });
-        $.ajax({ data: {$quantity, $discount,} });
+        $.ajax({data: {$formDatas}});
 
         $.get(route, (data) => {
-            $('this').parent().find('.quantity').val(2)
-            $('#quotation_quotationLine_1_unitPrice').val(data.unitPrice)
-            $('#quotation_quotationLine_1_totalHt').val(data.ht)
-            $('#quotation_quotationLine_1_amount').val(data.ttc)
+            console.log(data);
+           // $quantityField.val(data.quantity)
+            $ttcField.val(data.ttc).append('ttc')
+            $unitPriceField.val(data.unitPrice)
+            $discountField.val()
+            $htField.val(data.ht)
         })
     });
 }

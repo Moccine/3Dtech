@@ -17,6 +17,7 @@
         "sensio/framework-extra-bundle": "^5.6",
         "symfony/asset": "5.1.*",
         "symfony/console": "5.1.*",
+        "symfony/debug-bundle": "5.1.*",
         "symfony/expression-language": "5.1.*",
         "symfony/flex": "^1.6.3",
         "symfony/form": "5.1.*",
@@ -31,10 +32,13 @@
         "symfony/security-csrf": "5.1.*",
         "symfony/security-guard": "5.1.*",
         "symfony/security-http": "5.1.*",
+        "symfony/stopwatch": "5.1.*",
         "symfony/swiftmailer-bundle": "^3.4",
         "symfony/translation": "5.1.*",
         "symfony/twig-bundle": "5.1.*",
         "symfony/validator": "5.1.*",
+        "symfony/var-dumper": "5.1.*",
+        "symfony/web-profiler-bundle": "5.1.*",
         "symfony/webpack-encore-bundle": "^1.8",
         "symfony/yaml": "5.1.*",
         "twig/extra-bundle": "^2.12|^3.0",
@@ -43,9 +47,7 @@
     },
     "require-dev": {
         "symfony/dotenv": "5.1.*",
-        "symfony/maker-bundle": "^1.17.0",
-        "symfony/profiler-pack": "^1.0.4",
-        "symfony/var-dumper": "5.1.*"
+        "symfony/maker-bundle": "^1.17.0"
     },
     "config": {
         "preferred-install": {

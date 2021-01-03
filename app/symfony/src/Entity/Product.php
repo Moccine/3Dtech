@@ -50,6 +50,10 @@ class Product
      */
     private $vat;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=QuotationLine::class, inversedBy="product")
+     */
+    private $quotationLine;
 
     /**
      * @return string
@@ -117,4 +121,15 @@ class Product
         return $this;
     }
 
+    public function getQuotationLine(): ?QuotationLine
+    {
+        return $this->quotationLine;
+    }
+
+    public function setQuotationLine(?QuotationLine $quotationLine): self
+    {
+        $this->quotationLine = $quotationLine;
+
+        return $this;
+    }
 }
