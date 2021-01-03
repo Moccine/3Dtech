@@ -60,8 +60,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Address', 'fas fa-map-marker-alt', Address::class);
         yield MenuItem::linkToCrud('Client', 'fas fa-users', Client::class);
         yield MenuItem::linkToCrud('Invoice', 'fas fa-file-invoice', Invoice::class);
-        yield MenuItem::linkToCrud('Slider', 'fas fa-file-book', Slider::class);
+        //yield MenuItem::linkToCrud('Slider', 'fas fa-file-book', Slider::class);
         yield MenuItem::linkToCrud('TVA', 'fas fa-file-book', Vat::class);
         yield MenuItem::linkToCrud('Demande de devis', 'fas fa-file-book', AskOfQuote::class);
+        yield MenuItem::linktoRoute('Home', 'fas fa-file-home', '3dtech_index');
     }
 }

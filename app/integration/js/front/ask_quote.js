@@ -5,8 +5,8 @@ let $submit = $("button#ask_of_quote_submit");
 import 'bootstrap-datepicker';
 
 $(document).ready(function () {
-    $('.quotation-form').find('select').css('display', 'block');
-    $('.quotation-form').find('.nice-select').css('display', 'none');
+    $('#quotation-form').find('select').css('display', 'block');
+    $('#quotation-form').find('.nice-select').css('display', 'none');
     updateProduct();
 
     $('.js-datepicker').datepicker({
@@ -81,6 +81,23 @@ const updateProduct = () => {
         let $unitPriceField = $quotationLine.find('.unitPrice');
         let $discountField  = $quotationLine.find('.discount');
         let $htField        = $quotationLine.find('.ht');
+        let $vatField        = $quotationLine.find('.vat');
+
+       let  quantityVal  = $quantityField.val();
+       let  ttcVal       = $ttcField.val();
+       let  unitPriceVal = $unitPriceField.val();
+       let  discountVal  = $discountField.val();
+       let  htVal       = $htField.val();
+       let  vatVal       = $vatField.val();
+
+            let ajaxData = {
+                quantityVal,
+                ttcVal,
+                unitPriceVal,
+                discountVal,
+                htVal,
+                vatVal,
+            }
 
 
         let $formDatas = $('form').serialize();
@@ -98,11 +115,10 @@ const updateProduct = () => {
             global: false,
             type: "POST"
         });
-        $.ajax({data: {$formDatas}});
+        $.ajax({data: {ajaxData}});
 
-        $.get(route, (data) => {
+        $.post(route, {ajaxData}, (data) => {
             console.log(data);
-           // $quantityField.val(data.quantity)
             $ttcField.val(data.ttc).append('ttc')
             $unitPriceField.val(data.unitPrice)
             $discountField.val()

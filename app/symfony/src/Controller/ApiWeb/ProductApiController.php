@@ -18,16 +18,25 @@ class ProductApiController extends AbstractController
      */
     public function calculateQuotationAction(Request $request, Product $product)
     {
-        dump($request);
-        $ht = number_format((float)($product->getPrice() * 1), 2, '.', ' ');
-        $taxe = ($product->getVat() instanceof Vat) ? $product->getVat()->getTaxe() : Vat::DEFAULT_VAT;
+        $ajaxDatas = $request->request->get('ajaxData');
+        $quantity = (int)$ajaxDatas['quantityVal'] ?? 1;
+        $ttcVal = (float)$ajaxDatas['ttcVal'];
+        $unitPriceVal = (float)$ajaxDatas['unitPriceVal'];
+        $unitPriceVal = (float)$ajaxDatas['unitPriceVal'];
+        $discountVal = (float)$ajaxDatas['discountVal'];
+        $htVal = (float)$ajaxDatas['htVal'];
+        $vat = (float)$ajaxDatas['vatVal'];
+
+        $ht = $product->getPrice() * $quantity*(1 - $discountVal/100);
+        $taxe = (float)$vat/100;
         $amount = (float)$ht * (1 + (float)$taxe);
+
         $data = [
             'name' => $product->getName(),
             'unitPrice' => $product->getPrice(),
             'code' => $product->getCode(),
             'ht' => (float)$ht,
-            'ttc' => (float)number_format($amount, 2, '.', ' '),
+            'ttc' => (float)$amount,
         ];
 
         return $this->json($data);

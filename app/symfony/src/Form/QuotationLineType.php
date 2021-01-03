@@ -4,10 +4,12 @@ namespace App\Form;
 
 use App\Entity\Product;
 use App\Entity\QuotationLine;
+use App\Entity\Vat;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\PercentType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -21,42 +23,50 @@ class QuotationLineType extends AbstractType
                 'placeholder' => 'Choisir un produit',
                 'label' => false,
                 'attr' => [
-                    'class' => 'col-lg-6  add-product'
+                    'class' => 'add-product'
+                ]
+            ])
+            ->add('vat', EntityType::class, [
+                'class' => Vat::class,
+                'placeholder' => 'Choisir un tva',
+                'label' => false,
+                'attr' => [
+                    'class' => ' vat'
                 ]
             ])
             ->add('quantity', IntegerType::class, [
                 'label' => false,
                 'data' => 1,
                 'attr' => [
-                    'class' => 'col-lg-6 quantity'
+                    'class' => ' quantity'
                 ]
             ])
              ->add('unitPrice', MoneyType::class, [
                  'label' => false,
                  'attr' => [
                      'placeholder' =>'Prix unitaire',
-                     'class' => 'col-lg-6 unitPrice',
+                     'class' => ' unitPrice',
                  ]
              ])
-              ->add('discount', MoneyType::class, [
+              ->add('discount', PercentType::class, [
                   'label' => false,
                   'attr' => [
-                      'placeholder' =>'Remisee',
-                      'class' => 'col-lg-6 discount'
+                      'placeholder' =>'Remise en %',
+                      'class' => ' discount'
                   ]
               ])
               ->add('totalHt', MoneyType::class, [
                   'label' => false,
                   'attr' => [
                       'placeholder' =>'HT',
-                      'class' => 'col-lg-6 ht'
+                      'class' => ' ht'
                   ]
               ])
               ->add('amount', MoneyType::class, [
                   'label' => false,
                   'attr' => [
                       'placeholder' =>'TTC',
-                      'class' => 'col-lg-6 ttc'
+                      'class' => ' ttc'
                   ]
               ])
         ;

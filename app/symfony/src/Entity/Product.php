@@ -8,8 +8,6 @@ use App\Entity\Traits\CodifiableTrait;
 use App\Entity\Traits\CreatedAtTrait;
 use App\Entity\Traits\IdentifiableTrait;
 use App\Entity\Traits\UpdatedAtTrait;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\ProductRepository;
@@ -44,16 +42,6 @@ class Product
      * @Assert\NotBlank()
      */
     private float $price;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Vat::class)
-     */
-    private $vat;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=QuotationLine::class, inversedBy="product")
-     */
-    private $quotationLine;
 
     /**
      * @return string
@@ -107,29 +95,5 @@ class Product
     public function __toString(): string
     {
         return sprintf('%s', $this->category->getName());
-    }
-
-    public function getVat(): ?Vat
-    {
-        return $this->vat;
-    }
-
-    public function setVat(?Vat $vat): self
-    {
-        $this->vat = $vat;
-
-        return $this;
-    }
-
-    public function getQuotationLine(): ?QuotationLine
-    {
-        return $this->quotationLine;
-    }
-
-    public function setQuotationLine(?QuotationLine $quotationLine): self
-    {
-        $this->quotationLine = $quotationLine;
-
-        return $this;
     }
 }

@@ -90,12 +90,31 @@
                                             data-widget-quotationLine="{{ '<li class="list-unstyled"></li>'|e }}"
                                             data-widget-counter="{{ form.quotationLine|length }}">
                                             {% for quotationLineField in form.quotationLine %}
-                                                <li class="list-unstyled">
-                                                    <div class="col-lg-12">
-                                                        <div class="col-auto">{{ form_errors(quotationLineField) }}</div>
-                                                        {{ form_row(quotationLineField) }}
+                                                <div class="col-auto">{{ form_errors(quotationLineField) }}</div>
+                                                <li>
+                                                    <div class="col-lg-3 quotationLine-field">
+                                                        {{ form_row(quotationLineField.children.product) }}
                                                     </div>
-                                                    <div class="input-box">
+                                                    <div class="col-lg-3 quotationLine-field">
+                                                        {{ form_row(quotationLineField.children.vat) }}
+                                                    </div>
+                                                    <div class="col-lg-3 quotationLine-field">
+                                                        {{ form_row(quotationLineField.children.quantity) }}
+                                                    </div>
+                                                    <div class="col-lg-3 quotationLine-field">
+                                                        {{ form_row(quotationLineField.children.unitPrice) }}
+                                                    </div>
+                                                    <div class="col-lg-3 quotationLine-field">
+                                                        {{ form_row(quotationLineField.children.discount) }}
+                                                    </div>
+                                                    <div class="col-lg-3 quotationLine-field">
+                                                        {{ form_row(quotationLineField.children.totalHt) }}
+                                                    </div>
+                                                    <div class="col-lg-3 quotationLine-field">
+                                                        {{ form_row(quotationLineField.children.amount) }}
+                                                    </div>
+
+                                                    <div class="input-box col-lg-3 quotationLine-field">
                                                         <a href="javacript:void(0)"
                                                            class="delete-link-edit"
                                                            style="float: right; color: red">

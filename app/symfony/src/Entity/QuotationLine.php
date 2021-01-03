@@ -44,7 +44,7 @@ class QuotationLine
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $quantity =1;
+    private $quantity = 1;
 
     /**
      * @ORM\ManyToOne(targetEntity=Quotation::class, inversedBy="quotationLine")
@@ -52,14 +52,16 @@ class QuotationLine
     private $quotation;
 
     /**
-     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="quotationLine")
+     * @ORM\ManyToOne(targetEntity=Vat::class)
      */
-    private $products;
+    private $vat;
 
     /**
-     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="quotationLine")
+     * @ORM\ManyToOne(targetEntity=Product::class)
+     * @ORM\JoinColumn(nullable=true, unique=false)
      */
     private $product;
+
 
     /**
      * QuotationLine constructor.
@@ -74,7 +76,6 @@ class QuotationLine
         $this->totalHt = 0;
         $this->amount = 0;
         $this->quantity = 0;
-        $this->product = new ArrayCollection();
     }
 
     public function getUnitPrice(): ?float
@@ -161,32 +162,26 @@ class QuotationLine
         return $this;
     }
 
-    /**
-     * @return Collection|Product[]
-     */
-    public function getProduct(): Collection
+    public function getVat(): ?Vat
     {
-        return $this->product;
+        return $this->vat;
     }
 
-    public function addProduct(Product $product): self
+    public function setVat(?Vat $vat): self
     {
-        if (!$this->product->contains($product)) {
-            $this->product[] = $product;
-            $product->setQuotationLine($this);
-        }
+        $this->vat = $vat;
 
         return $this;
     }
 
-    public function removeProduct(Product $product): self
+    public function getProduct(): ?Product
     {
-        if ($this->product->removeElement($product)) {
-            // set the owning side to null (unless already changed)
-            if ($product->getQuotationLine() === $this) {
-                $product->setQuotationLine(null);
-            }
-        }
+        return $this->product;
+    }
+
+    public function setProduct(?Product $product): self
+    {
+        $this->product = $product;
 
         return $this;
     }
