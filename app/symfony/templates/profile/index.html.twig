@@ -1,83 +1,87 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 <div class="profile-home">
-  <div class="page-title-area d-flex align-items-center bg_cover"
-       style="background-image: url({{ asset('assets/images/3dtech-abstract-digital-network.jpg') }});">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="page-title-content text-center">
-            <h6>PACK MAINTENANCE INFORMATIQUE PME</h6>
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                  <a href="{{ path('computer_maintance') }}">Les  services inclus dans votre pack maintenance informatique
-                  </a></li>
-                <li class="breadcrumb-item active" aria-current="page">en profiter</li>
-              </ol>
-            </nav>
-          </div>
+    <div class="page-title-area d-flex align-items-center bg_cover"
+         style="background-image: url({{ asset('assets/images/3dtech-abstract-digital-network.jpg') }});">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="page-title-content text-center">
+                        <h6>PACK MAINTENANCE INFORMATIQUE PME</h6>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="{{ path('computer_maintance') }}">Les services inclus dans votre pack
+                                        maintenance informatique
+                                    </a></li>
+                                <li class="breadcrumb-item active" aria-current="page">en profiter</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-  <section class="portfolio-area pb-50 pt-20">
-    <div class="container">
-      <div class="row">
-        <div class="row" >
-          <div class="navbar-btn d-none d-sm-inline-block">
-            <a class="main-btn ml-20" href="{{ path('change_password') }}">Changer de mot de passe<i class="flaticon-right-arrow"></i></a>
-          </div>
+    <section class="portfolio-area pb-50 pt-20">
+        <div class="container">
+            <div class="row">
+                <div class="row">
+                    <div class="navbar-btn d-none d-sm-inline-block">
+                        <a class="main-btn ml-20" href="{{ path('change_password') }}">Changer de mot de passe<i
+                                    class="flaticon-right-arrow"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-3 col-md-3 col-sm-8">
+                    <div class="portfolio-item mt-30">
+                        <a href="{{ path('create_quotation') }}">
+                            <img src="{{ asset('assets/images/quote-icon.png') }}" alt="profile">
+                            <div class="portfolio-content">
+                                <span>Creation de devis</span>
+                                <h4 class="title">Creatiion de devis</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-8">
+                    <div class="portfolio-item mt-30">
+                        <a href="{{ path('quaotation_list') }}">
+                            <img src="{{ asset('assets/images/list-icon.png') }}" alt="profile">
+                            <div class="portfolio-content">
+                                <span>Liste de devis</span>
+                                <h4 class="title">Liste de devis</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% if app.user.hasRole('ROLE_ADMIN') %}
+                <div class="col-lg-3 col-md-3 col-sm-8">
+                    <div class="portfolio-item mt-30">
+                        <a href="{{ path('admin') }}">
+                            <img src="{{ asset('assets/images/3dtech-icon-worker.jpg') }}" alt="profile">
+                            <div class="portfolio-content">
+                                <span> Voir tout</span>
+                                <h4 class="title">Voir tout</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
+                <div class="col-lg-3 col-md-3 col-sm-8">
+                    <div class="portfolio-item mt-30">
+                        <a href="#">
+                            <img src="{{ asset('assets/images/3dtech-icon-worker.jpg') }}" alt="profile">
+                            <div class="portfolio-content">
+                                <span>Creation de facture</span>
+                                <h4 class="title">Creation de facture</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-lg-6 col-md-6 col-sm-8">
-          <div class="portfolio-item mt-30">
-            <a href="{{ path('create_quotation') }}">
-              <img src="{{ asset('assets/images/quote-icon.png') }}" alt="profile">
-              <div class="portfolio-content">
-                <span>Creation de devis</span>
-                <h4 class="title">Creatiion de devis</h4>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-8">
-          <div class="portfolio-item mt-30">
-            <a href="{{ path('quaotation_list') }}">
-              <img src="{{ asset('assets/images/list-icon.png') }}" alt="profile">
-              <div class="portfolio-content">
-                <span>Liste de devis</span>
-                <h4 class="title">Liste de devis</h4>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-8">
-          <div class="portfolio-item mt-30">
-            <a href="{{ path('admin') }}">
-              <img src="{{ asset('assets/images/3dtech-icon-worker.jpg') }}" alt="profile">
-              <div class="portfolio-content">
-                <span> Profile</span>
-                <h4 class="title">Profile</h4>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-8">
-          <div class="portfolio-item mt-30">
-            <a href="#">
-              <img src="{{ asset('assets/images/3dtech-icon-worker.jpg') }}" alt="profile">
-              <div class="portfolio-content">
-                <span>Creation de facture</span>
-                <h4 class="title">Creation de facture</h4>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 </div>
 {% endblock %}
 

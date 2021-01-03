@@ -92,12 +92,10 @@ const updateProduct = () =>{
         $.ajax({ data: {$quantity, $discount,} });
 
         $.get(route, (data) => {
-            console.log(data);
             $('this').parent().find('.quantity').val(2)
             $('#quotation_quotationLine_1_unitPrice').val(data.unitPrice)
             $('#quotation_quotationLine_1_totalHt').val(data.ht)
             $('#quotation_quotationLine_1_amount').val(data.ttc)
-            console.log(data);
         })
     });
 }

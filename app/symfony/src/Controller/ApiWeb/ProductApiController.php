@@ -20,7 +20,7 @@ class ProductApiController extends AbstractController
     {
         $quantity = $request->request->get('quantity') ?? 1;
         $ht = number_format((float)($product->getPrice() * $quantity), 2, '.', ' ');
-        $taxe = ($product->getVat() instanceOf Vat) ? $product->getVat()->getTaxe() : Vat::DEFAULT_VAT;
+        $taxe = ($product->getVat() instanceof Vat) ? $product->getVat()->getTaxe() : Vat::DEFAULT_VAT;
         $amount = (float)$ht * (1 + (float)$taxe);
         $data = [
             'name' => $product->getName(),

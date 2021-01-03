@@ -20,7 +20,6 @@ class IndexController extends AbstractController
      */
     public function index(Request $request, AskQuoteManager $askQuoteManager)
     {
-
         return $this->render('home/index.html.twig', [
             'slideShow' => '',
         ]);
@@ -33,5 +32,4 @@ class IndexController extends AbstractController
     {
         return $this->render('home/partners.html.twig');
     }
-
 }

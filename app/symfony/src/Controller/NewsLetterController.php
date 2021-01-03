@@ -26,6 +26,5 @@ class NewsLetterController extends AbstractController
             $em->flush();
         }
         return $this->redirectToRoute('3dtech_index');
-
     }
 }

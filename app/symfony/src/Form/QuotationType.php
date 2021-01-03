@@ -125,7 +125,6 @@ class QuotationType extends AbstractType
                 'allow_delete' => true,
                 'delete_empty' => true,
             ]);
-
     }
 
     public function configureOptions(OptionsResolver $resolver)

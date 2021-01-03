@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Quotation;
+use App\Entity\User;
 use App\Form\QuotationType;
 use App\Service\QuotationService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -70,7 +71,15 @@ class QuotationController extends AbstractController
      */
     public function list()
     {
-        $quotations = $this->getDoctrine()->getRepository(Quotation::class)->findAll();
+        $user = $this->getUser();
+        $quotationRepository = $this->getDoctrine()->getRepository(Quotation::class);
+        if ($user->hasRole(User::ROLE_ADMIN)) {
+            $quotations = $quotationRepository->findAll();
+        } else {
+            $quotations = $quotationRepository->findBy([
+                'user' => $user
+            ]);
+        }
 
         return $this->render('quotation/list.html.twig', [
             'quotations' => $quotations,

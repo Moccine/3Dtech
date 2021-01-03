@@ -25,7 +25,6 @@ class AskOfQuoteController extends AbstractController
         $form = $this->createForm(AskOfQuoteType::class, $askOfQuote);
         $form->handleRequest($request);
         if ($form->isSubmitted() and $form->isValid()) {
-
             $askOfQuote = $askQuoteManager->create($askOfQuote);
             $askQuoteManager->sendAskQuoteMail($askOfQuote);
 
