@@ -31,7 +31,7 @@ class ProductCrudController extends AbstractCrudController
         return [
             TextField::new('name', 'Name'),
             TextField::new('code', 'Code'),
-            AssociationField::new('vat', 'Tva'),
+            //AssociationField::new('vat', 'Vat'),
             AssociationField::new('category', 'Catégorie'),
             MoneyField::new('price', 'Coût')->setCurrency('EUR'),
         ];

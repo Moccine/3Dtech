@@ -1,4 +1,33 @@
 {% extends 'base.html.twig' %}
+
+{% macro niceForm(form) %}
+
+    <div class=" row quotation-line-section mt-40" >
+        <div class="col-lg-3 quotationLine-field">
+            {{ form_row(form.product) }}
+        </div>
+        <div class="col-lg-3 quotationLine-field">
+            {{ form_row(form.vat) }}
+        </div>
+        <div class="col-lg-3 quotationLine-field">
+            {{ form_row(form.quantity) }}
+        </div>
+        <div class="col-lg-3 quotationLine-field">
+            {{ form_row(form.unitPrice) }}
+        </div>
+        <div class="col-lg-3 quotationLine-field">
+            {{ form_row(form.discount) }}
+        </div>
+        <div class="col-lg-3 quotationLine-field">
+            {{ form_row(form.totalHt) }}
+        </div>
+        <div class="col-lg-3 quotationLine-field">
+            {{ form_row(form.amount) }}
+        </div>
+    </div>
+{% endmacro %}
+
+{% import _self as formMacros %}
 {% block body %}
     <div class="page-title-area d-flex align-items-center bg_cover"
          style="background-image: url({{ asset('assets/images/page-title-bg.jpg') }});">
@@ -58,6 +87,30 @@
                                                 {{ form_row(form.quotationDate) }}
                                             </div>
                                         </div>
+                                    </div>{# end Row #}
+                                    <div class="row">
+                                        <ul id="option-fields-list" class="options-block"
+                                            data-prototype="{{ formMacros.niceForm(form.quotationLine.vars.prototype)|e }}"
+                                            data-widget-quotationLine="{{ '<li class="list-unstyled"></li>'|e }}"
+                                            data-widget-counter="{{ form.quotationLine|length }}">
+                                            {% for quotationLineField in form.quotationLine %}
+                                                <div class="col-auto">{{ form_errors(quotationLineField) }}</div>
+                                                <li class="list-unstyled">
+                                                    {{ formMacros.niceForm(quotationLineField.children) }}
+                                                    <div class="input-box col-lg-12 quotationLine-field">
+                                                        <a href="javacript:void(0)"
+                                                           class="delete-link-edit"
+                                                           style="float: right; color: red">
+                                                            <i class="fa fa-4x fa-trash" data-toggle="tooltip"
+                                                               data-placement="top"
+                                                               title="{{ 'app.label.product_delete'|trans }}"></i>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                    <div class="row mt-20">
                                         <div class="col-lg-6">
                                             <div class="input-box">
                                                 {{ form_row(form.payment) }}
@@ -83,55 +136,12 @@
                                                 {{ form_row(form.description) }}
                                             </div>
                                         </div>
-                                    </div>{# end Row #}
-                                    <div class="row">
-                                        <ul id="option-fields-list" class="options-block"
-                                            data-prototype="{{ form_widget(form.quotationLine.vars.prototype)|e }}"
-                                            data-widget-quotationLine="{{ '<li class="list-unstyled"></li>'|e }}"
-                                            data-widget-counter="{{ form.quotationLine|length }}">
-                                            {% for quotationLineField in form.quotationLine %}
-                                                <div class="col-auto">{{ form_errors(quotationLineField) }}</div>
-                                                <li>
-                                                    <div class="col-lg-3 quotationLine-field">
-                                                        {{ form_row(quotationLineField.children.product) }}
-                                                    </div>
-                                                    <div class="col-lg-3 quotationLine-field">
-                                                        {{ form_row(quotationLineField.children.vat) }}
-                                                    </div>
-                                                    <div class="col-lg-3 quotationLine-field">
-                                                        {{ form_row(quotationLineField.children.quantity) }}
-                                                    </div>
-                                                    <div class="col-lg-3 quotationLine-field">
-                                                        {{ form_row(quotationLineField.children.unitPrice) }}
-                                                    </div>
-                                                    <div class="col-lg-3 quotationLine-field">
-                                                        {{ form_row(quotationLineField.children.discount) }}
-                                                    </div>
-                                                    <div class="col-lg-3 quotationLine-field">
-                                                        {{ form_row(quotationLineField.children.totalHt) }}
-                                                    </div>
-                                                    <div class="col-lg-3 quotationLine-field">
-                                                        {{ form_row(quotationLineField.children.amount) }}
-                                                    </div>
-
-                                                    <div class="input-box col-lg-3 quotationLine-field">
-                                                        <a href="javacript:void(0)"
-                                                           class="delete-link-edit"
-                                                           style="float: right; color: red">
-                                                            <i class="fa fa-4x fa-trash" data-toggle="tooltip"
-                                                               data-placement="top"
-                                                               title="{{ 'app.label.product_delete'|trans }}"></i>
-                                                        </a>
-                                                    </div>
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
-                                <button class="main-btn mt-35" type="submit">Envoyer</button>
+                                    <button class="main-btn mt-35" type="submit">Envoyer</button>
                                 </div>
                             </div>
                             {{ form_end(form) }}

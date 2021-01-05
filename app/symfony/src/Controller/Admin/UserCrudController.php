@@ -41,7 +41,6 @@ class UserCrudController extends AbstractCrudController
             EmailField::new('email', 'Email'),
             TextField::new('plainPassword', )->hideOnForm()->setValue(function ($dto){
                 $dto->getPassword();
-                dump($dto);
     })->hideOnForm()->hideOnDetail()->hideOnIndex(),
             ChoiceField::new('roles')->setChoices(array_flip(User::ROLES))->allowMultipleChoices()->onlyOnForms(),
         ];

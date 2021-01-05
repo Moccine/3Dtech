@@ -35,9 +35,11 @@ const addNewOption = () => {
     // Add new quotation line
     var $collectionHolder;
     var $addOptionButton = $(` 
+<div class="row col-lg-12">
            <button type="button" 
             class="add-another-collection-option btn btn-primary-outline main-btn"
-            data-list-selector="#option-fields-list"> Ajouter une ligne </button> `);
+            data-list-selector="#option-fields-list"> Ajouter une ligne </button>
+            </div> `);
     var $newOptionLi = $('<li class="list-unstyled"></li>').append($addOptionButton);
     $collectionHolder = $('ul.options-block');
     $collectionHolder.append($newOptionLi);
@@ -69,46 +71,59 @@ const addOptionFormDeleteLink = ($tagFormLi) => {
     });
 };
 
+const calculateQuotation = () => {
+    let amountField = $('#quotation_amount');
+    let depositField = $('#quotation_deposit');
+    let totalHtField = $('#quotation_totalHt');
+    let totalAmount = 0;
+    let totalHt = 0;
+
+    let quotationLines = $('form').find('.quotation-line-section')
+    $(quotationLines).each((index, sectionsFields) => {
+        console.log($(sectionsFields).data());
+        let $ht = $(sectionsFields).find('.ht');
+        let $ttc = $(sectionsFields).find('.ttc');
+        console.log($ht.val(), $ttc.val())
+        totalAmount+= parseFloat($ttc)
+        totalHt += parseFloat($ht);
+    });
+    amountField.val(totalAmount);
+    totalHtField.val(totalHt);
+}
+
+
 const updateProduct = () => {
 
     let selectProduct = $("select.add-product");
 
     selectProduct.change((event) => {
         let $thisSelectProduct = $(event.target);
-        let $quotationLine  = $thisSelectProduct.parent().parent();
-        let $quantityField  = $quotationLine.find('.quantity');
-        let $ttcField       = $quotationLine.find('.ttc');
+        let $ProductId = $thisSelectProduct.val()
+        let $quotationLine = $(event.target).parents(':eq(2)');
+        let $quantityField = $quotationLine.find('.quantity');
+        let $ttcField = $quotationLine.find('.ttc');
         let $unitPriceField = $quotationLine.find('.unitPrice');
-        let $discountField  = $quotationLine.find('.discount');
-        let $htField        = $quotationLine.find('.ht');
-        let $vatField        = $quotationLine.find('.vat');
+        let $discountField = $quotationLine.find('.discount');
+        let $htField = $quotationLine.find('.ht');
+        let $vatField = $quotationLine.find('.vat');
 
-       let  quantityVal  = $quantityField.val();
-       let  ttcVal       = $ttcField.val();
-       let  unitPriceVal = $unitPriceField.val();
-       let  discountVal  = $discountField.val();
-       let  htVal       = $htField.val();
-       let  vatVal       = $vatField.val();
+        let quantityVal = $quantityField.val();
+        let ttcVal = $ttcField.val();
+        let unitPriceVal = $unitPriceField.val();
+        let discountVal = $discountField.val();
+        let htVal = $htField.val();
+        let vatVal = $vatField.val();
 
-            let ajaxData = {
-                quantityVal,
-                ttcVal,
-                unitPriceVal,
-                discountVal,
-                htVal,
-                vatVal,
-            }
+        let ajaxData = {
+            quantityVal,
+            ttcVal,
+            unitPriceVal,
+            discountVal,
+            htVal,
+            vatVal,
+        }
 
-
-        let $formDatas = $('form').serialize();
-        //select
-        let $selectVal = $thisSelectProduct.val()
-        // remise
-        let $discount = $('#quotation_quotationLine_1_discount').val()
-        //quantité
-        let $quantity = $('this').parent().find('.quantity').val()
-        console.log($quantity);
-        let route = getRoute('search_product', {'id': $selectVal});
+        let route = getRoute('search_product', {'id': $ProductId});
 
         $.ajaxSetup({
             url: route,
@@ -119,10 +134,11 @@ const updateProduct = () => {
 
         $.post(route, {ajaxData}, (data) => {
             console.log(data);
-            $ttcField.val(data.ttc).append('ttc')
-            $unitPriceField.val(data.unitPrice)
-            $discountField.val()
-            $htField.val(data.ht)
+            $ttcField.val(data.ttc).attr('value', data.ttc)
+            $unitPriceField.val(data.unitPrice).attr('value', data.unitPrice)
+            $discountField.val(data.discount).attr('value', data.discount)
+            $htField.val(data.ht).attr('value', data.ht)
         })
+        calculateQuotation();
     });
 }

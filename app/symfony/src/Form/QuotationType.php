@@ -124,6 +124,8 @@ class QuotationType extends AbstractType
                 'allow_add' => true,
                 'allow_delete' => true,
                 'delete_empty' => true,
+                'error_bubbling' => true,
+
             ]);
     }
 
@@ -131,6 +133,7 @@ class QuotationType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Quotation::class,
+            'cascade_validation' => true,
         ]);
     }
 }
