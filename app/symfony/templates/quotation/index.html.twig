@@ -53,6 +53,12 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="faq-box white-bg">
+                            <div class="row">
+                                <div class="col-lg-6 offset-3">
+                                    <h4> creation de devis</h4>
+                                </div>
+
+                            </div>
                             <div class="faq-form">
                                 <div class="faq-title">
                                     {{ form_start(form) }}
@@ -65,6 +71,11 @@
                                         <div class="col-lg-6">
                                             <div class="input-box mb-15">
                                                 {{ form_row(form.deadline) }}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="input-box">
+                                                {{ form_row(form.payment) }}
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
@@ -111,24 +122,19 @@
                                         </ul>
                                     </div>
                                     <div class="row mt-20">
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-4 col-sm-6">
                                             <div class="input-box">
-                                                {{ form_row(form.payment) }}
+                                                {{ form_row(form.totalHt) }}
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-4 col-sm-6">
                                             <div class="input-box">
                                                 {{ form_row(form.amount) }}
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-4 col-sm-6">
                                             <div class="input-box">
                                                 {{ form_row(form.deposit) }}
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="input-box">
-                                                {{ form_row(form.totalHt) }}
                                             </div>
                                         </div>
                                         <div class="col-lg-12">

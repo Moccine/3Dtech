@@ -16,7 +16,11 @@
     .row .col:last-child { padding-right: 0 !important; }
 
     body { font-size: 10px; font-family:'GothamNarrow-Book',Arial,sans-serif; line-height: 1.4;}
-
+    body {
+      background: grey;
+      margin-top: 120px;
+      margin-bottom: 120px;
+    }
     /* Header */
     .header-simple-wrap { padding-bottom: 10px; overflow: hidden;}
     .logo { width: 170px; float: left;}
@@ -91,209 +95,103 @@
 </head>
 <body>
 
-  testt
-  {#<header class="header-wrap">
-    <div class="row">
-      <div class="col-7">
-        <div class="col-12">
-          <img src="{{ asset('images/logo.png') }}" alt="Muzéo" class="logo">
-          <br><br><br><br><br><br>
-        </div>
-        <div class="row">
-          <div class="col-6">
-            <div class="information-block">
-              <div class="info-row">
-                <strong>{{ 'app.label.currency'|trans }} :</strong>
-                € (euro)
-              </div>
-              <div class="info-row">
-                <strong>{{ 'app.label.customer'|trans }} :</strong>
-                {{ quotation.customer.name }}</div>
-              <div class="info-row">
-                <strong>{{ 'app.label.date'|trans }} :</strong>
-                {{ quotation.date|date('d.m.Y') }}</div>
+<div class="container">
+  <div class="row mt-150">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body p-0">
+          <div class="row p-5">
+            <div class="col-md-6">
+              <img src="{{ publicDir ~ asset('assets/images/Logo3D.png') }}">
+            </div>
+
+            <div class="col-md-6 text-right">
+              <p class="font-weight-bold mb-1">Devis {{ quotation.reference }}</p>
+              <p class="text-muted">{{ quotation.quotationDate|date('d-m-Y') }}</p>
             </div>
           </div>
-          <div class="col-6">
-            <div class="contact-info-block">
-              <div class="header-bold-title">{{ 'app.label.contact'|trans }} :</div>
-              <div>{{ quotation.user.firstName }}
-                {{ quotation.user.lastName }}
-              </div>
-              <div>{{ quotation.user.email }}</div>
+
+          <hr class="my-5">
+
+          <div class="row pb-5 p-5">
+            <div class="col-md-6">
+              <p class="font-weight-bold mb-4">Information Clent</p>
+              <p class="mb-1">{{ quotation.client.firstName }} {{ quotation.client.lastName }}</p>
+              <p>
+                {{ quotation.client.company }}
+              </p>
+              <p class="mb-1">
+                {{ quotation.client.street }} <br>
+                {{ quotation.client.postalCode }} {{ quotation.client.city }} <br>
+                {{ quotation.client.country }} <br>
+              </p>
+            </div>
+
+            <div class="col-md-6 text-right">
+              <p class="font-weight-bold mb-4">Details de paiement</p>
+              <p class="mb-1"><span class="text-muted">Mode de paiement: </span> {{ quotation.payment }}</p>
+            </div>
+          </div>
+
+          <div class="row p-5">
+            <div class="col-md-12">
+              <table class="table">
+                <thead>
+                <tr>
+                  <th class="border-0 text-uppercase small font-weight-bold">N°</th>
+                  <th class="border-0 text-uppercase small font-weight-bold">Produit</th>
+                  <th class="border-0 text-uppercase small font-weight-bold">tva</th>
+                  <th class="border-0 text-uppercase small font-weight-bold">Quantité</th>
+                  <th class="border-0 text-uppercase small font-weight-bold">Prix unitaire</th>
+                  <th class="border-0 text-uppercase small font-weight-bold">Acompte</th>
+                  <th class="border-0 text-uppercase small font-weight-bold">TH</th>
+                  <th class="border-0 text-uppercase small font-weight-bold">TTC</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for quotationline in quotation.quotationLine %}
+                  <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ quotationline.product.name }}</td>
+                    <td>{{ quotationline.vat.name }}</td>
+                    <td>{{ quotationline.quantity }}</td>
+                    <td>{{ quotationline.unitPrice }}</td>
+                    <td>{{ quotationline.discount }}</td>
+                    <td>{{ quotationline.totalHt }}</td>
+                    <td>{{ quotationline.amount }}</td>
+
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="d-flex flex-row-reverse bg-dark text-white p-4">
+            <div class="py-3 px-5 text-right">
+              <div class="mb-2">HTe</div>
+              <div class="h2 font-weight-light">{{ quotation.totalHt }}  €</div>
+            </div>
+
+            <div class="py-3 px-5 text-right">
+              <div class="mb-2">Reduction</div>
+              <div class="h2 font-weight-light">10%</div>
+            </div>
+
+            <div class="py-3 px-5 text-right">
+              <div class="mb-2"> TTCt</div>
+              <div class="h2 font-weight-light">{{ quotation.amount }} €</div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-5">
-        <div class="facturation-block">
-          <div class="header-bold-title">{{ 'app.title.address.billing'|trans }} :</div>
-          <div>{{ quotation.customer.name }}</div>
-          <div>{{ quotation.address }}<br>
-            {{ quotation.postalCode }}
-            {{ quotation.city }}
-          </div>
-        </div>
-
-        <div class="address-block">
-          <div class="header-bold-title">{{ 'app.title.address.delivery'|trans }} :</div>
-          <div>{{ quotation.customer.name }}</div>
-          <div>{{ quotation.deliveryAddress }}<br>
-            {{ quotation.deliveryPostalCode }}
-            {{ quotation.deliveryCity }}</div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <div class="pdf-table">
-    <div class="devis-title">
-      <strong>{{ 'app.label.ref_quotation'|trans }} :</strong>
-      {{ quotation.id }}
-    </div>
-
-    <table class="table">
-      <thead>
-      <tr>
-        <th>{{ 'app.label.chapter_product'|trans|raw }}</th>
-        <th>{{ 'app.label.reference'|trans }}</th>
-        <th>{{ 'app.label.dimensions'|trans|raw }}</th>
-        <th>{{ 'app.label.description_product'|trans|raw }}</th>
-        <th>{{ 'app.label.price'|trans }}</th>
-        <th>{{ 'app.label.quantity'|trans }}</th>
-        <th>{{ 'app.label.total_price'|trans }}</th>
-      </tr>
-      </thead>
-
-      <tbody>
-      {% for quotationProduct in quotation.quotationProducts %}
-        <tr>
-          <td>
-            <div class="text-uppercase">{{ quotationProduct.chapter }}</div>
-          </td>
-          <td>
-            <div>{{ quotationProduct.reference }}</div>
-            <br/>
-            {% if  quotationProduct.image %}
-              <img src="{{ publicDir ~ asset(image_file(quotationProduct)) }}" alt="" class="img">
-            {% endif %}
-          </td>
-          <td>
-            <div>{{ quotationProduct.dimension }}</div>
-          </td>
-          <td class="text-left">
-            {{ quotationProduct.description|nl2br }}
-          </td>
-          <td>
-            {{ (quotationProduct.amount / quotationProduct.quantity)|number_format(2, '.', ' ') }}
-            {{ 'app.currency'|trans }}</td>
-          <td>{{ quotationProduct.quantity }}</td>
-          <td class="text-bold">{{ quotationProduct.amount|number_format(2, '.', ' ') }} €</td>
-        </tr>
-      {% endfor %}
-
-      <!--  -->
-      {% for quotationCost in quotation.quotationCosts if  quotationCost.enabled %}
-        <tr>
-          <td colspan="3"></td>
-          <td class="text-left">{{ quotationCost.name }} </td>
-          <td>{{ (quotationCost.price * quotationCost.multiplier)|number_format(2, '.', ' ') }} €</td>
-          <td>{{ quotationCost.quantity }}</td>
-          <td class="text-bold">{{ quotationCost.totalPrice|number_format(2, '.', ' ') }} €</td>
-        </tr>
-      {% endfor %}
-
-      </tbody>
-    </table>
-    <table class="table table-recap-all table-recap-all-mb">
-      <tbody>
-      <tr>
-        <td class="text-right text-uppercase w-80">
-          <div class="text-label">
-            <strong>{{ "app.label.reduction"|trans }}</strong>
-          </div>
-        </td>
-        <td>
-          <div class="text-price text-bold">{{ quotation.discount|number_format(2, '.', ' ') }} €</div>
-        </td>
-      </tr>
-
-      <tr>
-        <td class="text-right text-uppercase w-80">
-          <div class="text-label">
-            <strong>{{ 'app.label.total_price'|trans }}</strong>
-          </div>
-        </td>
-        <td>
-          <div class="text-price text-bold">{{ quotation.amount|number_format(2, '.', ' ') }} €</div>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-
-    <!-- Récapitulatif -->
-    <table class="table">
-      <thead>
-      <tr>
-        <th class="text-left" colspan="2">{{ 'app.label.summary'|trans }}</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td class="text-right text-uppercase w-80">
-          <div class="text-label">{{ 'app.label.total_price'|trans }}
-          </div>
-        </td>
-        <td>
-          <div class="text-price">{{ quotation.amount|number_format(2, '.', ' ') }} €</div>
-        </td>
-      </tr>
-      <tr>
-        <td class="text-right text-uppercase">
-          <div class="text-label">{{ 'app.label.vat'|trans }} {{ quotation.vat.rate }} %
-          </div>
-        </td>
-        <td>
-          <div class="text-price">{{ quotation.vatAmount|number_format(2, '.', ' ') }} €</div>
-        </td>
-      </tr>
-      <tr>
-        <td class="text-right text-uppercase">
-          <div class="text-label">
-            <strong>{{ 'app.label.ttc'|trans }}</strong>
-          </div>
-        </td>
-        <td>
-          <div class="text-price text-bold">{{ quotation.totalPriceTax|number_format(2, '.', ' ') }} €</div>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-    <table class="table table-recap-all">
-      <tbody>
-      <tr>
-        <td class="text-right text-uppercase w-80">
-          <div class="text-label">
-            <strong>{{ 'app.label.deposit'|trans }}</strong>
-          </div>
-        </td>
-        <td>
-          <div class="text-price text-bold">{{ quotation.totalAdvance|number_format(2, '.', ' ') }} €</div>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-    <div class="devis-info">
-      DEVIS VALABLE 60 JOURS Le fait de passer commande implique adhésion entière et sans réserve du client aux CGV de Muzeo, en PJ. <br/>
-      BANK IDENTIFICATION: IBAN: FR76 1020 7000 9021 2162 4443 752 // BIC (BANK IDENTIFICATION CODE): CCBPFRPPMTG // MUZEO SAS
     </div>
   </div>
 
-  <div style="page-break-after: always;"></div>
+  <div class="text-light mt-5 mb-5 text-center small">by : <a class="text-light" target="_blank" href="http://totoprayogo.com">totoprayogo.com</a></div>
 
-  <header class="header-simple-wrap">
-    <img src="{{ publicDir ~ asset('images/muzeo.png') }}" alt="Muzéo" class="logo">
-  </header>
-  #}
+</div>
+
+
 </body>
 </html>

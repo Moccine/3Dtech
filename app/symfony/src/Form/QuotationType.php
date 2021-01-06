@@ -25,7 +25,7 @@ class QuotationType extends AbstractType
     {
         $builder
             ->add('status', ChoiceType::class, [
-                'label' => false,
+                'label' => 'status',
                 'attr' => ['class' => 'wide'],
                 'data' => 3,
                 'choices' => [
@@ -35,7 +35,7 @@ class QuotationType extends AbstractType
                 ]
             ])
             ->add('name', TextType::class, [
-                'label' => false,
+                'label' => 'Nom',
                 'data' => 'Nom',
                 'attr' => [
                     'class' => 'removeMargin',
@@ -43,7 +43,7 @@ class QuotationType extends AbstractType
                 ]
             ])
             ->add('quotationDate', DateType::class, [
-                'label' => false,
+                'label' => 'Prenom',
                 'widget' => 'single_text',
                 'html5' => false,
                 'attr' => [
@@ -53,7 +53,7 @@ class QuotationType extends AbstractType
                 'format' => 'mm/dd/yyyy'
             ])
             ->add('reference', TextType::class, [
-                'label' => false,
+                'label' => 'Reférence',
                 'data' => 'reference',
                 'attr' => [
                     'class' => 'removeMargin',
@@ -61,7 +61,7 @@ class QuotationType extends AbstractType
                 ]
             ])
             ->add('designation', TextType::class, [
-                'label' => false,
+                'label' => 'Désignetion',
                 'data' => 'reference',
 
                 'attr' => [
@@ -72,34 +72,34 @@ class QuotationType extends AbstractType
             ->add('deadline', EntityType::class, [
                 'class' => Deadlines::class,
                 'placeholder' => 'Date de paiement',
-                'label' => false,
+                'label' => 'Date de paiement',
                 'attr' => ['class' => 'wide'],
 
             ])
             ->add('payment', ChoiceType::class, [
                 'placeholder' => 'Mode de paiement',
-                'data' => 'Prélevemnt',
-                'label' => false,
+                'data' => 'Mode de paiement',
+                'label' => '',
                 'choices' => array_flip(Payment::PAYMENT),
                 'attr' => [
                     'class' => 'wide client-type'
                 ],
             ])
             ->add('amount', MoneyType::class, [
-                'label' => false,
+                'label' => 'TTC',
                 'data' => 67,
                 'attr' => [
                     'class' => 'money-type'
                 ],
             ])
             ->add('totalHt', MoneyType::class, [
-                'label' => false,
+                'label' => 'HT',
                 'attr' => [
                     'class' => 'money-type'
                 ],
             ])
             ->add('deposit', MoneyType::class, [
-                'label' => false,
+                'label' => 'Acompte',
                 'data' => 0,
                 'attr' => [
                     'placeholder' => 'Acompte',
@@ -110,7 +110,8 @@ class QuotationType extends AbstractType
                 'data' => 'Prélevemnt', 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Description'
+                    'placeholder' => 'Description',
+                    'required' => false
                 ]
             ])
             ->add('quotationLine', CollectionType::class, [

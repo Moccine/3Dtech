@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Client;
 use App\Entity\Quotation;
 use App\Entity\User;
 use App\Form\QuotationType;
@@ -20,10 +21,10 @@ class QuotationController extends AbstractController
     public function index(Quotation $quotation, QuotationService $quotationService): Response
     {
         // $quotationService->generateQuotePDF($quotation);
-        //  return @$quotationService->generateQuotePDF($quotation);
-        return $this->render('quotation/index.html.twig', [
+        return @$quotationService->generateQuotePDF($quotation);
+       /* return $this->render('quotation/index.html.twig', [
             'controller_name' => 'QuotationController',
-        ]);
+        ]);*/
     }
 
     /**
@@ -38,8 +39,10 @@ class QuotationController extends AbstractController
         $form = $this->createForm(QuotationType::class, $quotation);
         $form->handleRequest($request);
         if ($form->isSubmitted() and $form->isValid()) {
+            $quotation->setClient($this->getUser());
             $em->persist($quotation);
             $em->flush();
+
             return $this->redirectToRoute('edit_quotation', ['id' => $quotation->getId()]);
         }
         return $this->render('quotation/index.html.twig', [
@@ -59,8 +62,11 @@ class QuotationController extends AbstractController
         $form = $this->createForm(QuotationType::class, $quotation);
         $form->handleRequest($request);
         if ($form->isSubmitted() and $form->isValid()) {
+            $client = $em->getRepository(Client::class)->find($this->getUser()->getId());
+            $quotation->setClient($client);
             $em->flush();
         }
+
         return $this->render('quotation/index.html.twig', [
             'form' => $form->createView(),
         ]);
@@ -99,5 +105,12 @@ class QuotationController extends AbstractController
             return $exception->getMessage();
         }
         return $this->redirectToRoute('quaotation_list');
+    }
+    /**
+     * @Route("/quotation/view/{id}", name="view_quotation")
+     */
+    public function view(Quotation $quotation, EntityManagerInterface $em)
+    {
+        return $this->render('quotation/view.html.twig', ['quotation' => $quotation]);
     }
 }

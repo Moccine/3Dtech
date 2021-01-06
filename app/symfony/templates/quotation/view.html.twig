@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="container">
+    <div class="row mt-150">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body p-0">
+                    <div class="row p-5">
+                        <div class="col-md-6">
+                            <img src="{{ asset('assets/images/Logo3D.png') }}">
+                        </div>
+
+                        <div class="col-md-6 text-right">
+                            <p class="font-weight-bold mb-1">Devis {{ quotation.reference }}</p>
+                            <p class="text-muted">{{ quotation.quotationDate|date('d-m-Y') }}</p>
+                        </div>
+                    </div>
+
+                    <hr class="my-5">
+
+                    <div class="row pb-5 p-5">
+                        <div class="col-md-6">
+                            <p class="font-weight-bold mb-4">Information Clent</p>
+                            <p class="mb-1">{{ quotation.client.firstName }} {{ quotation.client.lastName }}</p>
+                            <p>
+                                {{ quotation.client.company }}
+                            </p>
+                            <p class="mb-1">
+                                {{ quotation.client.street }} <br>
+                                {{ quotation.client.postalCode }} {{ quotation.client.city }} <br>
+                                {{ quotation.client.country }} <br>
+                            </p>
+                        </div>
+
+                        <div class="col-md-6 text-right">
+                            <p class="font-weight-bold mb-4">Details de paiement</p>
+                            <p class="mb-1"><span class="text-muted">Mode de paiement: </span> {{ quotation.payment }}</p>
+                        </div>
+                    </div>
+
+                    <div class="row p-5">
+                        <div class="col-md-12">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="border-0 text-uppercase small font-weight-bold">N°</th>
+                                    <th class="border-0 text-uppercase small font-weight-bold">Produit</th>
+                                    <th class="border-0 text-uppercase small font-weight-bold">tva</th>
+                                    <th class="border-0 text-uppercase small font-weight-bold">Quantité</th>
+                                    <th class="border-0 text-uppercase small font-weight-bold">Prix unitaire</th>
+                                    <th class="border-0 text-uppercase small font-weight-bold">Acompte</th>
+                                    <th class="border-0 text-uppercase small font-weight-bold">TH</th>
+                                    <th class="border-0 text-uppercase small font-weight-bold">TTC</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for quotationline in quotation.quotationLine %}
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ quotationline.product.name }}</td>
+                                    <td>{{ quotationline.vat.name }}</td>
+                                    <td>{{ quotationline.quantity }}</td>
+                                    <td>{{ quotationline.unitPrice }}</td>
+                                    <td>{{ quotationline.discount }}</td>
+                                    <td>{{ quotationline.totalHt }}</td>
+                                    <td>{{ quotationline.amount }}</td>
+
+                                </tr>
+                          {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-row-reverse bg-dark text-white p-4">
+                        <div class="py-3 px-5 text-right">
+                            <div class="mb-2">HTe</div>
+                            <div class="h2 font-weight-light">{{ quotation.totalHt }}  €</div>
+                        </div>
+
+                        <div class="py-3 px-5 text-right">
+                            <div class="mb-2">Reduction</div>
+                            <div class="h2 font-weight-light">10%</div>
+                        </div>
+
+                        <div class="py-3 px-5 text-right">
+                            <div class="mb-2"> TTCt</div>
+                            <div class="h2 font-weight-light">{{ quotation.amount }} €</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-light mt-5 mb-5 text-center small">by : <a class="text-light" target="_blank" href="http://totoprayogo.com">totoprayogo.com</a></div>
+
+</div>
+{% endblock %}
+

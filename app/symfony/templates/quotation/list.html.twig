@@ -22,7 +22,7 @@
         <div class="quotation-list">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 title=""
+                    <h4 title=""></h4>
                 </div>
                 <div class="col-lg-12">
                     {% if quotations is empty %}
@@ -32,25 +32,31 @@
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Nom</th>
                                 <th scope="col">Paiement</th>
                                 <th scope="col">TTC</th>
                                 <th scope="col">HT</th>
                                 <th scope="col">Date de création</th>
                                 <th scope="col">Editer</th>
+                                <th scope="col">visualiser</th>
+                                <th scope="col">telecharger</th>
                                 <th scope="col">Supprimer</th>
                             </tr>
                             </thead>
                             <tbody>
                             {% for quotation in quotations %}
                                 <tr>
-                                    <td>{{ quotation.id }}</td>
+                                    <td>{{ loop.index}}</td>
+                                    <td>{{ quotation.status }}</td>
                                     <td>{{ quotation.name }}</td>
                                     <td>{{ quotation.payment }}</td>
                                     <td>{{ quotation.amount }}</td>
                                     <td>{{ quotation.totalHt }}</td>
                                     <td>{{ quotation.createdAt|date }}</td>
                                     <td><a href="{{ path('edit_quotation', { id : quotation.id }) }}"><i class="fa fa-edit"></i></a></td>
+                                    <td><a href="{{ path('view_quotation', { id : quotation.id }) }}" target="_blank"><i class="fa fa-eye"></i></a></td>
+                                    <td><a href="{{ path('generate_quotation', { id : quotation.id }) }}" target="_blank"><i class="fa fa-download"></i></a></td>
                                     <td><a href="{{ path('remove_quotation', { id : quotation.id }) }}"><i style="color: red" class="fa fa-trash"></i></a></td>
                                 </tr>
                             {% endfor %}

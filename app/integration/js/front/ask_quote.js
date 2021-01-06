@@ -1,9 +1,14 @@
 let $ = require('jquery');
+import 'bootstrap-datepicker';
 
 const {getRoute, trans, httpRequest} = require('../common');
 let $submit = $("button#ask_of_quote_submit");
-import 'bootstrap-datepicker';
 
+let amountField = $('#quotation_amount');
+let depositField = $('#quotation_deposit');
+let totalHtField = $('#quotation_totalHt');
+let totalAmount = 0;
+let totalHt = 0;
 $(document).ready(function () {
     $('#quotation-form').find('select').css('display', 'block');
     $('#quotation-form').find('.nice-select').css('display', 'none');
@@ -72,26 +77,18 @@ const addOptionFormDeleteLink = ($tagFormLi) => {
 };
 
 const calculateQuotation = () => {
-    let amountField = $('#quotation_amount');
-    let depositField = $('#quotation_deposit');
-    let totalHtField = $('#quotation_totalHt');
-    let totalAmount = 0;
-    let totalHt = 0;
 
     let quotationLines = $('form').find('.quotation-line-section')
     $(quotationLines).each((index, sectionsFields) => {
         console.log($(sectionsFields).data());
         let $ht = $(sectionsFields).find('.ht');
         let $ttc = $(sectionsFields).find('.ttc');
-        console.log($ht.val(), $ttc.val())
-        totalAmount+= parseFloat($ttc)
+        totalAmount += parseFloat($ttc)
         totalHt += parseFloat($ht);
     });
     amountField.val(totalAmount);
     totalHtField.val(totalHt);
 }
-
-
 const updateProduct = () => {
 
     let selectProduct = $("select.add-product");
@@ -113,6 +110,9 @@ const updateProduct = () => {
         let discountVal = $discountField.val();
         let htVal = $htField.val();
         let vatVal = $vatField.val();
+
+        totalAmount = $ttcField.val() - ttcVal;
+        totalHt = $htField.val() - htVal;
 
         let ajaxData = {
             quantityVal,
@@ -138,7 +138,11 @@ const updateProduct = () => {
             $unitPriceField.val(data.unitPrice).attr('value', data.unitPrice)
             $discountField.val(data.discount).attr('value', data.discount)
             $htField.val(data.ht).attr('value', data.ht)
+            totalAmount += data.ttc;
+            totalHt += data.ht;
+            amountField.val(totalAmount);
+            totalHtField.val(totalHt);
         })
-        calculateQuotation();
+//         calculateQuotation();
     });
 }
