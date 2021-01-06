@@ -17,7 +17,6 @@ class NewsLetterController extends AbstractController
     public function addNewEmail(Request $request): Response
     {
         $newLetter = new NewsLetter();
-        dd($request);
         $newLetterForm = $this->createForm(NewsLetterType::class, $newLetter);
         $newLetterForm->handleRequest($request);
         if ($newLetterForm->isSubmitted() and $newLetterForm->isValid()) {
