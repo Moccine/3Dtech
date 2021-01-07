@@ -29,19 +29,20 @@ class BuserFixture extends Fixture
         for ($i = 0; $i < 100; $i++) {
             $user = new User();
 
-            if($i<1){
+            if ($i < 1) {
                 $user->addRole(User::ROLE_ADMIN);
                 $user->setEmail('so.momo@dbmail.com');
             }
             $password = $this->passwordService->encode($user, 'Connexion2020');
-                $user->setEnabled(true)->setEmail($faker->email)
+            $user->setEnabled(true)->setEmail($faker->email)
                 ->setPassword($password);
-            $this->addReference(self::USER_REFERENCE.$i, $user);
+            $this->addReference(self::USER_REFERENCE . $i, $user);
             $manager->persist($user);
         }
 
         $manager->flush();
     }
+
     public function getOrder(): int
     {
         return 4; // the order in which fixtures will be loaded

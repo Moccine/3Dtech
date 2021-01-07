@@ -136,4 +136,33 @@ class UserManager
         $this->em->persist($user);
         $this->em->flush();
     }
+    public function createUserByCommand(string $username, string $password, string $email, bool $inactive, string $superAdmin){
+        $user = new User();
+        $user->setEmail($email)->setEnabled($inactive);
+        $user->setPlainPassword($password);
+        $user->addRole(User::ROLE_ADMIN);
+        $this->encodePassword($user, $user->getPlainPassword());
+        $this->em->persist($user);
+        $this->em->flush();
+    }
+    public function demote($email)
+    {
+        $user = $this->em->getRepository(User::class)->findOneBy(['email' => $email]);
+        $user->setSuperAdmin(false);
+        $this->em->flush($user);
+    }
+
+    public function removeRole($email, $role): bool
+    {
+        $user = $this->em->getRepository(User::class)->findOneBy([
+            'email' => $email
+        ]);
+        if (($user instanceof User) and !$user->hasRole($role)) {
+            return false;
+        }
+        $user->removeRole($role);
+        $this->em->flush($user);
+
+        return true;
+    }
 }
