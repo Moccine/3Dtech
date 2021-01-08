@@ -181,15 +181,14 @@
                         <table class="table table-invoice">
                             <thead>
                             <tr>
-                                <th>Details du devis</th>
-                                <th class="text-center" >#</th>
+                                <th class="text-center">#</th>
                                 <th class="text-center">Produit</th>
-                                <th class="text-right" >Quantité</th>
-                                <th class="text-right" >Prix unit.</th>
-                                <th class="text-right" >HT.</th>
-                                <th class="text-right" >reduction.</th>
-                                <th class="text-right" >tva.</th>
-                                <th class="text-right" >TTC.</th>
+                                <th class="text-right">Quantité</th>
+                                <th class="text-right">Prix unit.</th>
+                                <th class="text-right">HT.</th>
+                                <th class="text-right">reduction.</th>
+                                <th class="text-right">tva.</th>
+                                <th class="text-right">TTC.</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -203,8 +202,10 @@
                                     </td>
                                     <td class="text-center">{{ quotationLine.totalHt?quotationLine.totalHt:0 }} €</td>
                                     <td class="text-center">{{ quotationLine.discount?quotationLine.discount:0 }} €</td>
-                                    <td class="text-center">{{ quotationLine.vat.taxe?quotationLine.vat.taxe:0 }} %</td>
-                                    <td class="text-center">{{ quotationLine.amount?quotationLine.vat.taxe:0 }} €</td>
+                                    <td class="text-center">{{ quotationLine.vat.taxe?quotationLine.vat.taxe * quotationLine.totalHt :0 }}
+                                        %
+                                    </td>
+                                    <td class="text-center">{{ quotationLine.amount?quotationLine.amount:0 }} €</td>
                                 </tr>
                             {% endfor %}
                             </tbody>
