@@ -48,7 +48,7 @@ class QuotationService
                 'setAutoBottomMargin' => 'stretch',
             ]);
 
-            $html = $this->twig->render('invoice/invoice.html.twig', ['quotation' => $quotation]);
+            $html = $this->twig->render('quotation/quotation_pdf.html.twig', ['quotation' => $quotation]);
             $header = $this->twig->render('invoice/header.html.twig');
             $footer = ($this->twig->render('invoice/footer.html.twig'));
             $mpdf->SetHTMLHeader($header);

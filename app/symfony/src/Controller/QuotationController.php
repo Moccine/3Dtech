@@ -111,7 +111,8 @@ class QuotationController extends AbstractController
      */
     public function view(Quotation $quotation, EntityManagerInterface $em)
     {
-        dump($quotation);
-        return $this->render('quotation/index.html.twig', ['quotation' => $quotation]);
+        //return $this->render('quotation/in.html.twig', ['quotation' => $quotation]);
+        return $this->render('quotation/quotation_pdf.html.twig', ['quotation' => $quotation]);
+
     }
 }

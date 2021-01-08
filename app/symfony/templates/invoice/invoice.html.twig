@@ -1,59 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>{% block title %}PDF{% endblock %}</title>
-  <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css'>
+{% extends 'pdf.html.twig' %}
 
-  <style>
-    /* reset */
-    *
-    {
-      border: 0; box-sizing: content-box; color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; line-height: inherit; margin: 0; padding: 0; text-decoration: none; vertical-align: top;
-    }
-    body {
-      background-color: #ffffff
-    }
+{% block title %}{{'app.title.quotations'|trans}}{% endblock %}
 
-    .padding {
-      padding: 2rem !important
-    }
+{% block body %}
 
-    .card {
-      margin-bottom: 30px;
-      border: none;
-      -webkit-box-shadow: 0px 1px 2px 1px rgba(154, 154, 204, 0.22);
-      -moz-box-shadow: 0px 1px 2px 1px rgba(154, 154, 204, 0.22);
-      box-shadow: 0px 1px 2px 1px rgba(154, 154, 204, 0.22)
-    }
-
-    .card-header {
-      background-color: #fff;
-      border-bottom: 1px solid #e6e6f2
-    }
-
-    h3 {
-      font-size: 20px
-    }
-
-    h5 {
-      font-size: 15px;
-      line-height: 26px;
-      color: #3d405c;
-      margin: 0px 0px 15px 0px;
-      font-family: 'Circular Std Medium'
-    }
-
-    .text-dark {
-      color: #3d405c !important
-    }
-  </style>
-</head>
-<body>
-<div class="container">
-
-</div>
-<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-</body>
-</html>
+{% endblock %}
