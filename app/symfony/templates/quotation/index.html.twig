@@ -47,7 +47,7 @@
             </div>
         </div>
     </div>
-    <div class="container pt-25 pb-25" id="quotation-form">
+    <div class="container pt-25 pb-25" id="quotation-form" data-quotation-id="{{ quotation.id }}">
         <div class="faq-box-area faq-box-about">
             <div class="container">
                 <div class="row">
@@ -108,7 +108,7 @@
                                                 <div class="col-auto">{{ form_errors(quotationLineField) }}</div>
                                                 <li class="list-unstyled">
                                                     {{ formMacros.niceForm(quotationLineField.children) }}
-                                                    <div class="input-box col-lg-12 quotationLine-field">
+                                                    <div class="input-box col-lg-12 quotationLine-field" data-quotation-line-id="{{ quotationLineField.vars.value.id}}">
                                                         <a href="javacript:void(0)"
                                                            class="delete-link-edit"
                                                            style="float: right; color: red">

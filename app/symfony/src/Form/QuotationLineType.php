@@ -34,7 +34,6 @@ class QuotationLineType extends AbstractType
         $defaultVat = $this->em->getRepository(Vat::class)->findOneBy([
             'name' => '0%',
         ]);
-        dump($defaultVat);
         $builder
             ->add('product', EntityType::class, [
                 'class' => Product::class,

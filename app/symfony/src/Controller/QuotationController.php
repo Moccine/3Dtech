@@ -22,9 +22,9 @@ class QuotationController extends AbstractController
     {
         // $quotationService->generateQuotePDF($quotation);
         return @$quotationService->generateQuotePDF($quotation);
-       /* return $this->render('quotation/index.html.twig', [
-            'controller_name' => 'QuotationController',
-        ]);*/
+        /* return $this->render('quotation/index.html.twig', [
+             'controller_name' => 'QuotationController',
+         ]);*/
     }
 
     /**
@@ -36,18 +36,12 @@ class QuotationController extends AbstractController
     public function create(Request $request, EntityManagerInterface $em): Response
     {
         $quotation = new Quotation();
-        $form = $this->createForm(QuotationType::class, $quotation);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() and $form->isValid()) {
-            $quotation->setClient($this->getUser());
-            $em->persist($quotation);
-            $em->flush();
-
-            return $this->redirectToRoute('edit_quotation', ['id' => $quotation->getId()]);
-        }
-        return $this->render('quotation/index.html.twig', [
-            'form' => $form->createView(),
-        ]);
+        $client = $em->getRepository(Client::class)->find($this->getUser()->getId());
+        $quotation->setClient($client)
+        ->setName('');
+        $em->persist($quotation);
+        $em->flush($quotation);
+        return $this->redirectToRoute('edit_quotation', ['id' => $quotation->getId()]);
     }
 
     /**
@@ -69,6 +63,7 @@ class QuotationController extends AbstractController
 
         return $this->render('quotation/index.html.twig', [
             'form' => $form->createView(),
+            'quotation' => $quotation,
         ]);
     }
 
@@ -106,6 +101,7 @@ class QuotationController extends AbstractController
         }
         return $this->redirectToRoute('quaotation_list');
     }
+
     /**
      * @Route("/quotation/view/{id}", name="view_quotation")
      */
