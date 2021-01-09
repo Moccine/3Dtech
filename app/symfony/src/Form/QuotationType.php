@@ -87,7 +87,7 @@ class QuotationType extends AbstractType
             ])
             ->add('amount', MoneyType::class, [
                 'label' => 'TTC',
-                'data' => 67,
+                //'data' => 67,
                 'attr' => [
                     'class' => 'money-type'
                 ],

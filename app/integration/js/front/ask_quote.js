@@ -33,7 +33,7 @@ const addQuotationOptionForm = ($collectionHolder, $newOptionLi) => {
     let newForm = prototype;
     newForm = newForm.replace(/__name__/g, index);
     $collectionHolder.data('index', index + 1);
-    let $newFormLi = $('<li class="list-unstyled"></li>').append(newForm);
+    let $newFormLi = $('<li class="list-unstyled" data-quotation-line-id = "'+ quotationLineId +'"></li>').append(newForm);
     $newOptionLi.before($newFormLi);
     addOptionFormDeleteLink($newFormLi)
 
@@ -62,7 +62,6 @@ const addNewOption = () => {
 };
 
 const createNewQuotationLine = () => {
-    console.log('fghjklmù')
     return new Promise((resolve, reject) => {
         $.ajax({
             url: getRoute('new_quotationLine', {id: quotationId}),
@@ -94,18 +93,17 @@ const removeQuotationLine = () => {
 
 const deleteOption = () => {
     $(".delete-link-edit").click((e) => {  // suppresion de quotation option
-        quotationLineId = $(e.target).parents(':eq(1)').data('quotationLineId');
+        quotationLineId = $(e.target).parents(':eq(2)').data('quotationLineId');
+        console.log(quotationLineId)
         removeQuotationLine().then((data) => {
             quotationLineId = data.id;
-            let $target = $((e).target).parent().parent()
-            let $quotationLine = $(e.target).parents(':eq(1)');
             $((e).target).closest('li.list-unstyled').fadeOut().remove();
+            updateQuotationPrices(data)
             updateProduct();
         })
     });
 };
 const addOptionFormDeleteLink = ($tagFormLi) => {
-    console.log(quotationLineId);
     let $removeFormButton = $(`
        <a href="javacript:void(0)" 
             class="delete-link ">
@@ -119,10 +117,13 @@ const addOptionFormDeleteLink = ($tagFormLi) => {
     `);
     $tagFormLi.append($removeFormButton);
     $removeFormButton.on('click', function (e) {
-        //$tagFormLi.remove();
-        console.log(e)
-
-        // supprimer quotationLine
+        quotationLineId = $(e.target).parents(':eq(2)').data('quotationLineId');
+        removeQuotationLine().then((data) => {
+            quotationLineId = data.id;
+            $tagFormLi.remove();
+            updateQuotationPrices(data)
+            updateProduct();
+        })
     });
 };
 
@@ -145,7 +146,9 @@ const updateProduct = () => {
     selectProduct.change((event) => {
         let $thisSelectProduct = $(event.target);
         let $ProductId = $thisSelectProduct.val()
-        let $quotationLine = $(event.target).parents(':eq(2)');
+        let $quotationLine = $(event.target).parents(':eq(3)');
+        let $quotationLineId = $quotationLine.data('quotation-line-id');
+        console.log($quotationLineId,$quotationLine, $quotationLine.data() )
         let $quantityField = $quotationLine.find('.quantity');
         let $ttcField = $quotationLine.find('.ttc');
         let $unitPriceField = $quotationLine.find('.unitPrice');
@@ -173,7 +176,7 @@ const updateProduct = () => {
             quotationId,
         }
 
-        let route = getRoute('search_product', {'id': $ProductId});
+        let route = getRoute('search_product', {'productId': $ProductId, 'quotationLineId': $quotationLineId});
 
         $.ajaxSetup({
             url: route,
@@ -184,17 +187,21 @@ const updateProduct = () => {
 
         $.post(route, {ajaxData}, (data) => {
             console.log(data);
-            $ttcField.val(data.ttc).attr('value', data.ttc)
-            $unitPriceField.val(data.unitPrice).attr('value', data.unitPrice)
-            $discountField.val(data.discount).attr('value', data.discount)
-            $htField.val(data.ht).attr('value', data.ht)
-            totalAmount += data.ttc;
-            totalHt += data.ht;
-            amountField.val(totalAmount);
-            totalHtField.val(totalHt);
+            updateQuotationPrices(data)
+            $ttcField.val(data.quotationLineAmount).attr('value', data.quotationLineAmount)
+            $unitPriceField.val(data.quotationLineUnitPrice).attr('value', data.quotationLineUnitPrice)
+            $discountField.val(data.quotationLineDiscount).attr('value', data.quotationLineDiscount)
+            $htField.val(data.quotationLineHt).attr('value', data.quotationLineHt)
+
         })
         calculateQuotation();
+
+
     });
 
 
+}
+const updateQuotationPrices = (data) => {
+    $('#quotation_amount').val(data.quotationHt);
+    $('#quotation_totalHt').val(data.quotationAmount);
 }

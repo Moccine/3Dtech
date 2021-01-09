@@ -106,9 +106,9 @@
                                             data-widget-counter="{{ form.quotationLine|length }}">
                                             {% for quotationLineField in form.quotationLine %}
                                                 <div class="col-auto">{{ form_errors(quotationLineField) }}</div>
-                                                <li class="list-unstyled">
+                                                <li class="list-unstyled" data-quotation-line-id="{{ quotationLineField.vars.value.id}}">
                                                     {{ formMacros.niceForm(quotationLineField.children) }}
-                                                    <div class="input-box col-lg-12 quotationLine-field" data-quotation-line-id="{{ quotationLineField.vars.value.id}}">
+                                                    <div class="input-box col-lg-12 quotationLine-field">
                                                         <a href="javacript:void(0)"
                                                            class="delete-link-edit"
                                                            style="float: right; color: red">

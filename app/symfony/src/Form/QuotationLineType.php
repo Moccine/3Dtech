@@ -67,7 +67,7 @@ class QuotationLineType extends AbstractType
                  ]
              ])
               ->add('discount', PercentType::class, [
-                  'label' => 'Acompte',
+                  'label' => 'Reductiion',
                   'attr' => [
                       'placeholder' =>'Remise en %',
                       'class' => ' discount'

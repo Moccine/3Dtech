@@ -8,6 +8,7 @@ use App\Entity\Quotation;
 use App\Entity\QuotationLine;
 use App\Entity\Vat;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,10 +33,15 @@ class ProductApiController extends AbstractController
     }
 
     /**
-     * @Route("/serach/{id}", name="search_product")
+     * @Route("/serach/product/{productId}/quotation-line/{quotationLineId}", name="search_product")
+     * @param Request $request
+     * @param Product $product
+     * @param QuotationLine $quotationLine
      * @return JsonResponse
+     * @ParamConverter("product", options={"id" = "productId"})
+     * @ParamConverter("quotationLine", options={"id" = "quotationLineId"})
      */
-    public function calculateQuotationAction(Request $request, Product $product)
+    public function calculateQuotationAction(Request $request, Product $product, QuotationLine $quotationLine)
     {
         $ajaxDatas = $request->request->get('ajaxData');
         $quantity = (int)$ajaxDatas['quantityVal'] ?? 1;
@@ -47,21 +53,31 @@ class ProductApiController extends AbstractController
         $quotationId = $ajaxDatas['quotationId'];
         /** @var Vat $vat */
         $vat = $this->em->getRepository(Vat::class)->find((int)$vatVal);
+        /** @var Quotation $quotation */
         $quotation = $this->em->getRepository(Quotation::class)->find((int)$quotationId);
         //update all values
         $ht = $product->getPrice() * $quantity * (1 - $discountVal / 100);
         $taxe = ($vat instanceof Vat) ? (float)$vat->getTaxe() : 0;
         $amount = $ht * (1 + $taxe);
-
-
+        // Mettre à jour quotation line
+        $quotationLine->setTotalHt($ht)->setVat($vat)
+            ->setUnitPrice($product->getPrice())
+            ->setAmount($amount)
+            ->setDiscount($discountVal)
+            ->setQuantity((int)$quantity);
+        // Mettre à jour quotation
+        $this->updateQuotationPrices($quotation);
+        $this->em->flush();
+        dump($quotationLine);
         $data = [
-            'name' => $product->getName(),
-            'unitPrice' => (float)$product->getPrice(),
-            'code' => $product->getCode(),
-            'ht' => (float)$ht,
-            'ttc' => (float)$amount,
-            'vat' => $taxe,
-            'discount' => $discountVal,
+            'quotationLineUnitPrice' => (float)$product->getPrice(),
+            'quotationLineHt' => (float)$quotationLine->getTotalHt(),
+            'quotationLineAmount' => (float)$quotationLine->getAmount(),
+            'vat' => $vat->getTaxe(),
+            'qquotationLineDiscount' => $quotationLine->getDiscount(),
+            'quotationAmount' => $quotation->getAmount(),
+            'quotationHt' => $quotation->getTotalHt(),
+            //'quotation-discount' => $quotation->getD(),
         ];
 
         return $this->json($data);
@@ -77,24 +93,49 @@ class ProductApiController extends AbstractController
         $this->em->persist($quotationLine);
         $quotation->addQuotationLine($quotationLine);
         $this->em->flush();
+
         $data = [
             'id' => $quotationLine->getId(),
         ];
 
         return $this->json($data);
     }
+
     /**
      * @Route("/remove/quotationLine/{id}", name="remove_quotationLine")
      * @return JsonResponse
      */
     public function removeQuotationAction(QuotationLine $quotationLine): JsonResponse
     {
-        dump($quotationLine);
+
         $this->em->remove($quotationLine);
         $this->em->remove($quotationLine);
         $this->em->flush();
-        $data = [];
+        $quotation = $quotationLine->getQuotation();
+        if ($quotation instanceof Quotation) {
+            $this->updateQuotationPrices($quotation);
+        }
+        $this->em->flush();
+
+        $data = [
+            'quotationAmount' => $quotation->getAmount(),
+            'quotationHt' => $quotation->getTotalHt(),
+        ];
 
         return $this->json($data);
+    }
+
+    public function updateQuotationPrices(Quotation $quotation)
+    {
+        $quotationLines = $quotation->getQuotationLine();
+        $totalHt = 0;
+        $amount = 0;
+        foreach ($quotationLines as $quotationLine) {
+            $totalHt += $quotationLine->getTotalHt();
+            $amount += $quotationLine->getAmount();
+        }
+        $quotation->setTotalHt($totalHt);
+        $quotation->setAmount($amount);
+        $this->em->flush();
     }
 }
