@@ -71,14 +71,11 @@ class QuotationType extends AbstractType
             ])
             ->add('deadline', EntityType::class, [
                 'class' => Deadlines::class,
-                'placeholder' => 'Date de paiement',
                 'label' => 'Date de paiement',
                 'attr' => ['class' => 'wide'],
 
             ])
             ->add('payment', ChoiceType::class, [
-                'placeholder' => 'Mode de paiement',
-                'data' => 'Mode de paiement',
                 'label' => '',
                 'choices' => array_flip(Payment::PAYMENT),
                 'attr' => [
@@ -107,7 +104,8 @@ class QuotationType extends AbstractType
                 ]
             ])
             ->add('description', TextareaType::class, [
-                'data' => 'Prélevemnt', 'label' => false,
+                'data' => 'Prélevemnt',
+                'label' => false,
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Description',

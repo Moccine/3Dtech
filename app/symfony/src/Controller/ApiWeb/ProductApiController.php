@@ -74,7 +74,7 @@ class ProductApiController extends AbstractController
             'quotationLineHt' => (float)$quotationLine->getTotalHt(),
             'quotationLineAmount' => (float)$quotationLine->getAmount(),
             'vat' => $vat->getTaxe(),
-            'qquotationLineDiscount' => $quotationLine->getDiscount(),
+            'quotationLineDiscount' => $quotationLine->getDiscount(),
             'quotationAmount' => $quotation->getAmount(),
             'quotationHt' => $quotation->getTotalHt(),
             //'quotation-discount' => $quotation->getD(),
@@ -85,6 +85,7 @@ class ProductApiController extends AbstractController
 
     /**
      * @Route("/create/new/quotationLine/{id}", name="new_quotationLine")
+     * @param Quotation $quotation
      * @return JsonResponse
      */
     public function createQuotationAction(Quotation $quotation): JsonResponse

@@ -17,14 +17,14 @@ class ProductFixtures extends Fixture
         $faker = Factory::create('fr_FR');
 
         $categories = $manager->getRepository(Category::class)->findAll();
-        for ($i = 0; $i <= 100; $i++) {
+        for ($i = 0; $i <= count($categories); $i++) {
             $key = rand(0, count($categories));
             $category = $categories[$key] ?? null;
             if ($category instanceof Category) {
                 $product = new Product();
                 $product->setCode(rand(2000, 100000) . $faker->randomLetter)
-                    ->setCategory($category)->setName('Produit'.$faker->randomLetter)
-                ->setPrice(rand(50, 7000));
+                        ->setCategory($category)->setName('Produit'.$faker->randomLetter)
+                ->setPrice(rand(10, 200));
                 $manager->persist($product);
             }
         }

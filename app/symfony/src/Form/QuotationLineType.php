@@ -37,7 +37,6 @@ class QuotationLineType extends AbstractType
         $builder
             ->add('product', EntityType::class, [
                 'class' => Product::class,
-                'placeholder' => 'Choisir un produit',
                 'label' => 'Produit',
                 'attr' => [
                     'class' => 'add-product'
@@ -70,7 +69,7 @@ class QuotationLineType extends AbstractType
                   'label' => 'Reductiion',
                   'attr' => [
                       'placeholder' =>'Remise en %',
-                      'class' => ' discount'
+                      'class' => 'discount'
                   ]
               ])
               ->add('totalHt', MoneyType::class, [

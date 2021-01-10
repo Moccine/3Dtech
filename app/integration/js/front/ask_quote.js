@@ -2,7 +2,7 @@ let $ = require('jquery');
 import 'bootstrap-datepicker';
 
 let quotationId = $('#quotation-form').data('quotationId')
-
+let $discount = $('.quotation-line-section').find('.discount');
 const {getRoute, trans, httpRequest} = require('../common');
 let $submit = $("button#ask_of_quote_submit");
 var quotationLineId = null;
@@ -15,17 +15,19 @@ $(document).ready(function () {
     $('#quotation-form').find('select').css('display', 'block');
     $('#quotation-form').find('.nice-select').css('display', 'none');
     updateProduct();
-
     $('.js-datepicker').datepicker({
         format: 'mm/dd/yyyy',
         language: 'fr',
-        startDate: '"01-01-2020")'
+        startDate: '01-01-2021'
     });
-
-
     deleteOption();
     addNewOption();
-
+    $discount.change((e) => {
+        let $discountVal = parseInt($(e.target).val());
+        let $thisSection =  $(e.target).parents().eq(4);
+        quotationLineId = $thisSection.data('quotation-line-id');
+       updateQuotationLine($thisSection)
+    })
 })
 const addQuotationOptionForm = ($collectionHolder, $newOptionLi) => {
     let prototype = $collectionHolder.data('prototype');
@@ -33,7 +35,7 @@ const addQuotationOptionForm = ($collectionHolder, $newOptionLi) => {
     let newForm = prototype;
     newForm = newForm.replace(/__name__/g, index);
     $collectionHolder.data('index', index + 1);
-    let $newFormLi = $('<li class="list-unstyled" data-quotation-line-id = "'+ quotationLineId +'"></li>').append(newForm);
+    let $newFormLi = $('<li class="list-unstyled" data-quotation-line-id = "' + quotationLineId + '"></li>').append(newForm);
     $newOptionLi.before($newFormLi);
     addOptionFormDeleteLink($newFormLi)
 
@@ -60,7 +62,6 @@ const addNewOption = () => {
         })
     });
 };
-
 const createNewQuotationLine = () => {
     return new Promise((resolve, reject) => {
         $.ajax({
@@ -89,8 +90,6 @@ const removeQuotationLine = () => {
         })
     })
 }
-
-
 const deleteOption = () => {
     $(".delete-link-edit").click((e) => {  // suppresion de quotation option
         quotationLineId = $(e.target).parents(':eq(2)').data('quotationLineId');
@@ -126,29 +125,22 @@ const addOptionFormDeleteLink = ($tagFormLi) => {
         })
     });
 };
-
-const calculateQuotation = () => {
-
-    let quotationLines = $('body').find('form').find('.quotation-line-section')
-    $(quotationLines).each((index, sectionsFields) => {
-        let $ht = $(sectionsFields).find('.ht');
-        let $ttc = $(sectionsFields).find('.ttc');
-        totalAmount += parseFloat($ttc)
-        totalHt += parseFloat($ht);
-    });
-    amountField.val(totalAmount);
-    totalHtField.val(totalHt);
-}
-const updateProduct = () => {
-
+const updateProduct = () => {  // PRODUCT CHANGE
     let selectProduct = $("select.add-product");
-
     selectProduct.change((event) => {
         let $thisSelectProduct = $(event.target);
         let $ProductId = $thisSelectProduct.val()
-        let $quotationLine = $(event.target).parents(':eq(3)');
-        let $quotationLineId = $quotationLine.data('quotation-line-id');
-        console.log($quotationLineId,$quotationLine, $quotationLine.data() )
+        updateQuotationLine($thisSelectProduct.parents().eq(3));
+    });
+}
+const updateQuotationPrices = (data) => {
+    $('#quotation_amount').val(data.quotationHt);
+    $('#quotation_totalHt').val(data.quotationAmount);
+}
+const updateQuotationLine = ($quotationLine) => { // UPDATE QUOTATION LINE
+    let $quotationLineId = $quotationLine.data('quotation-line-id');
+    let $productId = $quotationLine.find("select.add-product :selected").attr('value');
+    if($productId) {
         let $quantityField = $quotationLine.find('.quantity');
         let $ttcField = $quotationLine.find('.ttc');
         let $unitPriceField = $quotationLine.find('.unitPrice');
@@ -156,16 +148,13 @@ const updateProduct = () => {
         let $htField = $quotationLine.find('.ht');
         let $vatField = $quotationLine.find('.vat');
 
-        let quantityVal = $quantityField.val();
+        let quantityVal = parseInt($quantityField.val());
         let ttcVal = $ttcField.val();
         let unitPriceVal = $unitPriceField.val();
-        let discountVal = $discountField.val();
+        let discountVal = parseInt($discountField.val());
         let htVal = $htField.val();
         let vatVal = $vatField.val();
         let quotationId = $('#quotation-form').data('quotationId')
-        totalAmount = $ttcField.val() - ttcVal;
-        totalHt = $htField.val() - htVal;
-
         let ajaxData = {
             quantityVal,
             ttcVal,
@@ -176,7 +165,7 @@ const updateProduct = () => {
             quotationId,
         }
 
-        let route = getRoute('search_product', {'productId': $ProductId, 'quotationLineId': $quotationLineId});
+        let route = getRoute('search_product', {'productId': $productId, 'quotationLineId': $quotationLineId});
 
         $.ajaxSetup({
             url: route,
@@ -184,24 +173,18 @@ const updateProduct = () => {
             type: "POST"
         });
         $.ajax({data: {ajaxData}});
-
         $.post(route, {ajaxData}, (data) => {
-            console.log(data);
+            console.log(data)
             updateQuotationPrices(data)
             $ttcField.val(data.quotationLineAmount).attr('value', data.quotationLineAmount)
             $unitPriceField.val(data.quotationLineUnitPrice).attr('value', data.quotationLineUnitPrice)
             $discountField.val(data.quotationLineDiscount).attr('value', data.quotationLineDiscount)
             $htField.val(data.quotationLineHt).attr('value', data.quotationLineHt)
-
-        })
-        calculateQuotation();
-
-
-    });
-
-
-}
-const updateQuotationPrices = (data) => {
-    $('#quotation_amount').val(data.quotationHt);
-    $('#quotation_totalHt').val(data.quotationAmount);
+        });
+    }else {
+        $htField.val(data.quotationLineHt).attr('value', 0)
+        $unitPriceField.val(data.quotationLineUnitPrice).attr('value', 0)
+        $ttcField.val(data.quotationLineAmount).attr('value', 0)
+        console.error('product id not found')
+    }
 }
