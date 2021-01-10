@@ -138,14 +138,7 @@
         <h1> Devis </h1>
     </div>
     <div class="row">
-        <ul class="list-unstyled list-inlineinline">
-            <li class="list-inline-item pr-10"><i class="fa fa-list" aria-hidden="true"></i>
-                <a class="pl-10" href="#" >list des devis</a>
-            </li>
-            <li class="list-inline-item pr-10" ><i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                <a class="pl-10"  href="{{ path('profile') }}">Profile</a>
-            </li>
-        </ul>
+   {% include 'common/menu_admin.html.twig' %}
     </div>
     <div class="row">
     <div class="col-md-12">
@@ -156,7 +149,9 @@
             <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-white m-b-10 p-l-5"><i
                         class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</a>
             </span>
-                <img src="{{ asset('assets/images/Logo3D.png') }}" alt="" style="width: 100px">
+                <a href="{{ path('3dtech_index') }}">
+                    <img src="{{ asset('assets/images/Logo3D.png') }}" alt="" style="width: 100px">
+                </a><br>
                <small>{{ 'app.name'|trans }}</small>
             </div>
             <!-- end invoice-company -->
