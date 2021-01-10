@@ -95,14 +95,14 @@ class QuotationType extends AbstractType
                     'class' => 'money-type'
                 ],
             ])
-            ->add('deposit', MoneyType::class, [
+           /* ->add('deposit', MoneyType::class, [
                 'label' => 'Acompte',
                 'data' => 0,
                 'attr' => [
                     'placeholder' => 'Acompte',
                     'class' => 'money-type'
                 ]
-            ])
+            ])*/
             ->add('description', TextareaType::class, [
                 'data' => 'Prélevemnt',
                 'label' => false,

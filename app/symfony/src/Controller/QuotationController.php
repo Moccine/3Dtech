@@ -96,7 +96,7 @@ class QuotationController extends AbstractController
             $em->remove($quotation);
             $em->flush();
         } catch (\Exception $exception) {
-            dd($exception);
+
             return $exception->getMessage();
         }
         return $this->redirectToRoute('quaotation_list');
