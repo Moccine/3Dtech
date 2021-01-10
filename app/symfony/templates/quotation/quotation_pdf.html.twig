@@ -134,7 +134,20 @@
 </header>
 {% block body %}
 <div class="container">
-    <h1> Devis </h1>
+    <div class="row">
+        <h1> Devis </h1>
+    </div>
+    <div class="row">
+        <ul class="list-unstyled list-inlineinline">
+            <li class="list-inline-item pr-10"><i class="fa fa-list" aria-hidden="true"></i>
+                <a class="pl-10" href="#" >list des devis</a>
+            </li>
+            <li class="list-inline-item pr-10" ><i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                <a class="pl-10"  href="{{ path('profile') }}">Profile</a>
+            </li>
+        </ul>
+    </div>
+    <div class="row">
     <div class="col-md-12">
         <div class="invoice">
             <!-- begin invoice-company -->
@@ -143,7 +156,8 @@
             <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-white m-b-10 p-l-5"><i
                         class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</a>
             </span>
-                {{ 'app.name'|trans }}
+                <img src="{{ asset('assets/images/Logo3D.png') }}" alt="" style="width: 100px">
+               <small>{{ 'app.name'|trans }}</small>
             </div>
             <!-- end invoice-company -->
             <!-- begin invoice-header -->
@@ -151,8 +165,9 @@
                 <div class="invoice-from">
                     <address class="m-t-5 m-b-5">
                         <strong class="text-inverse"></strong><br>
-                        {{ 'app.address.name'|trans }}  {{ 'app.address.postal_code'|trans }}<br>
-                        tel: {{ 'app.tel'|trans }}br>
+                        {{ 'app.address.name'|trans }}  <br>
+                        {{ 'app.address.postal_code'|trans }}<br>
+                        tel: {{ 'app.tel'|trans }}<br>
                     </address>
                 </div>
                 <div class="invoice-to">
@@ -168,8 +183,7 @@
                     <small>Devis </small>
                     <div class="date text-inverse m-t-5">{{ quotation.createdAt|date('d/m/Y') }}</div>
                     <div class="invoice-detail">
-                        #0000123DSS<br>
-                        Services Product
+                        #{{ quotation.designation }}<br>
                     </div>
                 </div>
             </div>
@@ -185,8 +199,8 @@
                             <th class="text-center">Produit</th>
                             <th class="text-right">Quantité</th>
                             <th class="text-right">Prix unit.</th>
-                            <th class="text-right">HT.</th>
                             <th class="text-right">reduction.</th>
+                            <th class="text-right">HT.</th>
                             <th class="text-right">tva.</th>
                             <th class="text-right">TTC.</th>
                         </tr>
@@ -201,12 +215,12 @@
                                 <td class="text-center">{{ quotationLine.unitPrice? quotationLine.unitPrice: 0 }}
                                     €
                                 </td>
-                                <td class="text-center">{{ quotationLine.totalHt?quotationLine.totalHt:0 }} €</td>
-                                <td class="text-center">{{ quotationLine.discount?quotationLine.discount:0 }} % </td>
-                                <td class="text-center">{{ quotationLine.vat.taxe?quotationLine.vat.taxe * quotationLine.totalHt :0 }}
-                                    %
+                                <td class="text-center">{{ quotationLine.discount|number_format(2, '.', ' ')  }} % </td>
+                                <td class="text-center">{{ quotationLine.totalHt|number_format(2, '.', ' ')  }} €</td>
+                                <td class="text-center">
+                                    {{ (quotationLine.vat.taxe * quotationLine.totalHt)|number_format(2, '.', ' ')}} €
                                 </td>
-                                <td class="text-center">{{ quotationLine.amount?quotationLine.amount:0 }} €</td>
+                                <td class="text-center">{{ quotationLine.amount|number_format(2, '.', ' ')   }} €</td>
                             </tr>
                         {% endfor %}
                         {% endif %}
@@ -220,19 +234,19 @@
                         <div class="invoice-price-row">
                             <div class="sub-price">
                                 <small>HT</small>
-                                <span class="text-inverse">{{ quotation.totalHt }}</span>
+                                <span class="text-inverse">{{ quotation.totalHt|number_format(2, '.', ' ')  }}</span>
                             </div>
                             <div class="sub-price">
                             </div>
                             <div class="sub-price">
                                 <small>TTC</small>
-{#                                <span class="text-inverse">{{ quotation.discount }}</span>#}
+                                <span class="text-inverse">{{ quotation.amount|number_format(2, '.', ' ')  }}</span>
                             </div>
                         </div>
                     </div>
                     <div class="invoice-price-right">
                         <small>TOTAL</small>
-                        <span class="price">{{ quotation.amount}} €</span>
+                        <span class="price">{{ quotation.amount|number_format(2, '.', ' ') }} €</span>
                     </div>
                 </div>
                 <!-- end invoice-price -->
@@ -256,6 +270,7 @@
             </div>
             <!-- end invoice-footer -->
         </div>
+    </div>
     </div>
 </div>
 {% endblock %}
