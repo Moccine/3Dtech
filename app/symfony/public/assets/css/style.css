@@ -616,6 +616,11 @@ p {
         display: none;
     }
 }
+@media only screen and (max-width: 900px) {
+    .header-area.header-2-area .navigation .navbar .navbar-nav .nav-item a span {
+        font-size: 12px;
+    }
+}
 
 @media (max-width: 767px) {
     .header-area.header-2-area .navigation .navbar .navbar-nav .nav-item a span {
